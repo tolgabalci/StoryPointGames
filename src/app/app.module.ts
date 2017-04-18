@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 // Initialize Firebase
 var firebase_config = {
@@ -16,11 +16,10 @@ var firebase_config = {
   messagingSenderId: "719502068515"
 };
 
-// const myFirebaseAuthConfig = {
-//   provider: AuthProviders.Google,
-//   method: AuthMethods.Redirect
-// };
-
+const myFirebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
+};
 
 @NgModule({
   declarations: [
@@ -30,7 +29,7 @@ var firebase_config = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    //AngularFireModule.initializeApp(firebase_config)   
+    AngularFireModule.initializeApp(firebase_config, myFirebaseAuthConfig)   
   ],
   providers: [],
   bootstrap: [AppComponent]
