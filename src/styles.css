@@ -5,6 +5,12 @@
  * Copyright 2012-2016 Thomas Park
  * Licensed under MIT
  * Based on Bootstrap
+ *
+ 
+ **  https://bootswatch.com/cerulean/
+    This includes examples
+** 
+
 */
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -1610,6 +1616,7 @@ pre code {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  color: white;
 }
 .row {
   margin-left: -15px;
@@ -4180,7 +4187,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-header {
     float: left;
+    font-size: 50px;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+
+    
+    
   }
+}
+
+.navbar-custom-header{
+  color:white;
 }
 .navbar-collapse {
   overflow-x: visible;
