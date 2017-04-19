@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NewGameComponent } from './new-game/new-game.component';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -32,7 +32,11 @@ const myFirebaseAuthConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebase_config, myFirebaseAuthConfig)   
+    AngularFireModule.initializeApp(firebase_config, myFirebaseAuthConfig),
+    RouterModule.forRoot([
+      { path: "createNewGame", component: NewGameComponent },
+    ])
+
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

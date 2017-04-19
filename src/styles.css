@@ -4162,6 +4162,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     border-bottom-color: #ffffff;
   }
 }
+
+.listpadded{
+  padding-left: 20px;
+}
 .tab-content > .tab-pane {
   display: none;
 }
@@ -4187,12 +4191,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-header {
     float: left;
-    font-size: 50px;
+    font-size: 30px;
     font-family: 'Glyphicons Halflings';
     font-style: normal;
-
-    
-    
+ 
   }
 }
 
