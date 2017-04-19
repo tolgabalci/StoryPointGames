@@ -3125,26 +3125,26 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary {
   color: #ffffff;
-  background-color: #2fa4e7;
-  border-color: #2fa4e7;
+  background-color: #033c73;
+  border-color: #033c73;
 }
 .btn-primary:focus,
 .btn-primary.focus {
   color: #ffffff;
-  background-color: #178acc;
+  background-color: #033c73;
   border-color: #105b87;
 }
 .btn-primary:hover {
   color: #ffffff;
-  background-color: #178acc;
-  border-color: #1684c2;
+  background-color: #033c73;
+  border-color: #033c73;
 }
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #ffffff;
-  background-color: #178acc;
-  border-color: #1684c2;
+  background-color: #033c73;
+  border-color: #033c73;
 }
 .btn-primary:active:hover,
 .btn-primary.active:hover,
@@ -3156,8 +3156,8 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary.active.focus,
 .open > .dropdown-toggle.btn-primary.focus {
   color: #ffffff;
-  background-color: #1474ac;
-  border-color: #105b87;
+  background-color: #033c73;
+  border-color: #033c73;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -3173,11 +3173,11 @@ fieldset[disabled] .btn-primary:focus,
 .btn-primary.disabled.focus,
 .btn-primary[disabled].focus,
 fieldset[disabled] .btn-primary.focus {
-  background-color: #2fa4e7;
-  border-color: #2fa4e7;
+  background-color: #033c73;
+  border-color: #033c73;
 }
 .btn-primary .badge {
-  color: #2fa4e7;
+  color: #033c73;
   background-color: #ffffff;
 }
 .btn-success {
@@ -6924,4 +6924,30 @@ button.close {
 .panel-danger > .panel-heading .badge,
 .panel-info > .panel-heading .badge {
   background-color: #fff;
+}
+
+
+.hover {
+    position:relative;
+
+}
+
+.tooltip { /* hide and position tooltip */
+ 
+  
+  background-color:white;
+  color:black;
+  border-radius:5px;
+  opacity:0;
+  right: 500px;
+  position:absolute;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.hover:hover .tooltip { /* display tooltip on hover */
+    opacity:1;
 }

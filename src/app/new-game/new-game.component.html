@@ -1,71 +1,177 @@
 <form class="form-horizontal">
 	<fieldset>
-		<legend>Legend</legend>
+		<legend>Create New Game</legend>
 		<div class="form-group">
-			<label class="col-lg-2 control-label" for="inputEmail">Email</label>
-			<div class="col-lg-10">
-				<input class="form-control" id="inputEmail" type="text" placeholder="Email">
+			<label class="col-lg-2 control-label" for="inputgameName">Game Name:</label>
+			<div class="col-lg-5">
+				<input class="form-control" id="inputGameName" type="text" placeholder="Game Name">
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-lg-2 control-label" for="inputPassword">Password</label>
-			<div class="col-lg-10">
-				<input class="form-control" id="inputPassword" type="password" placeholder="Password">
-				<div class="checkbox">
-					<label>
-            <input type="checkbox"> Checkbox
-          </label>
+			<label class="col-lg-2 control-label" for="inputDescription">Description:</label>
+			<div class="col-lg-5">
+				<textarea class="form-control" id="inputDescription" rows="4"></textarea>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-2 control-label" for="inputVelocity">Team Velocity:</label>
+
+			<div class="col-lg-5">
+				<input class="form-control" id="inputVelocity" type="number">
+			</div>
+			<!--EMN- COMING BACK TO THIS LATER-->
+			<!--<div class="hover"> What's this?
+				<div class="tooltip">asdadasd
+
 				</div>
-			</div>
+			</div>-->
 		</div>
+
 		<div class="form-group">
-			<label class="col-lg-2 control-label" for="textArea">Textarea</label>
-			<div class="col-lg-10">
-				<textarea class="form-control" id="textArea" rows="3"></textarea>
-				<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
-			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-lg-2 control-label">Radios</label>
+			<label class="col-lg-2 control-label">Share the velocity with all players?</label>
 			<div class="col-lg-10">
 				<div class="radio">
 					<label>
-            <input name="optionsRadios" id="optionsRadios1" type="radio" checked="" value="option1">
-            Option one is this
-          </label>
+						<input name="optionsVelocity" id="optionsVelocity1" type="radio"  value="option1">
+						Yes
+					</label>
 				</div>
 				<div class="radio">
 					<label>
-            <input name="optionsRadios" id="optionsRadios2" type="radio" value="option2">
-            Option two can be something else
-          </label>
+						<input name="optionsVelocity" id="optionsVelocity2" type="radio" checked="" value="option2">
+						No
+					</label>
 				</div>
 			</div>
 		</div>
+
 		<div class="form-group">
-			<label class="col-lg-2 control-label" for="select">Selects</label>
+			<label class="col-lg-2 control-label">Are you also effort pointing?</label>
 			<div class="col-lg-10">
-				<select class="form-control" id="select">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-				<br>
-				<select class="form-control" multiple="">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+				<div class="radio">
+					<label>
+						<input name="optionsEffortPoint" id="optionsEffortPoint1" type="radio"  value="option1">
+						Yes, please deal me cards
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+						<input name="optionsEffortPoint" id="optionsEffortPoint2" type="radio" checked="" value="option2">
+						No, I'm just a dealer
+					</label>
+				</div>
 			</div>
 		</div>
+
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Choose your card set:</label>
+			<div class="col-lg-10">
+				<div class="radio">
+					<label>
+					<input name="optionsCardSet" id="optionsCardSet1" type="radio" checked=""  value="option1">
+					Fibonacci ( 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ?, Pass, break )
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+				<input name="optionsCardSet" id="optionsCardSet2" type="radio"  value="option2">
+					Modified Fibonacci ( 0, ½, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?, Pass, break )
+				</label>
+				</div>
+				<div class="radio">
+					<label>
+				<input name="optionsCardSet" id="optionsCardSet3" type="radio"  value="option3">
+					T-shirts ( xxs, xs, s, m, l, xl, xxl, ?, Pass, break )
+				</label>
+				</div>
+				<div class="radio">
+					<label>
+				<input name="optionsCardSet" id="optionsCardSet4" type="radio"  value="option4">
+					Powers of 2 ( 0, 1, 2, 4, 8, 16, 32, 64, ?, Pass, break )
+				</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Auto-flip after everyone has voted?</label>
+			<div class="col-lg-10">
+				<div class="radio">
+					<label>
+						<input name="optionsAutoFlip" id="optionsAutoFlip1" type="radio"  value="option1">
+						Yes
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+						<input name="optionsAutoFlip" id="optionsAutoFlip2" type="radio" checked="" value="option2">
+					    No
+        	        </label>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Allow players to change their vote after reveal?</label>
+			<div class="col-lg-10">
+				<div class="radio">
+					<label>
+						<input name="optionsChangeVote" id="optionsChangeVote1" type="radio"  value="option1">
+						Yes
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+						<input name="optionsChangeVote" id="optionsChangeVote2" type="radio" checked="" value="option2">
+						No
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Would you like to calculate the score?</label>
+			<div class="col-lg-10">
+				<div class="radio">
+					<label>
+						<input name="optionsScore" id="optionsScore1" type="radio"  value="option1">
+						Yes
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+						<input name="optionsScore" id="optionsScor2" type="radio" checked="" value="option2">
+						No
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-2 control-label">Would you like a story timer?</label>
+			<div class="col-lg-10">
+				<div class="radio">
+					<label>
+						<input name="optionsTimer" id="optionsTimer1" type="radio"  value="option1">
+						Yes
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+						<input name="optionsTimer" id="optionsTimer2" type="radio" checked="" value="option2">
+						No
+					</label>
+				</div>
+			</div>
+		</div>
+
+
+
 		<div class="form-group">
 			<div class="col-lg-10 col-lg-offset-2">
 				<button class="btn btn-default" type="reset">Cancel</button>
-				<button class="btn btn-primary" type="submit">Submit</button>
+				<button class="btn btn-primary" type="submit">Save & Play</button>
 			</div>
 		</div>
 	</fieldset>
