@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NewGameComponent } from './new-game/new-game.component';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { SavedGamesComponent } from './saved-games/saved-games.component';
 
 // Initialize Firebase
 var firebase_config = {
@@ -26,7 +27,8 @@ const myFirebaseAuthConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    NewGameComponent
+    NewGameComponent,
+    SavedGamesComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ const myFirebaseAuthConfig = {
     AngularFireModule.initializeApp(firebase_config, myFirebaseAuthConfig),
     RouterModule.forRoot([
       { path: "createNewGame", component: NewGameComponent },
+      { path: "savedGames", component: SavedGamesComponent },
     ])
 
   ],
