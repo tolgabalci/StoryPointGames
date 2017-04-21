@@ -3132,7 +3132,7 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary.focus {
   color: #ffffff;
   background-color: #033c73;
-  border-color: #105b87;
+  border-color: #033c73;
 }
 .btn-primary:hover {
   color: #ffffff;
@@ -6950,4 +6950,18 @@ button.close {
 
 .hover:hover .tooltip { /* display tooltip on hover */
     opacity:1;
+}
+
+div.form
+{
+    display: block;
+    text-align: left;
+    padding-left: 20px;
+}
+form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
 }

@@ -1,36 +1,28 @@
-<form class="form-horizontal">
-	<fieldset>
-		<legend>Create New Game</legend>
-		<div class="form-group">
-			<label class="col-lg-2 control-label" for="inputgameName">Game Name:</label>
-			<div class="col-lg-5">
+<div class="row">
+	<div class="col-md-offset-3 col-md-6">
+		<h1>Create a new game</h1>
+		<form name="form" ng-submit="createGame()" novalidate>
+			<div class="form-group">
+				<label for="inputgameName">Game Name:</label>
 				<input class="form-control" id="inputGameName" type="text" placeholder="Game Name">
 			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-lg-2 control-label" for="inputDescription">Description:</label>
-			<div class="col-lg-5">
+			<div class="form-group">
+				<label for="inputDescription">Description:</label>
 				<textarea class="form-control" id="inputDescription" rows="4"></textarea>
 			</div>
-		</div>
-
-		<div class="form-group">
-			<label class="col-lg-2 control-label" for="inputVelocity">Team Velocity:</label>
-
-			<div class="col-lg-5">
+			<div class="form-group">
+				<label for="inputVelocity">Team Velocity:</label>
 				<input class="form-control" id="inputVelocity" type="number">
-			</div>
-			<!--EMN- COMING BACK TO THIS LATER-->
-			<!--<div class="hover"> What's this?
+
+				<!--EMN- COMING BACK TO THIS LATER-->
+				<!--<div class="hover"> What's this?
 				<div class="tooltip">asdadasd
 
 				</div>
 			</div>-->
-		</div>
-
-		<div class="form-group">
-			<label class="col-lg-2 control-label">Share the velocity with all players?</label>
-			<div class="col-lg-10">
+			</div>
+			<div class="form-group">
+				<label>Share the velocity with all players?</label>
 				<div class="radio">
 					<label>
 						<input name="optionsVelocity" id="optionsVelocity1" type="radio"  value="option1">
@@ -43,12 +35,12 @@
 						No
 					</label>
 				</div>
-			</div>
-		</div>
 
-		<div class="form-group">
-			<label class="col-lg-2 control-label">Are you also effort pointing?</label>
-			<div class="col-lg-10">
+			</div>
+
+			<div class="form-group">
+				<label>Are you also effort pointing?</label>
+
 				<div class="radio">
 					<label>
 						<input name="optionsEffortPoint" id="optionsEffortPoint1" type="radio"  value="option1">
@@ -62,11 +54,9 @@
 					</label>
 				</div>
 			</div>
-		</div>
+			<div class="form-group">
+				<label>Choose your card set:</label>
 
-		<div class="form-group">
-			<label class="col-lg-2 control-label">Choose your card set:</label>
-			<div class="col-lg-10">
 				<div class="radio">
 					<label>
 					<input name="optionsCardSet" id="optionsCardSet1" type="radio" checked=""  value="option1">
@@ -91,12 +81,12 @@
 					Powers of 2 ( 0, 1, 2, 4, 8, 16, 32, 64, ?, Pass, break )
 				</label>
 				</div>
-			</div>
-		</div>
 
-		<div class="form-group">
-			<label class="col-lg-2 control-label">Auto-flip after everyone has voted?</label>
-			<div class="col-lg-10">
+			</div>
+
+			<div class="form-group">
+				<label>Auto-flip after everyone has voted?</label>
+
 				<div class="radio">
 					<label>
 						<input name="optionsAutoFlip" id="optionsAutoFlip1" type="radio"  value="option1">
@@ -110,11 +100,10 @@
         	        </label>
 				</div>
 			</div>
-		</div>
 
-		<div class="form-group">
-			<label class="col-lg-2 control-label">Allow players to change their vote after reveal?</label>
-			<div class="col-lg-10">
+			<div class="form-group">
+				<label>Allow players to change their vote after reveal?</label>
+
 				<div class="radio">
 					<label>
 						<input name="optionsChangeVote" id="optionsChangeVote1" type="radio"  value="option1">
@@ -128,11 +117,10 @@
 					</label>
 				</div>
 			</div>
-		</div>
 
-		<div class="form-group">
-			<label class="col-lg-2 control-label">Would you like to calculate the score?</label>
-			<div class="col-lg-10">
+			<div class="form-group">
+				<label>Would you like to calculate the score?</label>
+
 				<div class="radio">
 					<label>
 						<input name="optionsScore" id="optionsScore1" type="radio"  value="option1">
@@ -146,11 +134,10 @@
 					</label>
 				</div>
 			</div>
-		</div>
 
-		<div class="form-group">
-			<label class="col-lg-2 control-label">Would you like a story timer?</label>
-			<div class="col-lg-10">
+			<div class="form-group">
+				<label>Would you like a story timer?</label>
+
 				<div class="radio">
 					<label>
 						<input name="optionsTimer" id="optionsTimer1" type="radio"  value="option1">
@@ -164,15 +151,16 @@
 					</label>
 				</div>
 			</div>
-		</div>
 
+			<div class="form-group">
 
-
-		<div class="form-group">
-			<div class="col-lg-10 col-lg-offset-2">
 				<button class="btn btn-default" type="reset">Cancel</button>
+				<button class="btn btn-default" type="button">Save</button>
 				<button class="btn btn-primary" type="submit">Save & Play</button>
+
 			</div>
-		</div>
-	</fieldset>
-</form>
+
+
+		</form>
+	</div>
+</div>
