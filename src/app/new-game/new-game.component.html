@@ -13,13 +13,8 @@
 			<div class="form-group">
 				<label for="inputVelocity">Team Velocity:</label>
 				<input class="form-control" id="inputVelocity" type="number">
+				<p class="help-block">The amount of work a Team can tackle during a single Sprint.</p>
 
-				<!--EMN- COMING BACK TO THIS LATER-->
-				<!--<div class="hover"> What's this?
-				<div class="tooltip">asdadasd
-
-				</div>
-			</div>-->
 			</div>
 			<div class="form-group">
 				<label>Share the velocity with all players?</label>
@@ -150,6 +145,12 @@
 						No
 					</label>
 				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="stories">Import stories (optional, one per line)</label>
+				<textarea ng-model="newGame.stories" rows="10" class="form-control" id="stories" placeholder="Enter stories"></textarea>
+				<p class="help-block">Copy and paste to import stories into your game.</p>
 			</div>
 
 			<div class="form-group">
