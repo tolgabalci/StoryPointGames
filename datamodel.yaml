@@ -1,0 +1,29 @@
+Game:
+    game.guid:
+        name: true
+        description: true
+        velocity: true
+        shareVelocity: true
+        includeDealer: true
+        cardSet: true
+        autoFlip: true
+        changeAfterVote: true
+        useTimer: true
+        timeLimitperStory: true
+        createdDate: true
+        status: true
+        createdBy: true
+        storyList:
+            - 
+                storyTFSId: true
+Stories:
+    storyTFSId: true
+    title: true
+    acceptanceCriteria: true
+    shirtSize: true
+    status: true
+    estimate: true
+    timeLimit: true
+    elapsedTime: true
+    completedDate: true
+    createDate: true
