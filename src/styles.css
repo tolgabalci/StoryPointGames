@@ -4194,6 +4194,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     font-size: 30px;
     font-family: 'Glyphicons Halflings';
     font-style: normal;
+    color:white;
  
   }
 }
