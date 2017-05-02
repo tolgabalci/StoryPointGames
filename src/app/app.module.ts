@@ -33,7 +33,7 @@ const myFirebaseAuthConfig = {
     NewGameComponent,
     SavedGamesComponent,
     GameComponent,
-    DashboardComponent
+    DashboardComponent,
     AboutComponent
   ],
   imports: [
