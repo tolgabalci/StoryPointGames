@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NewGameComponent } from './new-game/new-game.component';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { SavedGamesComponent } from './saved-games/saved-games.component';
+import { GameComponent } from './game/game.component';
 
 // Initialize Firebase
 var firebase_config = {
@@ -28,7 +29,8 @@ const myFirebaseAuthConfig = {
   declarations: [
     AppComponent,
     NewGameComponent,
-    SavedGamesComponent
+    SavedGamesComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
