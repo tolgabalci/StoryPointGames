@@ -9,6 +9,7 @@ import { NewGameComponent } from './new-game/new-game.component';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { SavedGamesComponent } from './saved-games/saved-games.component';
 import { GameComponent } from './game/game.component';
+import { AboutComponent } from './about/about.component';
 
 // Initialize Firebase
 var firebase_config = {
@@ -30,7 +31,8 @@ const myFirebaseAuthConfig = {
     AppComponent,
     NewGameComponent,
     SavedGamesComponent,
-    GameComponent
+    GameComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,7 @@ const myFirebaseAuthConfig = {
     RouterModule.forRoot([
       { path: "createNewGame", component: NewGameComponent },
       { path: "savedGames", component: SavedGamesComponent },
+      { path: "about", component: AboutComponent },
     ])
 
   ],
