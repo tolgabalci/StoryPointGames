@@ -46,7 +46,7 @@ const myFirebaseAuthConfig = {
       { path: "savedGames", component: SavedGamesComponent },
       { path: "about", component: AboutComponent },
       { path: "game", component: GameComponent },
-      { path: "dashboard", component: GameComponent },
+      { path: "dashboard", component: DashboardComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "**", component: DashboardComponent }
     ])
