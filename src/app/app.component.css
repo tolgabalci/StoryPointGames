@@ -8,3 +8,18 @@
   background-size: cover;
   margin-right: 10px;
 }
+
+.logintext{
+  color: white;
+  
+}
+
+
+.navbar-header {
+    float: left !important;
+    font-size: 30px !important;
+    font-family: 'Glyphicons Halflings' !important;
+    font-style: normal !important;
+    color:white !important;
+}
+

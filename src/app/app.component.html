@@ -5,6 +5,7 @@
 
 				StoryPointGames.com
 
+
 			</div>
 		</a>
 		<div class="navbar-collapse collapse">
@@ -13,7 +14,7 @@
 				<li class="listpadded"><a href="#" routerLink="savedGames" *ngIf="user.uid">Saved Games</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><img *ngIf="user.uid" class="userimg" src="{{user.photoURL}}"> {{user.name}}</li>
+				<li class="logintext"><img *ngIf="user.uid" class="userimg" src="{{user.photoURL}}"> {{user.name}}</li>
 				<li><a href="#" (click)="Login()" *ngIf="!user.uid">Login</a></li>
 				<!--<button type="button" class="btn btn-default" (click)="LoginModal.open()">test</button>-->
 				<li><a href="#" (click)="Logout()" *ngIf="user.uid">Logout</a></li>
