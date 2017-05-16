@@ -11,6 +11,7 @@ import { SavedGamesComponent } from './saved-games/saved-games.component';
 import { GameComponent } from './game/game.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AboutComponent } from './about/about.component';
+import { GameService } from './services/game.service';
 
 // Initialize Firebase
 var firebase_config = {
@@ -52,7 +53,7 @@ const myFirebaseAuthConfig = {
     ])
 
   ],
-  providers: [UserService],
+  providers: [UserService, GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
