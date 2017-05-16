@@ -1,3 +1,4 @@
+import { GameService } from "./services/game.service";
 import { UserService } from './shared/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
