@@ -1,3 +1,4 @@
+import { GameService } from "./services/game.service";
 import { UserService } from './shared/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
@@ -12,6 +13,7 @@ import { GameComponent } from './game/game.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AboutComponent } from './about/about.component';
 import { GameControllerComponent } from './game-controller/game-controller.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 // Initialize Firebase
 var firebase_config = {
@@ -36,7 +38,8 @@ const myFirebaseAuthConfig = {
     GameComponent,
     DashboardComponent,
     AboutComponent,
-    GameControllerComponent
+    GameControllerComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
@@ -49,12 +52,13 @@ const myFirebaseAuthConfig = {
       { path: "about", component: AboutComponent },
       { path: "game", component: GameComponent },
       { path: "dashboard", component: DashboardComponent },
-      //{ path: "", redirectTo: "dashboard", pathMatch: "full" },
+      { path: "register", component: RegisterUserComponent },
+      { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "**", component: DashboardComponent }
     ])
 
   ],
-  providers: [UserService],
+  providers: [UserService, GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

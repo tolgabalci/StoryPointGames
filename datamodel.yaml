@@ -14,16 +14,26 @@ Game:
         status: true
         createdBy: true
         storyList:
-            - 
-                storyTFSId: true
+            1001:
+                storyId: 4200
+                title: "My Story"
+                acceptanceCriteria: "Has to work"
+                shirtSize: "Large"
+                status: "not started"
+                estimate: "42 years"
+                timeLimit: "120"
+                elapsedTime: "0"
+                completedDate: ""
+                createDate: ""
+                                
 Stories:
-    storyTFSId: true
-    title: true
-    acceptanceCriteria: true
-    shirtSize: true
-    status: true
-    estimate: true
-    timeLimit: true
-    elapsedTime: true
-    completedDate: true
-    createDate: true
+    storyId: 4200
+    title: "My Story"
+    acceptanceCriteria: "Has to work"
+    shirtSize: "Large"
+    status: "not started"
+    estimate: "42 years"
+    timeLimit: "120"
+    elapsedTime: "0"
+    completedDate: ""
+    createDate: ""
