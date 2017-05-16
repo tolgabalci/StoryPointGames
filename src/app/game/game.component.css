@@ -1,7 +1,7 @@
 .userStory{
     height: 100px;
     width: 100%;
-    padding: 10px 0 10px;
+    padding:10px 0 10px;
     margin-top: 5px;
     color: black;
    
@@ -14,27 +14,23 @@
 
 
 
-* {
-
-    padding: 0;
-    margin: 0;
+.cardHolder{
+     width: 100px;
+    height: 140px;
+    color: black;
+    text-align: center;
 }
 
-body {
-    overflow-x: hidden;
-    font-family: 'Open Sans', sans-serif;
-    text-rendering: optimizeLegibility !important;
-    -webkit-font-smoothing: antialiased !important;
-}
-
-.gameheader {
-    padding: 80px 0 80px;
+.cardheader {
+    padding: 20px 0 80px;
     height: 600px;
     width: 100%;
     margin-top: 50px;
-    color: #fff;
+    color: black;
     
 }
+
+
 
  .cardfront {
     width: 100px;
@@ -42,7 +38,7 @@ body {
     border: 2px solid black;
     border-radius: 10px;
     background-color: white;
-    /*background-image: url('../images/goat.png');*/
+    background-image: url('/images/goat.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: 0px;
