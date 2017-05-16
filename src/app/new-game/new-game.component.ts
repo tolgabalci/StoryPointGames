@@ -15,6 +15,7 @@ export class NewGameComponent implements OnInit {
 
   onSubmit() {
     this.router.navigate(['game']);
+
   }
 
 }
