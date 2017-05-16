@@ -11,6 +11,7 @@ import { SavedGamesComponent } from './saved-games/saved-games.component';
 import { GameComponent } from './game/game.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AboutComponent } from './about/about.component';
+import { GameControllerComponent } from './game-controller/game-controller.component';
 
 // Initialize Firebase
 var firebase_config = {
@@ -34,7 +35,8 @@ const myFirebaseAuthConfig = {
     SavedGamesComponent,
     GameComponent,
     DashboardComponent,
-    AboutComponent
+    AboutComponent,
+    GameControllerComponent
   ],
   imports: [
     BrowserModule,
