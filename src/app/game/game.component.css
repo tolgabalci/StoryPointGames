@@ -1,0 +1,13 @@
+.userStory{
+    height: 100px;
+    width: 100%;
+    padding: 10px 0 10px;
+    margin-top: 5px;
+    color: black;
+   
+}
+
+.userStory h3{
+
+    color: black;
+}
