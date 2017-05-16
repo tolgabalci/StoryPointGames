@@ -16,9 +16,9 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="logintext" *ngIf="!user.uid"><a href="register">Register</a></li>
 				<li class="logintext"><img *ngIf="user.uid" class="userimg" src="{{user.photoURL}}"> {{user.name}}</li>
-				<li><a href="" (click)="Login()" *ngIf="!user.uid">Login</a></li>
+				<li><a (click)="Login()" *ngIf="!user.uid">Login</a></li>
 				<!--<button type="button" class="btn btn-default" (click)="LoginModal.open()">test</button>-->
-				<li><a href="" (click)="Logout()" *ngIf="user.uid">Logout</a></li>
+				<li><a (click)="Logout()" *ngIf="user.uid">Logout</a></li>
 
 			</ul>
 		</div>
