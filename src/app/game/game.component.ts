@@ -9,7 +9,12 @@ export class GameComponent implements OnInit {
 
   constructor() { }
 
+  hideFront: boolean;
+  hideBack: boolean;
+
   ngOnInit() {
+    this.hideFront = false;
+    this.hideBack = true;
   }
 
 }
