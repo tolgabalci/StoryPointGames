@@ -1,3 +1,17 @@
-<p>
-  register-user works!
-</p>
+<h1>Register your account:</h1>
+
+<div class="form-group">
+  <label for="userName">User Name:</label>
+  <input id="userName" type="text" placeholder="Your name" [(ngModel)]="userName">
+</div>
+<div class="form-group">
+  <label for="userPass">Create Password:</label>
+  <input id="userPass" type="password" [(ngModel)]="userPass">
+</div>
+<div class="form-group">
+  <label for="verifyPass">Verify Password:</label>
+  <input id="verifyPass" type="password" [(ngModel)]="verifyPass">
+</div>
+<div class="form-group">
+  <button (click)="onSubmit()">Create user</button>
+</div>
