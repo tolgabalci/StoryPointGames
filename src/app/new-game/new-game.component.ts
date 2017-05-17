@@ -1,5 +1,8 @@
+import { GameService } from './../services/game.service';
+import { Game } from './../model/game';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-new-game',
@@ -7,15 +10,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-game.component.css']
 })
 export class NewGameComponent implements OnInit {
+  newGame: Game = new Game();
+  newName: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private gameService: GameService) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
+    //console.log("newListItem = ", this.newGame.shareVelocity);     
+    
+    this.gameService.createGame(this.newGame);
     this.router.navigate(['game']);
 
   }
+
+
 
 }
