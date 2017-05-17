@@ -11,8 +11,20 @@
 
 .logintext{
   color: white;
+  cursor: pointer;
   
 }
+
+.form-group{
+  margin-left: 20px;
+  width:500px;
+
+} 
+
+.modal-title {
+  color: black;
+}
+
 
 
 .navbar-header {

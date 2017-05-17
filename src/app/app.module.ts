@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AboutComponent } from './about/about.component';
 import { GameControllerComponent } from './game-controller/game-controller.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 // Initialize Firebase
 var firebase_config = {
@@ -42,6 +43,7 @@ const myFirebaseAuthConfig = {
     RegisterUserComponent
   ],
   imports: [
+    Ng2Bs3ModalModule,
     BrowserModule,
     FormsModule,
     HttpModule,
