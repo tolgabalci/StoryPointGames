@@ -16,8 +16,17 @@
         </div>
         <div class="cardFooter">
           <hr class="divider" />
-          <span class="card" *ngFor="let card of cards">
+          <span class="card" *ngFor="let card of cards">          
             {{card.text}}
+          </span>
+          <span class="card" *ngIf="cardDeck == 'Fibonacci'">
+              <img src="/src/assets/images/infinity2.png" alt="">
+          </span>
+          <span class="card">
+              Pass
+          </span>
+          <span class="card">
+              <i class="break fa fa-coffee" aria-hidden="true"></i>
           </span>
         </div>
       </div>

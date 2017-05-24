@@ -39,15 +39,7 @@ export class Init {
                 {
                     text: "?"
                 },
-                {
-                    text: "Infinity"
-                },
-                {
-                    text: "Pass"
-                },
-                {
-                    text: "Break"
-                },
+
             ];
         }
         else if (cardDeck == "Modified Fibonacci") {
@@ -88,12 +80,7 @@ export class Init {
                 {
                     text: "?"
                 },
-                {
-                    text: "Pass"
-                },
-                {
-                    text: "Break"
-                },
+
             ];
 
         }
@@ -123,12 +110,7 @@ export class Init {
                 {
                     text: "?"
                 },
-                {
-                    text: "Pass"
-                },
-                {
-                    text: "Break"
-                },
+
             ];
 
         }
@@ -161,12 +143,7 @@ export class Init {
                 {
                     text: "64"
                 },
-                {
-                    text: "Pass"
-                },
-                {
-                    text: "Break"
-                },
+
             ];
 
         }

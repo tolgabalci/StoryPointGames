@@ -147,12 +147,20 @@ html, body{
     cursor: pointer;
     display: inline-block;
     transition: all 500ms ease-in-out;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
    
+}
 
+.card .break{
+    font-size: 20px;
+    color: black;
 }
 
 .card:hover{
      top: -10px;
+   
     
 }
 
@@ -160,6 +168,7 @@ html, body{
 .cardFooter > .card:focus {
   color: #fff;
   background-color: #428bca;
+  
 }
 
 
@@ -179,6 +188,7 @@ html, body{
     width:100%;
     height: 20%;
     margin-bottom: 5px;
+
 
 }
 
