@@ -27,4 +27,26 @@
 * about page
 
 
+### Technology Leads
+* Matt
+Authentication Mechanics: All aspects of authentication, including forgot password.
+Lower priority features:
+    - Account Linkage
+    - Email verification
+
+* Gary
+Main Page (Dashboard when logged in, About when not logged in)
+User Account Page
+
+* Emily
+Game Mechanics
+Design and Animations
+
+* Tolga
+Firebase Rules Security
+New Game Form Validation
+
+* Brian
+Game Data Service
+Stories
 
