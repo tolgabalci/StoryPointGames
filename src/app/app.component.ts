@@ -22,7 +22,7 @@ export class AppComponent {
   login(loginType: string) {
     if (loginType == "google") {
       console.log("login button pressed");
-      this.auth.auth.signInWithPopup(new
+      this.auth.auth.signInWithRedirect(new
         firebase.auth.GoogleAuthProvider())
     }
   };
