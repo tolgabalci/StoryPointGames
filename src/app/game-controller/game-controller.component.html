@@ -17,7 +17,8 @@
                     onmouseenter="$(this).tooltip('show')">  Flip</i></a>
                 <a class="resetBoard"><i class="controls fa fa-undo" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reset board"
                       onmouseenter="$(this).tooltip('show')">  Reset</i></a>
-                <a class="add"><i class="addStory fa fa-plus" aria-hidden="true">  Add User Story </i></a>
+                <a class="add" (click)="open()"><i class="addStory fa fa-plus" aria-hidden="true">  Add User Story </i></a>
+                <app-user-story></app-user-story>
             </div>
         </div>
     </div>

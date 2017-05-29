@@ -1,5 +1,7 @@
 <body>
 
+
+
   <div class="container-fluid">
     <div class="game">
       <div class="col-xs-8 col-md-4 sidebar">
@@ -16,23 +18,28 @@
         </div>
         <div class="cardFooter">
           <hr class="divider" />
+
+
           <span class="card" *ngFor="let card of cards">
             {{card.text}}
-          </span>
+            </span>
           <span class="card" *ngIf="cardDeck == 'Fibonacci'">
-              <img src="/src/assets/images/infinity2.png" alt="">
+              <img src="../assets/images/infinity2.png" alt="">
           </span>
-          <span class="card">
+          <span class="card" onclick="">
               Pass
           </span>
-          <!--<span class="card">
-              <i class="break fa fa-coffee" aria-hidden="true"></i>
-          </span>-->
+
         </div>
+
+
+
       </div>
 
 
     </div>
 
   </div>
+
+
 </body>
