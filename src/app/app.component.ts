@@ -12,6 +12,8 @@ import { AngularFireAuth } from "angularfire2/auth";
 export class AppComponent {
   title = 'app works!';
   user: Observable<firebase.User>;
+  userEmail: string;
+  userPass: string;
 
   constructor(private auth: AngularFireAuth) {
     this.user = auth.authState;
@@ -20,10 +22,25 @@ export class AppComponent {
   ngOnInit() { }
 
   login(loginType: string) {
-    if (loginType == "google") {
-      console.log("login button pressed");
-      this.auth.auth.signInWithRedirect(new
-        firebase.auth.GoogleAuthProvider())
+    console.log("login button pressed");
+    switch (loginType) {
+      case "google":
+        {
+          this.auth.auth.signInWithRedirect(new
+            firebase.auth.GoogleAuthProvider())
+        }
+      case "custom": {
+        this.auth.auth.signInWithEmailAndPassword(this.userEmail, this.userPass)
+          .catch(function (error: any) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode) {
+              alert(errorMessage);
+            }
+          })
+        this.userEmail = "";
+        this.userPass = "";
+      }
     }
   };
 
