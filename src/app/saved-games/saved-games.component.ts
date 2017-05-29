@@ -1,6 +1,4 @@
-import { GameService } from './../services/game.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-saved-games',
@@ -9,14 +7,9 @@ import { Router } from "@angular/router";
 })
 export class SavedGamesComponent implements OnInit {
 
-  games: any[];
-
-  constructor(private route: Router, private gamesService: GameService) { }
+  constructor() { }
 
   ngOnInit() {
-    //this.games = this.route.snapshot.params['game'];
-    this.gamesService.getGames()
-      .subscribe(gamesData => { this.games = gamesData });
-}
+  }
 
 }

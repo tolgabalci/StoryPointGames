@@ -21,10 +21,4 @@ export class GameService {
     let storyPointGameRef = this.db.list("game").$ref;
     storyPointGameRef.ref.push(game);
   }
-
-  getGames() {
-    console.log("getGames");
-    return this.af.database.list("game", { query: { orderByChild: 'createDate' } });
-  }
-
 }
