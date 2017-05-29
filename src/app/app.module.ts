@@ -62,7 +62,7 @@ var firebaseConfig = {
       { path: "**", component: DashboardComponent }
     ]),
     CommonModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({positionClass: "toast-top-center"}),
     BrowserAnimationsModule
 
   ],

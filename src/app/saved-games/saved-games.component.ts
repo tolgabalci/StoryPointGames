@@ -17,9 +17,9 @@ export class SavedGamesComponent implements OnInit {
 
   showSuccess() {
     this.toastrService.success('Hello world!', 'Toastr fun!');
-    this.toastrService.error("The man has 6 fingers","Uh-oh");
-    this.toastrService.info("Cut one off","Surgury");
-    this.toastrService.warning("This is a warning","Warn");
+    // this.toastrService.error("The man has 6 fingers","Uh-oh");
+    // this.toastrService.info("Cut one off","Surgury");
+    // this.toastrService.warning("This is a warning","Warn");
   }
 
   ngOnInit() {
