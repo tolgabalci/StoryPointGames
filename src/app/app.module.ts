@@ -17,6 +17,7 @@ import { AboutComponent } from './about/about.component';
 import { GameControllerComponent } from './game-controller/game-controller.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
+import { LoggedInGuardService } from './services/logged-in-guard.service';
 
 
 // Initialize Firebase
@@ -53,14 +54,14 @@ var firebaseConfig = {
       { path: "savedGames", component: SavedGamesComponent },
       { path: "about", component: AboutComponent },
       { path: "game", component: GameComponent },
-      { path: "dashboard",component: DashboardComponent },
+      { path: "dashboard", canActivate: [LoggedInGuardService],component: DashboardComponent },
       { path: "register", component: RegisterUserComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "**", component: DashboardComponent }
     ])
 
   ],
-  providers: [GameService, CardDeckService],
+  providers: [GameService, CardDeckService, LoggedInGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
