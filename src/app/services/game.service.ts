@@ -21,4 +21,9 @@ export class GameService {
     let storyPointGameRef = this.db.list("game").$ref;
     storyPointGameRef.ref.push(game);
   }
+
+  getGames() : FirebaseListObservable<any[]> {
+    console.log("getGames");
+    return this.db.list("game", { query: { orderByChild: 'createDate' } });
+  }
 }

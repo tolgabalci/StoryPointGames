@@ -135,21 +135,22 @@ html, body{
   }
 }
 
- .card{
-    padding: 40px 0 40px;
+.select-card .card {
+    padding: 40px 0 40px 0;
     border: 1px solid black;
     background-color: white;    
     border-radius: 5px;
     margin-top: 30px;
     width: 5%;
     text-align: center;
-    margin-left: 10px;
+    margin-left: 15px;
     cursor: pointer;
     display: inline-block;
     transition: all 500ms ease-in-out;
     font-weight: bold;
     font-size: 20px;
     color: black;
+    
    
 }
 
@@ -164,12 +165,15 @@ html, body{
     
 }
 
-.cardFooter > .card:hover,
-.cardFooter > .card:focus {
+.cardFooter .card:hover,
+.cardFooter .card:focus,
+.cardFooter .card:target{
   color: #fff;
   background-color: #428bca;
   
 }
+
+
 
 
 
@@ -202,6 +206,32 @@ html, body{
   background-color: gray;
 }
 
+ input{
+    visibility: hidden;
+}
 
+
+/*input[type="radio"]:checked + .card{
+ background: #428bca;
+}*/
+
+/*.select-card .card label,
+.select-card .card input{
+    display: block;
+    position: absolute;
+    
+}*/
+
+ input[type="radio"]:checked + label{
+    background-color: yellow;
+}
+
+/*.select-card .card input[type="radio"]:checked + label{
+    background-color: yellow;
+}*/
+
+ul{
+    list-style: none;
+}
 
 
