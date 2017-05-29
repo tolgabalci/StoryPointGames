@@ -1,3 +1,8 @@
 <p>
   saved-games works!
 </p>
+
+<ul class="list-group" *ngFor="let game of games">
+  <li class="list-group-item">{{game.createdDate}}</li>
+</ul>
+
