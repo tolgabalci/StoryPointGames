@@ -1,3 +1,102 @@
-<p>
-  game-controller works!
-</p>
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="row estimate">
+            Score
+            <div class="col-xs-12 results">
+                8
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row dealer">
+            <div class="col-xs-12 dealerHeader">
+                <h4>Dealer Controls</h4>
+            </div>
+            <div class="col-xs-12 flip">
+                <i class="controls fa fa-eye" aria-hidden="true">  Flip</i>
+                <i class="controls fa fa-undo" aria-hidden="true">  Reset</i>
+                <i class="addStory fa fa-plus" aria-hidden="true">  Add User Story </i>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid tabs">
+        <div class="row ">
+            <div class="col-xs-12 controlTabs">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#players" data-toggle="tab" aria-expanded="true">Players</a></li>
+                    <li class=""><a href="#stories" data-toggle="tab" aria-expanded="false">User Stories</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="players">
+                        <table class="table players">
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Player</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><i class="break fa fa-coffee" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                            title="" data-original-title="Step Away" onmouseenter="$(this).tooltip('show')"></i></td>
+                                    <td>Display Name</td>
+                                    <td></td>
+                                    <td><i class="exit fa fa-sign-out" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                            title="" data-original-title="Exit Game" onmouseenter="$(this).tooltip('show')"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="stories">
+                        <table class="table storyControls">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Description</th>
+                                    <th>Points</th>
+                                    <th>Tshirt</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
+                                        aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
+                                        helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater
+                                        eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone.
+                                        Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</td>
+                                    <td>-</td>
+                                    <td>XL</td>
+                                    <td><i class="edit fa fa-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                            title="" data-original-title="Edit Story" onmouseenter="$(this).tooltip('show')"></i></td>
+                                    <td><a class="trashStory" (click)="deleteModal.open()"><i class="trash fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                            title="" data-original-title="Delete Story" onmouseenter="$(this).tooltip('show')"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+<modal #deleteModal>
+
+    <h4 class="deleteVerbiage">Are you sure you want to delete selected User Story?</h4>
+    <modal-footer>
+
+        <button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-info" (click)="onDeleteStory" type="submit">Delete</button>
+
+    </modal-footer>
+
+
+</modal>

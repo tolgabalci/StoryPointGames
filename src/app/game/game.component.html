@@ -1,44 +1,38 @@
-<div id="userStory" class="userStory">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12">
+<body>
 
-        <h3>User Story #</h3>
-        <p>Description of user story.</p>
-
-
-
-      </div>
-
-    </div>
-  </div>
-
-</div>
-
-
-<div id="cardheader" class="cardheader">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-1 col-md-1">
-        <div class="cardHolder">
-          <div class="cardfront" [hidden]="hideFront">
-            <!--front content-->
-          </div>
-          <div class="cardback animated flip" [hidden]="hideBack">
-            <!--back content-->
-            1
-          </div>
-          <br> User Name
-        </div>
+    <div class="game">
+      <div class="col-xs-8 col-md-4 sidebar">
+        <app-game-controller></app-game-controller>
+      </div>
 
+      <div class="col-xs-8 gameBoard">
+        <div class="main">
+          <h3 class="userStory"> User Story #</h3>
+          <p>Details for user story</p>
+          <hr class="divider" />
+        </div>
+        <div class="cardsPlayed">
+        </div>
+        <div class="cardFooter">
+          <hr class="divider" />
+          <span class="card" *ngFor="let card of cards">
+            {{card.text}}
+          </span>
+          <span class="card" *ngIf="cardDeck == 'Fibonacci'">
+              <img src="/src/assets/images/infinity2.png" alt="">
+          </span>
+          <span class="card">
+              Pass
+          </span>
+          <span class="card">
+              <i class="break fa fa-coffee" aria-hidden="true"></i>
+          </span>
+        </div>
       </div>
 
 
     </div>
+
   </div>
-
-  <br>
-  <br>
-
-
-</div>
+</body>
