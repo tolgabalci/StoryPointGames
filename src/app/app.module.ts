@@ -17,7 +17,9 @@ import { AboutComponent } from './about/about.component';
 import { GameControllerComponent } from './game-controller/game-controller.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
-
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -57,7 +59,10 @@ var firebaseConfig = {
       { path: "register", component: RegisterUserComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "**", component: DashboardComponent }
-    ])
+    ]),
+    CommonModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
 
   ],
   providers: [GameService, CardDeckService],
