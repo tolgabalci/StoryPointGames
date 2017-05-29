@@ -5,7 +5,7 @@
 				StoryPointGames.com
 			</div>
 		</a>
-		
+
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li class="listpadded"><a href="#" routerLink="createNewGame" *ngIf="(user | async)?.uid">Create New Game</a></li>
@@ -41,15 +41,11 @@
 	</form>
 
 	<modal-footer>
-		<input type="image" src="../assets/images/googlelogin.png" alt="Submit" class="googleButton" align="left" (click)="login()">
+		<input type="image" src="../assets/images/googlelogin.png" alt="Submit" class="googleButton" align="left" (click)="login('google')">
 		<button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
 		<button class="btn btn-info" type="submit">Login</button>
-
 	</modal-footer>
 
-
 </modal>
-
-
 
 <router-outlet></router-outlet>

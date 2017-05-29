@@ -19,10 +19,12 @@ export class AppComponent {
 
   ngOnInit() { }
 
-  login() {
-    console.log("login button pressed");
-    this.auth.auth.signInWithPopup(new
-      firebase.auth.GoogleAuthProvider())
+  login(loginType: string) {
+    if (loginType == "google") {
+      console.log("login button pressed");
+      this.auth.auth.signInWithPopup(new
+        firebase.auth.GoogleAuthProvider())
+    }
   };
 
   logout() {
