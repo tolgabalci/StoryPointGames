@@ -26,6 +26,11 @@ export class NewGameComponent implements OnInit {
 
   }
 
+  onSubmitCreate() {
+    this.gameService.createGame(this.newGame);
+    
+  }
+
 
 
 }
