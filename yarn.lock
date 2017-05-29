@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@angular/animations@^4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-4.1.3.tgz#6e89a1e0fbfd6d0e90be4f2ae190aac67f83a411"
+
 "@angular/cli@^1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-1.0.6.tgz#a2e861f202131a8139882c78f1859cbefcbea77e"
@@ -209,9 +213,9 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angularfire2@^2.0.0-beta.8:
-  version "2.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/angularfire2/-/angularfire2-2.0.0-beta.8.tgz#8ec172ff17448c3ccdb79e9c6179da556ff05e1b"
+angularfire2@^4.0.0-rc.0:
+  version "4.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/angularfire2/-/angularfire2-4.0.0-rc.0.tgz#bc911f6874fc9546b535ec8e308c8b374d0fbf0c"
 
 ansi-align@^1.1.0:
   version "1.1.0"
@@ -1779,9 +1783,9 @@ findup-sync@~0.3.0:
   dependencies:
     glob "~5.0.0"
 
-firebase@^3.8.0:
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/firebase/-/firebase-3.8.0.tgz#068e680aa82b05fa53fc13cb082f3bffac49d190"
+firebase@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-4.0.0.tgz#a128092910e44224babc33e19b562ae3716ec4d5"
   dependencies:
     dom-storage "^2.0.2"
     faye-websocket "0.9.3"
@@ -3156,6 +3160,10 @@ ng2-bs3-modal@^0.10.4:
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/ng2-bs3-modal/-/ng2-bs3-modal-0.10.4.tgz#80f350cd3f7346193c8f9324c899d58db1714581"
 
+ngx-toastr@^5.2.3:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-5.2.3.tgz#3519d18884f9838d863b6bc1479e2598cb10736c"
+
 no-case@^2.2.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.1.tgz#7aeba1c73a52184265554b7dc03baf720df80081"
@@ -3627,7 +3635,6 @@ postcss-filter-plugins@^2.0.0:
 postcss-load-config@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/postcss-load-config/-/postcss-load-config-1.2.0.tgz#539e9afc9ddc8620121ebf9d8c3673e0ce50d28a"
-<<<<<<< HEAD
   dependencies:
     cosmiconfig "^2.1.0"
     object-assign "^4.1.0"
@@ -3652,32 +3659,6 @@ postcss-loader@^1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-1.3.3.tgz#a621ea1fa29062a83972a46f54486771301916eb"
   dependencies:
-=======
-  dependencies:
-    cosmiconfig "^2.1.0"
-    object-assign "^4.1.0"
-    postcss-load-options "^1.2.0"
-    postcss-load-plugins "^2.3.0"
-
-postcss-load-options@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/postcss-load-options/-/postcss-load-options-1.2.0.tgz#b098b1559ddac2df04bc0bb375f99a5cfe2b6d8c"
-  dependencies:
-    cosmiconfig "^2.1.0"
-    object-assign "^4.1.0"
-
-postcss-load-plugins@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/postcss-load-plugins/-/postcss-load-plugins-2.3.0.tgz#745768116599aca2f009fad426b00175049d8d92"
-  dependencies:
-    cosmiconfig "^2.1.1"
-    object-assign "^4.1.0"
-
-postcss-loader@^1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-1.3.3.tgz#a621ea1fa29062a83972a46f54486771301916eb"
-  dependencies:
->>>>>>> 078efc200642667622e273425074c88c7ab5e03f
     loader-utils "^1.0.2"
     object-assign "^4.1.1"
     postcss "^5.2.15"
