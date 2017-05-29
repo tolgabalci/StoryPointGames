@@ -19,6 +19,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { LoggedInGuardService } from './services/logged-in-guard.service';
 
+import 'rxjs/add/operator/first';
 
 // Initialize Firebase
 var firebaseConfig = {
