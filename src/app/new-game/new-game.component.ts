@@ -18,7 +18,7 @@ export class NewGameComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
+  onSubmitSavePlay() {
     //console.log("newListItem = ", this.newGame.shareVelocity);     
     
     this.gameService.createGame(this.newGame);
