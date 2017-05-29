@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "./shared/user.service";
-import { User } from "./shared/user";
+import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
+import * as firebase from 'firebase/app';
+import { Observable } from "rxjs/Observable";
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Component({
   selector: 'app-root',
@@ -9,22 +11,23 @@ import { User } from "./shared/user";
 })
 export class AppComponent {
   title = 'app works!';
-  user: User;
+  user: Observable<firebase.User>;
 
-  constructor(private userService: UserService){}
-
-  ngOnInit() {
-    this.userService.user$.subscribe(user => this.user = user)
+  constructor(private auth: AngularFireAuth) {
+    this.user = auth.authState;
   }
 
-  Login() {
+  ngOnInit() { }
+
+  login() {
     console.log("login button pressed");
-    this.userService.login();
+    this.auth.auth.signInWithPopup(new
+      firebase.auth.GoogleAuthProvider())
   };
 
-  Logout() {
+  logout() {
     console.log("logout button pressed");
-    this.userService.logout();
+    this.auth.auth.signOut();
   };
-  
+
 }

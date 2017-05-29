@@ -1,6 +1,5 @@
 import { CardDeckService } from './services/card-deck.service';
 import { GameService } from "./services/game.service";
-import { UserService } from './shared/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -8,7 +7,9 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NewGameComponent } from './new-game/new-game.component';
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFireModule } from "angularfire2";
+import { AngularFireDatabaseModule } from "angularfire2/database";
+import { AngularFireAuthModule } from "angularfire2/auth";
 import { SavedGamesComponent } from './saved-games/saved-games.component';
 import { GameComponent } from './game/game.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -19,18 +20,13 @@ import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 
 // Initialize Firebase
-var firebase_config = {
+var firebaseConfig = {
   apiKey: "AIzaSyDfnKdvTIh9LakNfb1blrIjC_P842J7MzI",
   authDomain: "storypointgames.firebaseapp.com",
   databaseURL: "https://storypointgames.firebaseio.com",
   projectId: "storypointgames",
   storageBucket: "storypointgames.appspot.com",
   messagingSenderId: "719502068515"
-};
-
-const myFirebaseAuthConfig = {
-  provider: AuthProviders.Google,
-  method: AuthMethods.Redirect
 };
 
 @NgModule({
@@ -49,7 +45,8 @@ const myFirebaseAuthConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebase_config, myFirebaseAuthConfig),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
     RouterModule.forRoot([
       { path: "createNewGame", component: NewGameComponent },
       { path: "savedGames", component: SavedGamesComponent },
@@ -62,7 +59,7 @@ const myFirebaseAuthConfig = {
     ])
 
   ],
-  providers: [UserService, GameService, CardDeckService],
+  providers: [GameService, CardDeckService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

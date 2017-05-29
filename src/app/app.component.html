@@ -2,29 +2,25 @@
 	<div class="container-fluid">
 		<a href="#" routerLink="dashboard">
 			<div class="navbar-header">
-
 				StoryPointGames.com
-
-
 			</div>
 		</a>
+		
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="listpadded"><a href="#" routerLink="createNewGame" *ngIf="user.uid">Create New Game</a></li>
-				<li class="listpadded"><a href="#" routerLink="savedGames" *ngIf="user.uid">Saved Games</a></li>
+				<li class="listpadded"><a href="#" routerLink="createNewGame" *ngIf="(user | async)?.uid">Create New Game</a></li>
+				<li class="listpadded"><a href="#" routerLink="savedGames" *ngIf="(user | async)?.uid">Saved Games</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="logintext" *ngIf="!user.uid"><a href="register">Register</a></li>
-				<li class="logintext"><img *ngIf="user.uid" class="userimg" src="{{user.photoURL}}"> {{user.name}}</li>
-				<li><a class="logintext" (click)="LoginModal.open()" *ngIf="!user.uid">Login</a></li>
+				<li class="logintext" *ngIf="!(user | async)?.uid"><a href="register">Register</a></li>
+				<li class="logintext"><img *ngIf="(user | async)?.uid" class="userimg" src="{{(user | async)?.photoURL}}"> {{user.name}}</li>
+				<li><a class="logintext" (click)="LoginModal.open()" *ngIf="!(user | async)?.uid">Login</a></li>
 				<!--<button type="button" class="btn btn-default" (click)="LoginModal.open()">test</button>-->
-				<li><a class="logintext" (click)="Logout()" *ngIf="user.uid">Logout</a></li>
-
+				<li><a class="logintext" (click)="logout()" *ngIf="(user | async)?.uid">Logout</a></li>
 			</ul>
 		</div>
 	</div>
 </nav>
-
 
 <modal #LoginModal>
 	<modal-header [show-close]="true">
@@ -44,9 +40,8 @@
 
 	</form>
 
-
 	<modal-footer>
-		<input type="image" src="/src/assets/images/googlelogin.png" alt="Submit" class="googleButton" align="left" (click)="Login()">
+		<input type="image" src="../assets/images/googlelogin.png" alt="Submit" class="googleButton" align="left" (click)="login()">
 		<button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
 		<button class="btn btn-info" type="submit">Login</button>
 

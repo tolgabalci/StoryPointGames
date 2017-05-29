@@ -1,5 +1,8 @@
-import { AngularFire } from 'angularfire2';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
+import * as firebase from 'firebase/app';
+import { Observable } from "rxjs/Observable";
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Component({
   selector: 'app-register-user',
@@ -12,7 +15,7 @@ export class RegisterUserComponent implements OnInit {
   verifyPass: string;
   passValid: boolean;
 
-  constructor(private aF: AngularFire) { }
+  constructor(private auth: AngularFireAuth) { }
 
   ngOnInit() {
 
