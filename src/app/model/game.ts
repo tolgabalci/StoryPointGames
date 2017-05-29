@@ -4,13 +4,13 @@ export class Game {
     name: string;
     description: string;
     velocity: string;
-    shareVelocity: string;
+    shareVelocity: string;   
     includeDealer: string;
     cardSet: string;
     autoFlip: string;
     changeAfterVote: string;
-    useTimer: string;
-    timeLimitperStory: string;
+    calculateScore: string;
+    useTimer: string;    
     createdDate: string;
     status: string;
     createdBy: string;

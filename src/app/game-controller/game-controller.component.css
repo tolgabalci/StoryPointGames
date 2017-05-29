@@ -1,0 +1,60 @@
+.estimate{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.results{
+    background-color: white;
+    height: 150px;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    font-size: 100px;
+}
+
+.dealerHeader h4{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;  
+    margin-top: 10px;
+}
+
+.controls{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;  
+    margin-top: 5px;
+    cursor: pointer;
+    padding-right: 20px;
+}
+
+.addStory{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;  
+    margin-top: 5px;
+    cursor: pointer;
+    margin-left: 100px;
+}
+
+.controlTabs {
+   margin-top: 20px;
+}
+
+.table .break,
+.table .trash,
+.table .edit,
+.table .exit{
+  cursor: pointer;
+  font-size: 20px;
+  color: black;
+}
+
+.deleteVerbiage {
+    color: black;
+    text-align: center;
+}
