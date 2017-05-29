@@ -13,7 +13,7 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="logintext" *ngIf="!(user | async)?.uid"><a href="register">Register</a></li>
-				<li class="logintext"><img *ngIf="(user | async)?.uid" class="userimg" src="{{(user | async)?.photoURL}}"> {{user.name}}</li>
+				<li class="logintext"><img *ngIf="(user | async)?.uid" class="userimg" src="{{(user | async)?.photoURL}}"> {{(user | async)?.displayName}}</li>
 				<li><a class="logintext" (click)="LoginModal.open()" *ngIf="!(user | async)?.uid">Login</a></li>
 				<!--<button type="button" class="btn btn-default" (click)="LoginModal.open()">test</button>-->
 				<li><a class="logintext" (click)="logout()" *ngIf="(user | async)?.uid">Logout</a></li>
@@ -21,6 +21,8 @@
 		</div>
 	</div>
 </nav>
+
+<!--{{user | async | json}}-->
 
 <modal #LoginModal>
 
@@ -30,22 +32,21 @@
 	<form role="form">
 		<div class="form-group">
 			<label for="email">Email</label>
-			<input type="email" class="form-control" id="email" placeholder="Enter Email" ng-model="email" />
+			<input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" [(ngModel)]="userEmail" />
 			<a class="registerModal" href="register">Not Registered?</a>
 		</div>
 		<div class="form-group">
 			<label for="password">Password</label>
-			<input type="password" class="form-control" id="password" placeholder="Password" ng-model="password" />
+			<input type="password" class="form-control" id="password" placeholder="Password" name="pass" [(ngModel)]="userPass" />
 			<a class="registerModal" href="#">Forget Password?</a>
 		</div>
-
 	</form>
 
 	<modal-footer>
 		<input type="image" src="../assets/images/googlelogin.png" alt="Submit" class="googleButton" align="left" (click)="login('google')"
 		 data-dismiss="modal">
 		<button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
-		<button class="btn btn-info" type="submit">Login</button>
+		<button class="btn btn-info" type="submit" data-dismiss="modal" (click)="login('custom')">Login</button>
 	</modal-footer>
 
 </modal>

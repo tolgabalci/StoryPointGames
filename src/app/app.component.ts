@@ -14,6 +14,8 @@ import { AngularFireAuth } from "angularfire2/auth";
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'app works!';
   user: Observable<firebase.User>;
+  userEmail: string;
+  userPass: string;
 
   constructor(private auth: AngularFireAuth, private router: Router) {
     this.user = auth.authState;
@@ -26,23 +28,32 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   login(loginType: string) {
-    if (loginType == "google") {
-      console.log("login button pressed");
-
-      // this.auth.authState
-      //   .subscribe(auth => {
-      //     if (this.auth.auth.currentUser !== null) {
-      //       console.log('Super GARY login complete.');
-      //       this.router.navigate(["/dashboard"]);
-      //     }
-      //   });
-
-      this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(auth => {
+    console.log("login button pressed");
+    switch (loginType) {
+      case "google":
+        {
+          
+    this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(auth => {
         if (auth !== null) {
           console.log('Super GARY login complete.');
           this.router.navigate(["/dashboard"]);
         }
       });
+
+
+        }
+      case "custom": {
+        this.auth.auth.signInWithEmailAndPassword(this.userEmail, this.userPass)
+          .catch(function (error: any) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode) {
+              alert(errorMessage);
+            }
+          })
+        this.userEmail = "";
+        this.userPass = "";
+      }
     }
   };
 

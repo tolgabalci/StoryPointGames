@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@angular/animations@^4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-4.1.3.tgz#6e89a1e0fbfd6d0e90be4f2ae190aac67f83a411"
+
 "@angular/cli@^1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-1.0.6.tgz#a2e861f202131a8139882c78f1859cbefcbea77e"
@@ -3155,6 +3159,10 @@ negotiator@0.6.1:
 ng2-bs3-modal@^0.10.4:
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/ng2-bs3-modal/-/ng2-bs3-modal-0.10.4.tgz#80f350cd3f7346193c8f9324c899d58db1714581"
+
+ngx-toastr@^5.2.3:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-5.2.3.tgz#3519d18884f9838d863b6bc1479e2598cb10736c"
 
 no-case@^2.2.0:
   version "2.3.1"
