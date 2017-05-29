@@ -53,7 +53,7 @@ var firebaseConfig = {
       { path: "savedGames", component: SavedGamesComponent },
       { path: "about", component: AboutComponent },
       { path: "game", component: GameComponent },
-      { path: "dashboard", component: DashboardComponent },
+      { path: "dashboard",component: DashboardComponent },
       { path: "register", component: RegisterUserComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "**", component: DashboardComponent }
