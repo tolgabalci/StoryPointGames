@@ -1,32 +1,28 @@
 <div class="row">
   <div class="col-md-offset-3 col-md-6">
     <h1>Register</h1>
-    <form name="form" ng-submit="registerUser()" novalidate>
+    <form id="form" name="form" novalidate>
       <div class="form-group">
         <label for="inputEmail">Email:</label>
-        <input class="form-control" id="inputEmail" type="email" placeholder="Email">
+        <input class="form-control" id="inputEmail" name="inputEmail" type="email" placeholder="Email" [(ngModel)]="userEmail">
       </div>
       <div class="form-group">
         <label for="inputPassword">Password:</label>
-        <input class="form-control" id="inputPassword" type="password">
+        <input class="form-control" id="inputPassword" name="inputPassword" type="password" [(ngModel)]="userPass">
         <br>
         <label for="inputPassword2">Re Enter Password:</label>
-        <input class="form-control" id="inputPassword2" type="password">
+        <input class="form-control" id="inputPassword2" name="inputPassword2" type="password" [(ngModel)]="verifyPass">
       </div>
 
       <div class="form-group">
         <label for="inputDisplayName">Display Name:</label>
-        <input class="form-control" id="inputDisplayName" type="text">
+        <input class="form-control" id="inputDisplayName" name="inputDisplayName" type="text" [(ngModel)]="userName">
       </div>
 
       <div class="form-group">
-
-        <button class="btn btn-default" type="reset">Cancel</button>
-        <button class="btn btn-info" type="button">Register</button>
-
+        <button class="btn btn-default" type="reset" (click)="onCancel()">Cancel</button>
+        <button class="btn btn-info" type="button" (click)="onSubmitRegistration()">Register</button>
       </div>
-
-
     </form>
   </div>
 </div>
