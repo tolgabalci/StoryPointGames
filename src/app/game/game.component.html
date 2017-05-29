@@ -18,45 +18,28 @@
         </div>
         <div class="cardFooter">
           <hr class="divider" />
-          <!--<div class="pointer">-->
-          <!--<div *ngFor="let card of cards" >
-               <label for="{{card.text}}">{{card.text}}</label>
-            </div>-->
+
+
           <span class="card" *ngFor="let card of cards">
-            <input type=radio name="size" id="{{card.text}}"/>
-          <label for="{{card.text}}">{{card.text}}</label>
-            </span>
-
-
-          <!--<ul class="select-card">
-            <li class="card" *ngFor="let card of cards">
-              <input type=radio name="size" id="{{card.text}}" />
-              <label for="{{card.text}}">{{card.text}}</label>
-
-            </li>
-          </ul>-->
-
-          <!--<span class="card" *ngFor="let card of cards"><input type=radio name="size">
             {{card.text}}
             </span>
-
-            <span class="card" *ngIf="cardDeck == 'Fibonacci'"><input type=radio name="size">
+          <span class="card" *ngIf="cardDeck == 'Fibonacci'">
               <img src="../assets/images/infinity2.png" alt="">
           </span>
-            <span class="card" onclick=""><input type=radio name="size">
+          <span class="card" onclick="">
               Pass
           </span>
 
-          </div>-->
-
-          <!--<span class="card">
-              <i class="break fa fa-coffee" aria-hidden="true"></i>
-          </span>-->
         </div>
+
+
+
       </div>
 
 
     </div>
 
   </div>
+
+
 </body>
