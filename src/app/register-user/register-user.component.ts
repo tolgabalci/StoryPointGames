@@ -22,11 +22,11 @@ export class RegisterUserComponent implements OnInit {
   }
 
   onSubmit() {
-      firebase.auth().createUserWithEmailAndPassword(this.userName, this.userPass).catch(function (error: any) {
+    firebase.auth().createUserWithEmailAndPassword(this.userName, this.userPass).catch(function (error: any) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      if (errorCode == 'auth/weak-password') {
+      if (errorCode) {
         alert(errorMessage)
       }
       console.log(error);
