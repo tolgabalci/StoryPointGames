@@ -8,7 +8,7 @@
 
       <div class="col-xs-8 gameBoard">
         <div class="main">
-          <h3 class="userStory"> User Story</h3>
+          <h3 class="userStory"> User Story #</h3>
           <p>Details for user story</p>
           <hr class="divider" />
         </div>
@@ -16,7 +16,7 @@
         </div>
         <div class="cardFooter">
           <hr class="divider" />
-          <span class="card" *ngFor="let card of cards">          
+          <span class="card" *ngFor="let card of cards">
             {{card.text}}
           </span>
           <span class="card" *ngIf="cardDeck == 'Fibonacci'">
