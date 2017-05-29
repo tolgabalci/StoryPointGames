@@ -13,9 +13,11 @@
                 <h4>Dealer Controls</h4>
             </div>
             <div class="col-xs-12 flip">
-                <i class="controls fa fa-eye" aria-hidden="true">  Flip</i>
-                <i class="controls fa fa-undo" aria-hidden="true">  Reset</i>
-                <i class="addStory fa fa-plus" aria-hidden="true">  Add User Story </i>
+                <a class="flipcards"><i class="controls fa fa-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Flip Cards"
+                    onmouseenter="$(this).tooltip('show')">  Flip</i></a>
+                <a class="resetBoard"><i class="controls fa fa-undo" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reset board"
+                      onmouseenter="$(this).tooltip('show')">  Reset</i></a>
+                <a class="add"><i class="addStory fa fa-plus" aria-hidden="true">  Add User Story </i></a>
             </div>
         </div>
     </div>
@@ -68,8 +70,8 @@
                                         Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</td>
                                     <td>-</td>
                                     <td>XL</td>
-                                    <td><i class="edit fa fa-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="top"
-                                            title="" data-original-title="Edit Story" onmouseenter="$(this).tooltip('show')"></i></td>
+                                    <td><a class="editStory"><i class="edit fa fa-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                            title="" data-original-title="Edit Story" onmouseenter="$(this).tooltip('show')"></i></a></td>
                                     <td><a class="trashStory" (click)="deleteModal.open()"><i class="trash fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top"
                                             title="" data-original-title="Delete Story" onmouseenter="$(this).tooltip('show')"></i></a></td>
                                 </tr>
