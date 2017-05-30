@@ -26,4 +26,14 @@ export class GameService {
     console.log("getGames");
     return this.db.list("game", { query: { orderByChild: 'createDate' } });
   }
+
+    deleteGame(game: Game, key: string) {
+    
+    console.log("game name = ", game.name, key);
+    //console.log("key: ", key)
+    const gameToRemove = this.db.list(`game/${key}`)
+    //const listToRemove = this.af.database.list(`shoppingLists/${store}`)
+    gameToRemove.remove();
+    //storeToRemove.remove();
+  }
 }
