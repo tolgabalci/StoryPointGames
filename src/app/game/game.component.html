@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <div class="game">
       <div class="col-xs-8 col-md-4 sidebar">
-        <app-game-controller></app-game-controller>
+        <app-game-controller (flip)="FlipCards()"></app-game-controller>
       </div>
 
       <div class="col-xs-8 gameBoard">
@@ -25,7 +25,7 @@
             </div>
 
           </div>
-          <button class="btn btn-success" (click)="toggleFlip()">FLIP</button>
+
         </div>
         <div class="cardFooter col-xs-8">
           <hr class="divider" />

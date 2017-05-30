@@ -2,7 +2,7 @@ import { Game } from './../model/game';
 import { CardDeckService } from './../services/card-deck.service';
 import { GameControllerComponent } from './../game-controller/game-controller.component';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute} from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -26,16 +26,16 @@ export class GameComponent implements OnInit {
     this.hideBack = true;
     this.cards = this._cardDeckService.getCards(this.cardDeck);
     //console.log("Router data from new game:",this.);
-  
+
     this.route.data
       .subscribe(data => this.game = data.game);
-      
-      
-      
+
+
+
   }
 
 
-  toggleFlip() {
+  FlipCards() {
     console.log('flip the cards!');
     this.hideFront = true;
     this.hideBack = false;
