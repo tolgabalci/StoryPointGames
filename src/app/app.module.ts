@@ -23,6 +23,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserStoryComponent } from './user-story/user-story.component';
 
+import 'rxjs/add/operator/first';
+
 // Initialize Firebase
 var firebaseConfig = {
   apiKey: "AIzaSyDfnKdvTIh9LakNfb1blrIjC_P842J7MzI",

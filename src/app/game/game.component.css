@@ -135,7 +135,7 @@ html, body{
   }
 }
 
-.select-card .card {
+ .card {
     padding: 40px 0 40px 0;
     border: 1px solid black;
     background-color: white;    
@@ -206,32 +206,7 @@ html, body{
   background-color: gray;
 }
 
- input{
-    visibility: hidden;
-}
 
 
-/*input[type="radio"]:checked + .card{
- background: #428bca;
-}*/
-
-/*.select-card .card label,
-.select-card .card input{
-    display: block;
-    position: absolute;
-    
-}*/
-
- input[type="radio"]:checked + label{
-    background-color: yellow;
-}
-
-/*.select-card .card input[type="radio"]:checked + label{
-    background-color: yellow;
-}*/
-
-ul{
-    list-style: none;
-}
 
 

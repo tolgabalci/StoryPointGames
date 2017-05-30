@@ -25,7 +25,7 @@
 <!--{{user | async | json}}-->
 
 <modal #LoginModal>
-	
+
 	<modal-header [show-close]="true">
 		<h4 class="modal-title">Please Log In</h4>
 	</modal-header>
@@ -43,7 +43,8 @@
 	</form>
 
 	<modal-footer>
-		<input type="image" src="../assets/images/googlelogin.png" alt="Submit" class="googleButton" align="left" (click)="login('google')">
+		<input type="image" src="../assets/images/googlelogin.png" alt="Submit" class="googleButton" align="left" (click)="login('google')"
+		 data-dismiss="modal">
 		<button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
 		<button class="btn btn-info" type="submit" data-dismiss="modal" (click)="login('custom')">Login</button>
 	</modal-footer>
