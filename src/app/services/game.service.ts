@@ -3,8 +3,9 @@ import { Game } from './../model/game';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "angularfire2/auth";
 import { Observable } from "rxjs/Observable";
-import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from "angularfire2/database";
 import * as firebase from 'firebase/app';
+//import { Subject } from "rxjs/Subject";
 
 
 @Injectable()
@@ -12,14 +13,20 @@ export class GameService {
 
   constructor(private auth: AngularFireAuth,
     private db: AngularFireDatabase) { }
+  
+  //private gameSource = new Subject<Game>();
+  //game$ = this.gameSource.asObservable();
+  //public game: any;
 
-  createGame(game: Game) {
+  createGame(game: Game) : string {
     game.createdBy = this.auth.auth.currentUser.displayName;
     game.createdDate = Date();
     game.status = "Open";
     console.log("createGame service, creating game: ", game.name);
     let storyPointGameRef = this.db.list("game").$ref;
-    storyPointGameRef.ref.push(game);
+    var newStoryRef = storyPointGameRef.ref.push(game);
+    
+    return newStoryRef.key;    
   }
 
   getGames() : FirebaseListObservable<any[]> {
@@ -27,8 +34,12 @@ export class GameService {
     return this.db.list("game", { query: { orderByChild: 'createDate' } });
   }
 
-    deleteGame(game: Game, key: string) {
-    
+  getGameByKey(key: string) : FirebaseObjectObservable<any> {
+    return this.db.object(`game/${key}`)
+  }
+
+  deleteGame(game: Game, key: string) {
+  
     console.log("game name = ", game.name, key);
     //console.log("key: ", key)
     const gameToRemove = this.db.list(`game/${key}`)

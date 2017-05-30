@@ -23,6 +23,7 @@ export class SavedGamesComponent implements OnInit {
   }
 
   deleteAGame(game) {
+    
     console.log("game to delete = ", game.name, game.$key);
     //console.log("store name = ", store.text);
     this.gamesService.deleteGame(game, game.$key);

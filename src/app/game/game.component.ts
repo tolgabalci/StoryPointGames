@@ -1,7 +1,8 @@
+import { Game } from './../model/game';
 import { CardDeckService } from './../services/card-deck.service';
 import { GameControllerComponent } from './../game-controller/game-controller.component';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -13,7 +14,9 @@ export class GameComponent implements OnInit {
   hideFront: boolean;
   hideBack: boolean;
   cardDeck: string;
-  constructor(private router: Router, private _cardDeckService: CardDeckService) { }
+  game: Game = new Game();
+
+  constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute) { }
 
 
   ngOnInit() {
@@ -22,7 +25,13 @@ export class GameComponent implements OnInit {
     this.hideFront = false;
     this.hideBack = true;
     this.cards = this._cardDeckService.getCards(this.cardDeck);
-
+    //console.log("Router data from new game:",this.);
+  
+    this.route.data
+      .subscribe(data => this.game = data.game);
+      
+      
+      
   }
 
 
