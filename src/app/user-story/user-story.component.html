@@ -1,26 +1,29 @@
 <modal #modal>
-
   <modal-header [show-close]="true">
-    <h4 class="modal-title">Please Log In</h4>
+    <h4 class="modal-title">Create User Story</h4>
   </modal-header>
-  <form role="form">
+  <form role="form" class="form-horizontal">
     <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter Email" ng-model="email" />
-      <a class="registerModal" href="register">Not Registered?</a>
+      <div class="col-sm-6">
+        <label for="storyId">Story #</label>
+        <input type="text" class="form-control" id="storyId" placeholder="TFS, Jira, or other Story ID." ng-model="storyId" />
+      </div>
+      <div class="col-sm-6">
+        <label for="shirtSize">T-Shirt Size (optional)</label>
+        <input type="text" class="form-control" id="shirtSize" placeholder="T-Shirt Size" ng-model="shirtSize" />
+      </div>
     </div>
     <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Password" ng-model="password" />
-      <a class="registerModal" href="#">Forget Password?</a>
+      <div class="col-sm-12">
+        <label for="storyDescription">Story Description</label>
+        <textarea class="form-control" id="storyDescription" rows="5"></textarea>
+      </div>
     </div>
-
   </form>
 
   <modal-footer>
-
     <button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
-    <button class="btn btn-info" type="submit">Login</button>
+    <button class="btn btn-info" type="submit">Submit</button>
   </modal-footer>
 
 </modal>

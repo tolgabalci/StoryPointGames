@@ -37,34 +37,32 @@ html, body{
 
 
  .cardfront {
-    width: 100px;
-    height: 140px;
+    width: 80px;
+    height: 120px;
     border: 2px solid black;
     border-radius: 10px;
-    background-color: white;
-    background-image: url('/src/assets/images/goat.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: 0px;
-    background-position-y: 2px;
+    background-color: green;
     cursor: pointer;
     color: black;
     text-align: center;
+    
   
 }
 
 
 
 .cardback {
-    background-image: none;
     text-align: center;
     color: black;
-    width: 100px;
-    height: 140px;
+    width: 80px;
+    height: 120px;
     border: 2px solid black;
     border-radius: 10px;
     background-color: white;
     backface-visibility: hidden;
+    font-size: 60px;
+    padding-top: 20px;
+
 }
 
 
@@ -210,6 +208,7 @@ html, body{
  input:checked + label{
    color: #fff;
    background-color: #428bca;
+
   
 }
 

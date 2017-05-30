@@ -15,6 +15,17 @@
           <hr class="divider" />
         </div>
         <div class="cardsPlayed">
+          <div class="col-lg-1 col-md-1">
+            <div class="cardfront" [hidden]="hideFront">
+              <!--front content-->
+            </div>
+            <div class="cardback animated flipInY" [hidden]="hideBack">
+              <!--back content-->
+              1
+            </div>
+
+          </div>
+          <button class="btn btn-success" (click)="toggleFlip()">FLIP</button>
         </div>
         <div class="cardFooter col-xs-8">
           <hr class="divider" />
