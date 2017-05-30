@@ -13,12 +13,10 @@ export class LoggedInGuardService implements CanActivate {
     return this.authService.authState
       .map(auth => {
         if (auth === null) {
-          alert('you are not welcome here')
           this.router.navigate(["/about"])
           return false;
         }
         else {
-          alert('you are my hero')
           return true;
         }
       })
