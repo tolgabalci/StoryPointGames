@@ -6,8 +6,16 @@ html, body{
      
 }
 
+.gameName{
+    margin: 0 0 10px 0;
+    color: black;
+    text-align: center;
+    font-style: italic;
+
+}
+
 .userStory h3,
-.userStory p
+.userStory p,
 {
     margin: 0 0 10px 0;
     color: black;
@@ -86,7 +94,8 @@ html, body{
 
 .main{
     width: 100%;
-    height: 10%;
+    height: 15%;
+   
 
 }
 
@@ -98,8 +107,9 @@ html, body{
 
 
 .cardsPlayed {
-    height: 70%;
+    height: 65%;
     width: 100%;
+
 
 }
 
