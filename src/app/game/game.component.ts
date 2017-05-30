@@ -35,6 +35,12 @@ export class GameComponent implements OnInit {
   }
 
 
+  toggleFlip() {
+    console.log('flip the cards!');
+    this.hideFront = true;
+    this.hideBack = false;
+  }
+
 
 
 }

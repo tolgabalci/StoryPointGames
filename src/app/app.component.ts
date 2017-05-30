@@ -30,18 +30,15 @@ export class AppComponent implements OnInit, AfterViewInit {
   login(loginType: string) {
     console.log("login button pressed");
     switch (loginType) {
-      case "google":
-        {
-
-          this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(auth => {
-            if (auth !== null) {
-              console.log('Super GARY login complete.');
-              this.router.navigate(["/dashboard"]);
-            }
-          });
-          break;
-
-        }
+      case "google": {
+        this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(auth => {
+          if (auth !== null) {
+            console.log('Super GARY login complete.');
+            this.router.navigate(["/dashboard"]);
+          }
+        });
+        break;
+      }
       case "custom": {
         this.auth.auth.signInWithEmailAndPassword(this.userEmail, this.userPass)
           .then(auth => {
@@ -49,9 +46,6 @@ export class AppComponent implements OnInit, AfterViewInit {
               console.log('Super GARY custom login complete.');
               this.router.navigate(["/dashboard"]);
             }
-
-
-            
           })
           .catch(function (error: any) {
             var errorCode = error.code;
@@ -64,7 +58,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.userPass = "";
         break;
       }
-
     }
   };
 
@@ -73,5 +66,4 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.auth.auth.signOut();
     this.router.navigate(["/about"])
   };
-
 }
