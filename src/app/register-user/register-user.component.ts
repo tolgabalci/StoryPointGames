@@ -52,7 +52,7 @@ export class RegisterUserComponent implements OnInit {
           photoURL: "http://i.stack.imgur.com/34AD2.jpg"
         }
       )
-      
+      this.authService.auth.currentUser.sendEmailVerification();
       this.rt.navigate(['/dashboard']);      
 
     }).catch(function (error: any) {
