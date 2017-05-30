@@ -16,18 +16,35 @@
         </div>
         <div class="cardsPlayed">
         </div>
-        <div class="cardFooter">
+        <div class="cardFooter col-xs-8">
           <hr class="divider" />
 
 
-          <span class="card" *ngFor="let card of cards">
+          <span *ngFor="let card of cards">
+            <input type="radio" name="cardSelect" id="{{card.text}}" />
+            <label class="card" for="{{card.text}}">    
+            <span>
             {{card.text}}
-            </span>
-          <span class="card" *ngIf="cardDeck == 'Fibonacci'">
+           </span>
+          </label>
+          </span>
+
+          <span>
+          <input type="radio" name="cardSelect" id="infinity" />
+          <label class="card" *ngIf="cardDeck == 'Fibonacci'" for="infinity">
+          <span>
               <img src="../assets/images/infinity2.png" alt="">
           </span>
-          <span class="card" onclick="">
+          </label>
+          </span>
+
+          <span>
+            <input type="radio" name="cardSelect" id="pass" />
+            <label class="card" for="pass">
+          <span>
               Pass
+          </span>
+          </label>
           </span>
 
         </div>

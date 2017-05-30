@@ -207,6 +207,17 @@ html, body{
 }
 
 
+ input:checked + label{
+   color: #fff;
+   background-color: #428bca;
+  
+}
+
+[name="cardSelect"]{
+    display: none;
+}
+
+
 
 
 
