@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserStoryComponent } from './user-story/user-story.component';
 
 import 'rxjs/add/operator/first';
+import { AccountComponent } from './account/account.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -45,7 +46,8 @@ var firebaseConfig = {
     AboutComponent,
     GameControllerComponent,
     RegisterUserComponent,
-    UserStoryComponent
+    UserStoryComponent,
+    AccountComponent
   ],
   imports: [
     Ng2Bs3ModalModule,
@@ -63,6 +65,7 @@ var firebaseConfig = {
       { path: "dashboard", canActivate: [LoggedInGuardService], component: DashboardComponent },
       { path: "register", component: RegisterUserComponent },
       { path: "userStory", component: UserStoryComponent },
+      { path: "account", component: AccountComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "**", component: DashboardComponent }
     ]),
