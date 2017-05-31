@@ -15,20 +15,14 @@ export class GameService {
   constructor(private auth: AngularFireAuth,
     private db: AngularFireDatabase) { }
   
-  //private gameSource = new Subject<Game>();
-  //game$ = this.gameSource.asObservable();
-  //public game: any;
-
   createGame(game: Game)  {
     game.createdBy = this.auth.auth.currentUser.displayName;
     game.createdDate = Date();
     game.status = "Open";
     console.log("createGame service, creating game: ", game.name);
     let storyPointGame = this.db.list("game");
-    var newStoryRef = storyPointGame.push(game);
-    game.$key = newStoryRef.key;
-    
-    
+    var newGameRef = storyPointGame.push(game);
+    game.$key = newGameRef.key;    
   }
 
   createStory(gameKey: string, story: Story) {
@@ -36,7 +30,12 @@ export class GameService {
     story.createdDate = Date();
     story.status = "Open";
     let storyPointGameStory = this.db.list(`game/${gameKey}/stories`)
-    storyPointGameStory.push(story);
+    var newStoryRef = storyPointGameStory.push(story);
+    story.$key = newStoryRef.key;    
+  }
+
+  getGameStories(gameKey: string) : FirebaseListObservable<any[]> {
+    return this.db.list(`game/${gameKey}/stories`)
   }
 
   getGames() : FirebaseListObservable<any[]> {
@@ -48,13 +47,21 @@ export class GameService {
     return this.db.object(`game/${key}`)
   }
 
-  deleteGame(game: Game, key: string) {
+  deleteGame(gameKey: string) {
   
-    console.log("game name = ", game.name, key);
-    //console.log("key: ", key)
-    const gameToRemove = this.db.list(`game/${key}`)
-    //const listToRemove = this.af.database.list(`shoppingLists/${store}`)
+    console.log("game name = ", gameKey);
+    var gameToRemove = this.db.list(`game/${gameKey}`)
     gameToRemove.remove();
-    //storeToRemove.remove();
+
+  }
+
+  deleteGameStory(gameKey: string, storyKey: string) {
+    var storyToRemove = this.db.list(`game/${gameKey}/stories/${storyKey}`)
+    storyToRemove.remove();
+  }
+
+  updateStory(gameKey: string, story: Story) {
+    var storyRef = this.db.object(`game/${gameKey}/stories/${story.$key}`);
+    storyRef.update(story);
   }
 }

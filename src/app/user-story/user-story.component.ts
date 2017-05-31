@@ -18,15 +18,19 @@ export class UserStoryComponent implements OnInit {
   modal: ModalComponent;
   game: Game = new Game();
   story: Story = new Story();
+  currentMode: string;
   modeVerbiage: string;
 
-  open(game: Game, mode: string) {
+  open(game: Game, story: Story, mode: string) {
     this.game = game;
-    switch (mode) {
+    this.currentMode = mode;
+    switch (this.currentMode) {
     case "Add":
+      this.story = new Story();
       this.modeVerbiage = "Add User Story";
       break;
     case "Edit":
+      this.story = story;
       this.modeVerbiage = "Edit User Story";
       break;
     default:
@@ -37,8 +41,16 @@ export class UserStoryComponent implements OnInit {
   }
 
   onSubmitStory() {
-    console.log("Story: ",this.story.title,this.story.description)
-    this.gameService.createStory(this.game.$key,this.story);
+    switch (this.currentMode) {
+      case "Add":        
+        this.gameService.createStory(this.game.$key,this.story);
+        break;
+      case "Edit":
+        this.gameService.updateStory(this.game.$key,this.story);
+        break;
+      default:
+        break;
+    }
   }
 
   ngOnInit() {

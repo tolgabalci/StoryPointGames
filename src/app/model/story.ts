@@ -11,4 +11,5 @@ export class Story {
     completedDate: string;
     createdDate: string;
     createdBy: string;
+    $key: string;
 }

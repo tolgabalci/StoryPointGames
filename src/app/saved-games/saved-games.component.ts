@@ -15,31 +15,29 @@ export class SavedGamesComponent implements OnInit {
   game: Game = new Game();
   games: any[];
 
-  constructor(private route: Router, private gamesService: GameService, private toastrService: ToastrService ) { }
+  constructor(private router: Router, private gameService: GameService, private toastrService: ToastrService ) {
+    this.gameService.getGames()
+      .subscribe(gamesData => { this.games = gamesData });
+   }
 
   showSuccess() {
     this.toastrService.success('Hello world!', 'Toastr fun!');
 
   }
 
-  deleteAGame(game) {
+  deleteGame(game) {
     
     console.log("game to delete = ", game.name, game.$key);
-    //console.log("store name = ", store.text);
-    this.gamesService.deleteGame(game, game.$key);
-    this.gamesService.getGames()
-      .subscribe(gamesData => { this.games = gamesData });
+    this.gameService.deleteGame(game.$key);
     
   }
 
-  // setConfirmDeleteData(game) {
-  //   console.log("comfirm delete ", game.name)
-  //   this.game = game;
-  // }
-
+  selectGame(game){
+    //this.gameService.createGame(this.newGame);
+    this.router.navigate(['game',game.$key]);
+  }
   ngOnInit() {
-    this.gamesService.getGames()
-      .subscribe(gamesData => { this.games = gamesData });
+    
   }
 
 }

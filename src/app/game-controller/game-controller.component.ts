@@ -1,3 +1,4 @@
+import { Story } from 'app/model/story';
 import { GameService } from './../services/game.service';
 import { UserStoryComponent } from './../user-story/user-story.component';
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter  } from '@angular/core';
@@ -17,31 +18,40 @@ export class GameControllerComponent implements OnInit {
   @ViewChild(UserStoryComponent)
   UserStoryComponent: UserStoryComponent;
 
-  
+  stories: any[];
   game: Game = new Game();
+  storyToDelete: Story = new Story();
+  storyToEdit: Story = new Story();
+
   @Output() flip: EventEmitter<any> = new EventEmitter();
 
 
   constructor(private router: ActivatedRoute, private gameService: GameService) { 
-    //this.game = gameService.game;
-    //console.log("the game " ,this.game.description);
+
     this.router.data
       .subscribe(data => this.game = data.game);
+
+    this.gameService.getGameStories(this.game.$key)
+      .subscribe(stories => { this.stories = stories });
     
   }
 
   ngOnInit() {
-    // this.router.params.subscribe(params => {
-    //   this.gameKey = params.key
-    // })
-    // console.log("The game made it! ", this.gameKey);
-    //this.game = this.gameService.getGameByKey(this.gameKey);
+
+  }
+
+  editStory(story: Story) {
+    console.log("game-controller-component story: ", story.title)
+    this.UserStoryComponent.open(this.game, story, "Edit");  
+  }
+
+  deleteStory(story: Story){
+    this.gameService.deleteGameStory(this.game.$key,story.$key);
   }
 
   openAddUserStory() {
     console.log("here");
-    
-    this.UserStoryComponent.open(this.game,"Edit");
+    this.UserStoryComponent.open(this.game, this.storyToEdit, "Add");
   }
 
   flipCards() {
