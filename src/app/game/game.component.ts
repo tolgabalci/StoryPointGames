@@ -20,18 +20,20 @@ export class GameComponent implements OnInit {
 
 
   ngOnInit() {
-    this.cardDeck = "Fibonacci";
+
 
     this.hideFront = false;
     this.hideBack = true;
-    this.cards = this._cardDeckService.getCards(this.cardDeck);
+
     //console.log("Router data from new game:",this.);
 
     this.route.data
-      .do(data => console.log("Chekc for key:",data.game))
+      .do(data => console.log("Chekc for key:", data.game))
       .subscribe(data => this.game = data.game);
 
-
+    console.log("card set is...", this.game.cardSet);
+    this.cardDeck = this.game.cardSet;
+    this.cards = this._cardDeckService.getCards(this.cardDeck);
 
   }
 
