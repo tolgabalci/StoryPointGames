@@ -1,29 +1,35 @@
 <modal #modal>
   <modal-header [show-close]="true">
-    <h4 class="modal-title">Create User Story</h4>
+    <h3 class="modal-title">{{modeVerbiage}}</h3>
+    <label for="gameName">{{game.name}}</label>
   </modal-header>
   <form role="form" class="form-horizontal">
     <div class="form-group">
       <div class="col-sm-6">
         <label for="storyId">Story #</label>
-        <input type="text" class="form-control" id="storyId" placeholder="TFS, Jira, or other Story ID." ng-model="storyId" />
+        <input type="text" [(ngModel)]="story.storyId" [ngModelOptions]="{standalone: true}" class="form-control" id="storyId" placeholder="TFS, Jira, or other Story ID."  />
       </div>
       <div class="col-sm-6">
         <label for="shirtSize">T-Shirt Size (optional)</label>
-        <input type="text" class="form-control" id="shirtSize" placeholder="T-Shirt Size" ng-model="shirtSize" />
+        <input type="text" [(ngModel)]="story.shirtSize" [ngModelOptions]="{standalone: true}" class="form-control" id="shirtSize" placeholder="T-Shirt Size" />
       </div>
     </div>
     <div class="form-group">
       <div class="col-sm-12">
+        <label for="title">Title</label>
+        <input type="text" [(ngModel)]="story.title" [ngModelOptions]="{standalone: true}" class="form-control" id="title" placeholder="Title" 
+        />
+      </div>
+      <div class="col-sm-12">
         <label for="storyDescription">Story Description</label>
-        <textarea class="form-control" id="storyDescription" rows="5"></textarea>
+        <textarea class="form-control" [(ngModel)]="story.description" [ngModelOptions]="{standalone: true}" id="storyDescription" rows="5"></textarea>
       </div>
     </div>
   </form>
 
   <modal-footer>
     <button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
-    <button class="btn btn-info" type="submit">Submit</button>
+    <button class="btn btn-info" (click)="onSubmitStory()" type="submit" data-dismiss="modal">Submit</button>
   </modal-footer>
 
 </modal>

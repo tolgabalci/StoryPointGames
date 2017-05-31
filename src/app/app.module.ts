@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserStoryComponent } from './user-story/user-story.component';
 
 import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/do';
 
 
 // Initialize Firebase

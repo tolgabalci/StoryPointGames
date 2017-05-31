@@ -28,6 +28,7 @@ export class GameComponent implements OnInit {
     //console.log("Router data from new game:",this.);
   
     this.route.data
+      .do(data => console.log("Chekc for key:",data.game))
       .subscribe(data => this.game = data.game);
       
       

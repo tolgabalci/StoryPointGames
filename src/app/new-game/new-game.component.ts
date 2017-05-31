@@ -13,7 +13,7 @@ export class NewGameComponent implements OnInit {
   
   newGame: Game = new Game();
   newName: string;
-  newGameKey: string;
+  
   constructor(private router: Router, private gameService: GameService) { }
 
   ngOnInit() {
@@ -25,8 +25,8 @@ export class NewGameComponent implements OnInit {
     console.log("newListItem = ", this.newGame.name);     
     
     //this.gameService.game = this.newGame;
-    this.newGameKey = this.gameService.createGame(this.newGame);
-    this.router.navigate(['game',this.newGameKey]);
+    this.gameService.createGame(this.newGame);
+    this.router.navigate(['game',this.newGame.$key]);
 
   }
 

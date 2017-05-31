@@ -7,8 +7,8 @@ import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from "@angular/r
 @Injectable()
 export class GameResolverService implements Resolve<Game>  {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Game | Observable<Game> | Promise<Game> {
-    //route.params.id
     return this.gameService.getGameByKey(route.params.id).first();
+    
   }
 
   constructor(private gameService: GameService) { }

@@ -1,6 +1,7 @@
 export class Story {
     storyId: string;
     title: string;
+    description: string;
     acceptanceCriteria: string;
     shirtSize: string;
     status: string;
@@ -8,5 +9,6 @@ export class Story {
     timeLimit: string;
     elapsedTime: string;
     completedDate: string;
-    createDate: string;
+    createdDate: string;
+    createdBy: string;
 }

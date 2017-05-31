@@ -18,27 +18,30 @@ export class GameControllerComponent implements OnInit {
   UserStoryComponent: UserStoryComponent;
 
   //game: Game = new Game();
-  gameKey: string;
+  //gameKey: string;
   game: Game = new Game();
 
 
   constructor(private router: ActivatedRoute, private gameService: GameService) { 
     //this.game = gameService.game;
     //console.log("the game " ,this.game.description);
+    this.router.data
+      .subscribe(data => this.game = data.game);
+    console.log("Weeee:",this.game)
   }
 
   ngOnInit() {
-    this.router.params.subscribe(params => {
-      this.gameKey = params.key
-    })
-    console.log("The game made it! ", this.gameKey);
+    // this.router.params.subscribe(params => {
+    //   this.gameKey = params.key
+    // })
+    // console.log("The game made it! ", this.gameKey);
     //this.game = this.gameService.getGameByKey(this.gameKey);
   }
 
   openAddUserStory() {
     console.log("here");
     
-    this.UserStoryComponent.open();
+    this.UserStoryComponent.open(this.game,"Edit");
   }
 
 }

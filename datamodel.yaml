@@ -1,5 +1,5 @@
-Game:
-    game.guid:
+game:
+    9999:
         name: true
         description: true
         velocity: true
@@ -13,10 +13,11 @@ Game:
         createdDate: true
         status: true
         createdBy: true
-        storyList:
+        stories:
             1001:
                 storyId: 4200
                 title: "My Story"
+                description: "The description"
                 acceptanceCriteria: "Has to work"
                 shirtSize: "Large"
                 status: "not started"
@@ -24,8 +25,25 @@ Game:
                 timeLimit: "120"
                 elapsedTime: "0"
                 completedDate: ""
-                createDate: ""
-                                
+                createdDate: ""
+                user-selectedCard:
+                    uid1001: 42
+                    uid1002: 30        
+
+        users:
+            uid1001:
+                displayName: "Gerbil"
+
+
+user-games:
+    uid1001:
+        9999:
+            name: "game name"
+            description: "game description"
+            createdBy: "Brian.Emch"
+            createdDate: "some date"
+
+
 Stories:
     storyId: 4200
     title: "My Story"

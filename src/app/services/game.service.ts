@@ -1,3 +1,4 @@
+import { Story } from 'app/model/story';
 import { Game } from './../model/game';
 //import { UserService } from './../shared/user.service';
 import { Injectable } from '@angular/core';
@@ -18,15 +19,24 @@ export class GameService {
   //game$ = this.gameSource.asObservable();
   //public game: any;
 
-  createGame(game: Game) : string {
+  createGame(game: Game)  {
     game.createdBy = this.auth.auth.currentUser.displayName;
     game.createdDate = Date();
     game.status = "Open";
     console.log("createGame service, creating game: ", game.name);
-    let storyPointGameRef = this.db.list("game").$ref;
-    var newStoryRef = storyPointGameRef.ref.push(game);
+    let storyPointGame = this.db.list("game");
+    var newStoryRef = storyPointGame.push(game);
+    game.$key = newStoryRef.key;
     
-    return newStoryRef.key;    
+    
+  }
+
+  createStory(gameKey: string, story: Story) {
+    story.createdBy = this.auth.auth.currentUser.displayName;
+    story.createdDate = Date();
+    story.status = "Open";
+    let storyPointGameStory = this.db.list(`game/${gameKey}/stories`)
+    storyPointGameStory.push(story);
   }
 
   getGames() : FirebaseListObservable<any[]> {
