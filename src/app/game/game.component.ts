@@ -1,3 +1,4 @@
+import { Story } from 'app/model/story';
 import { Game } from './../model/game';
 import { CardDeckService } from './../services/card-deck.service';
 import { GameControllerComponent } from './../game-controller/game-controller.component';
@@ -15,6 +16,8 @@ export class GameComponent implements OnInit {
   hideBack: boolean;
   cardDeck: string;
   game: Game = new Game();
+  story: Story = new Story();
+
 
   constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute) { }
 
