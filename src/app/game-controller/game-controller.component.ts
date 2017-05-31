@@ -1,6 +1,6 @@
 import { GameService } from './../services/game.service';
 import { UserStoryComponent } from './../user-story/user-story.component';
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Game } from './../model/game';
 import { ModalComponent } from "ng2-bs3-modal/components/modal";
