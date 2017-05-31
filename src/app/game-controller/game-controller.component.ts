@@ -17,9 +17,9 @@ export class GameControllerComponent implements OnInit {
   @ViewChild(UserStoryComponent)
   UserStoryComponent: UserStoryComponent;
 
-  //game: Game = new Game();
-  //gameKey: string;
+  
   game: Game = new Game();
+  @Output() flip: EventEmitter<any> = new EventEmitter();
 
 
   constructor(private router: ActivatedRoute, private gameService: GameService) { 
@@ -27,7 +27,7 @@ export class GameControllerComponent implements OnInit {
     //console.log("the game " ,this.game.description);
     this.router.data
       .subscribe(data => this.game = data.game);
-    console.log("Weeee:",this.game)
+    
   }
 
   ngOnInit() {
@@ -42,6 +42,10 @@ export class GameControllerComponent implements OnInit {
     console.log("here");
     
     this.UserStoryComponent.open(this.game,"Edit");
+  }
+
+  flipCards() {
+    this.flip.emit(null);
   }
 
 }
