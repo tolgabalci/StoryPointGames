@@ -1,4 +1,4 @@
-import { Story } from 'app/model/story';
+import { Story } from './../model/story';
 import { Game } from './../model/game';
 import { CardDeckService } from './../services/card-deck.service';
 import { GameControllerComponent } from './../game-controller/game-controller.component';

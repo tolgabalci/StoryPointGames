@@ -62,6 +62,7 @@ export class GameControllerComponent implements OnInit {
 
   selectUserStory(story: Story) {
     console.log("game-controller-component story selected from tab: ", story.title)
+    // this.selectStory.emit(story.storyId);
     this.selectedRow = story;
 
 
