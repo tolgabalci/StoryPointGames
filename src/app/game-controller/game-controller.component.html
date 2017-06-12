@@ -51,7 +51,7 @@
                         </table>
                     </div>
                     <div class="tab-pane fade" id="stories">
-                        <table class="table storyControls">
+                        <table class="table storyControls table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -61,8 +61,8 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let story of stories" >
-                                <tr>
+                            <tbody>
+                                <tr *ngFor="let story of stories" (click)="selectUserStory(story)" [class.active]="story == selectedRow">
                                     <td>{{story.storyId}}</td>
                                     <td>{{story.title}}</td>
                                     <td>-</td>

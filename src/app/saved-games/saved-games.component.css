@@ -1,9 +1,15 @@
 .table .break,
 .table .trash,
 .table .edit,
-.table .exit,
-.table .play{
+.table .exit{
   cursor: pointer;
   font-size: 20px;
   color: black;
+}
+
+
+.table .play{
+   cursor: pointer;
+  font-size: 20px;
+  color: green;
 }

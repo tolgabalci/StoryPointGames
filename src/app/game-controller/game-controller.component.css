@@ -58,3 +58,12 @@
     color: black;
     text-align: center;
 }
+
+
+.storyControls{
+    cursor: pointer;
+}
+
+.table tr.active td{
+    background-color: white;
+}

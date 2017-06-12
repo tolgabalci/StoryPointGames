@@ -25,12 +25,16 @@
   color: black;
 }
 
+.listpadded{
+  margin-left: 20px;
+}
+
 
 
 .navbar-header {
     float: left !important;
     font-size: 30px !important;
-    font-family: 'Glyphicons Halflings' !important;
+    font-family: 'Exo', sans-serif !important;
     font-style: normal !important;
     color:white !important;
 
