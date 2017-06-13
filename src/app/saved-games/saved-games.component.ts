@@ -1,3 +1,4 @@
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Game } from './../model/game';
 import { GameService } from './../services/game.service';
 import { Component, OnInit, Input } from '@angular/core';
@@ -15,9 +16,9 @@ export class SavedGamesComponent implements OnInit {
  
   game: Game = new Game();
   games: any[];
+  currentUsersGame: boolean = false;
 
-
-  constructor(private router: Router, private gameService: GameService, private toastrService: ToastrService ) {
+  constructor(private router: Router, private gameService: GameService, private toastrService: ToastrService, private auth: AngularFireAuth) {
     this.gameService.getGames()
       .subscribe(gamesData => { this.games = gamesData });
    }
