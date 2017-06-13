@@ -1,3 +1,4 @@
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Story } from 'app/model/story';
 import { GameComponent } from './../game/game.component';
 import { GameService } from './../services/game.service';
@@ -24,18 +25,17 @@ export class GameControllerComponent implements OnInit {
   game: Game = new Game();
   storyToDelete: Story = new Story();
   storyToEdit: Story = new Story();
-  //gameUsers: any[];
-
+  
   @Input() selectedStory: Story = new Story;
 
   @Output() flip: EventEmitter<any> = new EventEmitter();
   @Output() selectStory: EventEmitter<Story> = new EventEmitter<Story>();
 
-  constructor(private router: ActivatedRoute, private gameService: GameService) {
+  constructor(private router: ActivatedRoute, private gameService: GameService, private auth: AngularFireAuth) {
 
     this.router.data
       .subscribe(data => this.game = data.game);
-    
+
     this.gameService.getGameStories(this.game.$key)
       .subscribe(stories => { this.stories = stories });
     
