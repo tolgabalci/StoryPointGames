@@ -1,3 +1,4 @@
+import { GameResolverService } from './services/game-resolver.service';
 import { CardDeckService } from './services/card-deck.service';
 import { GameService } from "./services/game.service";
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,6 +26,7 @@ import { UserStoryComponent } from './user-story/user-story.component';
 
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/do';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 
 // Initialize Firebase
@@ -48,7 +50,8 @@ var firebaseConfig = {
     GameControllerComponent,
     RegisterUserComponent,
     UserStoryComponent,
-    AccountComponent
+    AccountComponent,
+    PasswordResetComponent
   ],
   imports: [
     Ng2Bs3ModalModule,
