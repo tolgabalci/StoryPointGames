@@ -27,10 +27,10 @@ export class PasswordResetComponent implements OnInit {
     } else {
       this.auth.auth.sendPasswordResetEmail(this.emailAddress).then(function () {
         alert("Email sent.");
+        this.router.navigate(["/about"]);
       }, function (error) {
         alert(error.message);
       });
-      this.router.navigate(["/about"]);
     }
   }
 
