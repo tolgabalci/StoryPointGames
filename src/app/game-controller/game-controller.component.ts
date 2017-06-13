@@ -20,10 +20,12 @@ export class GameControllerComponent implements OnInit {
   @ViewChild(UserStoryComponent)
   UserStoryComponent: UserStoryComponent;
   stories: any[];
+  gameUsers: any[];
   game: Game = new Game();
   storyToDelete: Story = new Story();
   storyToEdit: Story = new Story();
-  
+  //gameUsers: any[];
+
   @Input() selectedStory: Story = new Story;
 
   @Output() flip: EventEmitter<any> = new EventEmitter();
@@ -33,11 +35,13 @@ export class GameControllerComponent implements OnInit {
 
     this.router.data
       .subscribe(data => this.game = data.game);
-
+    
     this.gameService.getGameStories(this.game.$key)
       .subscribe(stories => { this.stories = stories });
-
-    //this.gameService.getStoryByKey(this.game.$key)
+    
+    this.gameService.getGameUsers(this.game.$key)
+      .subscribe(users => { this.gameUsers = users});
+    
   }
 
   ngOnInit() {

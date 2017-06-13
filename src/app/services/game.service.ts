@@ -43,6 +43,10 @@ export class GameService {
     return this.db.list(`game/${gameKey}/stories`)
   }
 
+  getGameUsers(gameKey: string) : FirebaseListObservable<any[]> {
+    return this.db.list(`game/${gameKey}/users`);
+  }
+
   getGames() : FirebaseListObservable<any[]> {
     console.log("getGames");
     return this.db.list("game", { query: { orderByChild: 'createDate' } });
