@@ -2,7 +2,7 @@ import { Story } from './../model/story';
 import { Game } from './../model/game';
 import { CardDeckService } from './../services/card-deck.service';
 import { GameControllerComponent } from './../game-controller/game-controller.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -17,10 +17,10 @@ export class GameComponent implements OnInit {
   cardDeck: string;
   game: Game = new Game();
   story: Story = new Story();
+  
+  constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute) { 
 
-
-  constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute) { }
-
+  }
 
   ngOnInit() {
 
@@ -40,14 +40,15 @@ export class GameComponent implements OnInit {
 
   }
 
-
   FlipCards() {
     console.log('flip the cards!');
     this.hideFront = true;
     this.hideBack = false;
   }
 
-
+  storyChange(event) {
+    this.story = event;
+  }
 
 }
 

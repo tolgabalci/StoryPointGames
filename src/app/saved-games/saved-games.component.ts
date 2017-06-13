@@ -3,6 +3,7 @@ import { GameService } from './../services/game.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
+import { GameComponent } from './../game/game.component';
 
 @Component({
   selector: 'app-saved-games',
@@ -14,6 +15,7 @@ export class SavedGamesComponent implements OnInit {
  
   game: Game = new Game();
   games: any[];
+
 
   constructor(private router: Router, private gameService: GameService, private toastrService: ToastrService ) {
     this.gameService.getGames()

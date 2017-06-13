@@ -47,6 +47,10 @@ export class GameService {
     return this.db.object(`game/${key}`)
   }
 
+  getStoryByKey(gameKey: string, storyKey: string) : FirebaseObjectObservable<any> {
+    return this.db.object(`game/${gameKey}/${storyKey}`)
+  }
+
   deleteGame(gameKey: string) {
   
     console.log("game name = ", gameKey);

@@ -1,4 +1,8 @@
 <div class="container-fluid">
+     
+
+    
+      
     <div class="container-fluid">
         <div class="row estimate">
             Score
@@ -23,6 +27,7 @@
         </div>
     </div>
     <div class="container-fluid tabs">
+
         <div class="row ">
             <div class="col-xs-12 controlTabs">
                 <ul class="nav nav-tabs">
@@ -51,6 +56,8 @@
                         </table>
                     </div>
                     <div class="tab-pane fade" id="stories">
+                        
+
                         <table class="table storyControls table-hover">
                             <thead>
                                 <tr>
@@ -62,7 +69,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let story of stories" (click)="selectUserStory(story)" [class.active]="story == selectedRow">
+                                <tr *ngFor="let story of stories" (click)="selectUserStory(story)" [class.active]="story == selectedStory">
                                     <td>{{story.storyId}}</td>
                                     <td>{{story.title}}</td>
                                     <td>-</td>
@@ -81,10 +88,9 @@
         </div>
     </div>
 
-
-
-
 </div>
+
+
 
 
 <modal id="deleteStoryModal">

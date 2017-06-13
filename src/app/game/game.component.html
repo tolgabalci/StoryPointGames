@@ -5,14 +5,18 @@
   <div class="container-fluid">
     <div class="game">
       <div class="col-xs-5 col-sm-5 col-md-4 col-lg-4 sidebar">
-        <app-game-controller (flip)="FlipCards()"></app-game-controller>
+        
+        <app-game-controller (flip)="FlipCards()" [selectedStory]="story" (selectStory)="storyChange($event)">>
+
+        </app-game-controller>       
       </div>
 
       <div class="col-xs-7 col-sm-7 col-md-8 col-lg-8 gameBoard">
         <div class="main">
           <h3 class="gameName">{{game.name}}</h3>
           <h3 class="userStory"> User Story # {{story.storyId}}</h3>
-          <p>Details for user story</p>
+          <!--<h3 class="userStory"> User Story # {{count}}</h3>-->
+          <p>{{story.title}}</p>
           <hr class="divider" />
         </div>
         <div class="cardsPlayed">
