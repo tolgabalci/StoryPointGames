@@ -23,6 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserStoryComponent } from './user-story/user-story.component';
+import { AccountComponent } from "./account/account.component";
 
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/do';
