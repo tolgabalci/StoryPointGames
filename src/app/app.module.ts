@@ -26,6 +26,7 @@ import { UserStoryComponent } from './user-story/user-story.component';
 
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/do';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 
 // Initialize Firebase
@@ -48,7 +49,8 @@ var firebaseConfig = {
     AboutComponent,
     GameControllerComponent,
     RegisterUserComponent,
-    UserStoryComponent
+    UserStoryComponent,
+    PasswordResetComponent
   ],
   imports: [
     Ng2Bs3ModalModule,
