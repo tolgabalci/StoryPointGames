@@ -73,13 +73,23 @@ export class GameService {
     storyToRemove.remove();
   }
 
+  deleteUserFromGame(gameKey: string, userKey: string) {
+    var userToRemove = this.db.list(`game/${gameKey}/users/${userKey}`)
+    userToRemove.remove();
+  }
+
   updateStory(gameKey: string, story: Story) {
     var storyRef = this.db.object(`game/${gameKey}/stories/${story.$key}`);
     storyRef.update(story);
   }
 
+  updateGameUser(gameKey: string, user: GameUser) {
+    var userRef = this.db.object(`game/${gameKey}/users/${user.$key}`)
+    userRef.update(user);
+  }
+
   addUserToGame(gameKey: string, uid: string) {
-    console.log("gameKey, uid ", gameKey, uid);
+    this.userInfo.status = "Active";
     this.userInfo.displayName = this.auth.auth.currentUser.displayName;
     var gameRef = this.db.object(`game/${gameKey}/users/${uid}`);
     gameRef.update(this.userInfo);

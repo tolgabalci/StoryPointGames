@@ -1,3 +1,4 @@
+import { GameUser } from './../model/gameUser';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Story } from 'app/model/story';
 import { GameComponent } from './../game/game.component';
@@ -66,10 +67,17 @@ export class GameControllerComponent implements OnInit {
     this.flip.emit(null);
   }
 
-
   selectUserStory(story: Story) {
     console.log("game-controller-component story selected from tab: ", story.title)
     this.selectStory.emit(story);
   }
 
+  leaveGame(user: GameUser) {
+    this.gameService.deleteUserFromGame(this.game.$key, user.$key);
+  }
+
+  takeBreak(user: GameUser) {
+    user.status = "Away";
+    this.gameService.updateGameUser(this.game.$key, user);
+  }
 }
