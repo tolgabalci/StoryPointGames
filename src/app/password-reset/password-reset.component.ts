@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasswordResetComponent implements OnInit {
 
+  emaiAddress: string;
+  
   constructor() { }
 
   ngOnInit() {
+  }
+
+  recoverPass() {
+    
   }
 
 }
