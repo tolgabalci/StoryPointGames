@@ -1,19 +1,11 @@
 <h1>
   Account Information
- 
+
 </h1>
- 
- 
- name
- {{this.userName}}
-
- email
- {{this.userEmail}}
-
- provider
- {{this.userProviderID}}
-
- PhotoURL
- {{this.userPhotoURL}}
 
 
+name {{this.userName}} email {{this.userEmail}} provider {{this.userProviderID}} PhotoURL {{this.userPhotoURL}}
+
+<ul>
+  <li><button (click)="logout()">Logout</button></li>
+</ul>

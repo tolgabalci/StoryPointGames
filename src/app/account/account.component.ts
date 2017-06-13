@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from "angularfire2/auth";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -12,7 +13,7 @@ export class AccountComponent implements OnInit {
   userProviderID: string;
   userPhotoURL: string;
 
-  constructor(private authService: AngularFireAuth) { }
+  constructor(private authService: AngularFireAuth, private router: Router) { }
 
   ngOnInit() {
     this.userName = this.authService.auth.currentUser.displayName
@@ -22,5 +23,9 @@ export class AccountComponent implements OnInit {
     console.log("userauth",this.authService.auth)
 
   }
-  
+      logout() {
+    console.log("logout button pressed");
+    this.authService.auth.signOut();
+    this.router.navigate(["/about"])
+  };
 }
