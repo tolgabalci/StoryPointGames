@@ -29,6 +29,9 @@ import { AccountComponent } from "./account/account.component";
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/do';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { DisplayNameUpdateComponent } from './display-name-update/display-name-update.component';
+import { PasswordUpdateComponent } from './password-update/password-update.component';
+import { EmailUpdateComponent } from './email-update/email-update.component';
 
 
 // Initialize Firebase
@@ -53,7 +56,10 @@ var firebaseConfig = {
     RegisterUserComponent,
     UserStoryComponent,
     AccountComponent,
-    PasswordResetComponent
+    PasswordResetComponent,
+    DisplayNameUpdateComponent,
+    PasswordUpdateComponent,
+    EmailUpdateComponent
   ],
   imports: [
     Ng2Bs3ModalModule,

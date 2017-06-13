@@ -1,11 +1,19 @@
 <h1>
   Account Information
-
 </h1>
 
-
-name {{this.userName}} email {{this.userEmail}} provider {{this.userProviderID}} PhotoURL {{this.userPhotoURL}}
+<ul>
+  <li>name {{this.userName}} </li>
+  <li>email {{this.userEmail}} </li>
+  <li>provider {{this.userProviderID}} </li>
+  <li>PhotoURL {{this.userPhotoURL}} </li>
+</ul>
 
 <ul>
+  <div *ngIf="this.userProviderID == 'firebase'">
+    <li><button (click)="changeName()">Change Name</button></li>
+    <li><button (click)="changeEmail()">Change Email</button></li>
+    <li><button (click)="changePassword()">Change Password</button></li>
+  </div>
   <li><button (click)="logout()">Logout</button></li>
 </ul>

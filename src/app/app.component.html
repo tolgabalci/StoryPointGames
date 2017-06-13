@@ -16,7 +16,6 @@
 				<li class="logintext"><img *ngIf="(user | async)?.uid" class="userimg" src="{{(user | async)?.photoURL}}"> {{(user | async)?.displayName}}</li>
 				<li><a class="logintext" (click)="LoginModal.open()" *ngIf="!(user | async)?.uid">Login</a></li>
 				<!--<button type="button" class="btn btn-default" (click)="LoginModal.open()">test</button>-->
-				<li><a class="logintext" (click)="logout()" *ngIf="(user | async)?.uid">Logout</a></li>
 			</ul>
 		</div>
 	</div>
