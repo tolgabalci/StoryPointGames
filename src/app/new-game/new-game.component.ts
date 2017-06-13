@@ -10,19 +10,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-game.component.css']
 })
 export class NewGameComponent implements OnInit {
+  
   newGame: Game = new Game();
   newName: string;
-
+  
   constructor(private router: Router, private gameService: GameService) { }
 
   ngOnInit() {
+    
   }
 
+
   onSubmitSavePlay() {
-    //console.log("newListItem = ", this.newGame.shareVelocity);     
+    console.log("newListItem = ", this.newGame.name);     
     
+    //this.gameService.game = this.newGame;
     this.gameService.createGame(this.newGame);
-    this.router.navigate(['game']);
+    this.router.navigate(['game',this.newGame.$key]);
 
   }
 

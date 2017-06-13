@@ -6,8 +6,16 @@ html, body{
      
 }
 
+.gameName{
+    margin: 0 0 10px 0;
+    color: black;
+    text-align: center;
+    font-style: italic;
+
+}
+
 .userStory h3,
-.userStory p
+.userStory p,
 {
     margin: 0 0 10px 0;
     color: black;
@@ -37,34 +45,32 @@ html, body{
 
 
  .cardfront {
-    width: 100px;
-    height: 140px;
+    width: 80px;
+    height: 120px;
     border: 2px solid black;
     border-radius: 10px;
-    background-color: white;
-    background-image: url('/src/assets/images/goat.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: 0px;
-    background-position-y: 2px;
+    background-color: green;
     cursor: pointer;
     color: black;
     text-align: center;
+    
   
 }
 
 
 
 .cardback {
-    background-image: none;
     text-align: center;
     color: black;
-    width: 100px;
-    height: 140px;
+    width: 80px;
+    height: 120px;
     border: 2px solid black;
     border-radius: 10px;
     background-color: white;
     backface-visibility: hidden;
+    font-size: 60px;
+    padding-top: 20px;
+
 }
 
 
@@ -88,7 +94,8 @@ html, body{
 
 .main{
     width: 100%;
-    height: 10%;
+    height: 15%;
+   
 
 }
 
@@ -100,8 +107,9 @@ html, body{
 
 
 .cardsPlayed {
-    height: 70%;
+    height: 55%;
     width: 100%;
+
 
 }
 
@@ -190,7 +198,7 @@ html, body{
 
 .cardFooter{
     width:100%;
-    height: 20%;
+    height: 18%;
     margin-bottom: 5px;
 
 
@@ -210,6 +218,7 @@ html, body{
  input:checked + label{
    color: #fff;
    background-color: #428bca;
+
   
 }
 

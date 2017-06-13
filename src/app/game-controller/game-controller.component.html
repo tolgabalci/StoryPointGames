@@ -1,4 +1,8 @@
 <div class="container-fluid">
+     
+
+    
+      
     <div class="container-fluid">
         <div class="row estimate">
             Score
@@ -14,15 +18,16 @@
             </div>
             <div class="col-xs-12 flip">
                 <a class="flipcards"><i class="controls fa fa-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Flip Cards"
-                    onmouseenter="$(this).tooltip('show')">  Flip</i></a>
+                    onmouseenter="$(this).tooltip('show')" (click)="flipCards()">  Flip</i></a>
                 <a class="resetBoard"><i class="controls fa fa-undo" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reset board"
                       onmouseenter="$(this).tooltip('show')">  Reset</i></a>
-                <a class="add" (click)="open()"><i class="addStory fa fa-plus" aria-hidden="true">  Add User Story </i></a>
+                <a class="add" (click)="openAddUserStory()"><i class="addStory fa fa-plus" aria-hidden="true">  Add User Story </i></a>
                 <app-user-story></app-user-story>
             </div>
         </div>
     </div>
     <div class="container-fluid tabs">
+
         <div class="row ">
             <div class="col-xs-12 controlTabs">
                 <ul class="nav nav-tabs">
@@ -51,29 +56,27 @@
                         </table>
                     </div>
                     <div class="tab-pane fade" id="stories">
-                        <table class="table storyControls">
+                        
+
+                        <table class="table storyControls table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Description</th>
+                                    <th>Title</th>
                                     <th>Points</th>
-                                    <th>Tshirt</th>
+                                    <th>T-Shirt</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>#</td>
-                                    <td>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
-                                        aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
-                                        helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater
-                                        eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone.
-                                        Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</td>
+                                <tr *ngFor="let story of stories" (click)="selectUserStory(story)" [class.active]="story == selectedStory">
+                                    <td>{{story.storyId}}</td>
+                                    <td>{{story.title}}</td>
                                     <td>-</td>
-                                    <td>XL</td>
-                                    <td><a class="editStory"><i class="edit fa fa-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                    <td>{{story.shirtSize}}</td>
+                                    <td><a class="editStory"><i (click)="editStory(story)" class="edit fa fa-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="top"
                                             title="" data-original-title="Edit Story" onmouseenter="$(this).tooltip('show')"></i></a></td>
-                                    <td><a class="trashStory" (click)="deleteModal.open()"><i class="trash fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                    <td><a class="trashStory" (click)="storyToDelete=story" data-toggle="modal" data-target="#deleteStoryModal"><i class="trash fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top"
                                             title="" data-original-title="Delete Story" onmouseenter="$(this).tooltip('show')"></i></a></td>
                                 </tr>
                             </tbody>
@@ -85,19 +88,18 @@
         </div>
     </div>
 
-
-
-
 </div>
 
 
-<modal #deleteModal>
+
+
+<modal id="deleteStoryModal">
 
     <h4 class="deleteVerbiage">Are you sure you want to delete selected User Story?</h4>
     <modal-footer>
-
+        <label>Story "{{storyToDelete.title}}" will be permenently deleted. </label>
         <button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
-        <button class="btn btn-info" type="submit">Delete</button>
+        <button class="btn btn-info" (click)="deleteStory(storyToDelete)" type="submit" data-dismiss="modal">Delete</button>
 
     </modal-footer>
 

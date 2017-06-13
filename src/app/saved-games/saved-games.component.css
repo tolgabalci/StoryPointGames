@@ -6,3 +6,10 @@
   font-size: 20px;
   color: black;
 }
+
+
+.table .play{
+   cursor: pointer;
+  font-size: 20px;
+  color: green;
+}

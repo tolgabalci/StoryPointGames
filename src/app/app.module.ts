@@ -24,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserStoryComponent } from './user-story/user-story.component';
 
 import 'rxjs/add/operator/first';
-import { AccountComponent } from './account/account.component';
+import 'rxjs/add/operator/do';
+
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -61,7 +62,10 @@ var firebaseConfig = {
       { path: "createNewGame", component: NewGameComponent },
       { path: "savedGames", component: SavedGamesComponent },
       { path: "about", component: AboutComponent },
-      { path: "game", component: GameComponent },
+      { path: "game/:id", component: GameComponent, resolve: {
+        game: GameResolverService
+        }
+      },
       { path: "dashboard", canActivate: [LoggedInGuardService], component: DashboardComponent },
       { path: "register", component: RegisterUserComponent },
       { path: "userStory", component: UserStoryComponent },
@@ -74,7 +78,7 @@ var firebaseConfig = {
     BrowserAnimationsModule
 
   ],
-  providers: [GameService, CardDeckService, LoggedInGuardService],
+  providers: [GameService, CardDeckService, LoggedInGuardService, GameResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
