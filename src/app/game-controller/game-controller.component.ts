@@ -23,7 +23,8 @@ export class GameControllerComponent implements OnInit {
   game: Game = new Game();
   storyToDelete: Story = new Story();
   storyToEdit: Story = new Story();
-  
+
+
   @Input() selectedStory: Story = new Story;
 
   @Output() flip: EventEmitter<any> = new EventEmitter();
@@ -42,6 +43,7 @@ export class GameControllerComponent implements OnInit {
 
   ngOnInit() {
 
+
   }
 
   editStory(story: Story) {
@@ -57,7 +59,7 @@ export class GameControllerComponent implements OnInit {
     console.log("here");
     this.UserStoryComponent.open(this.game, this.storyToEdit, "Add");
   }
-  
+
   flipCards() {
     this.flip.emit(null);
   }
