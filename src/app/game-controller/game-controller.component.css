@@ -55,6 +55,12 @@
   color: black;
 }
 
+.table .active {
+    cursor: pointer;
+    font-size: 20px;
+    color: green;
+}
+
 .deleteVerbiage {
     color: black;
     text-align: center;

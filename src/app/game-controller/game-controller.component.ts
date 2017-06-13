@@ -26,15 +26,17 @@ export class GameControllerComponent implements OnInit {
   game: Game = new Game();
   storyToDelete: Story = new Story();
   storyToEdit: Story = new Story();
-  
+  currentIcon: string = "break fa fa-coffee";
+  currentTip: string = "Step Away";
+
   @Input() selectedStory: Story = new Story;
 
   @Output() flip: EventEmitter<any> = new EventEmitter();
   @Output() selectStory: EventEmitter<Story> = new EventEmitter<Story>();
 
-  constructor(private router: ActivatedRoute, private gameService: GameService, private auth: AngularFireAuth) {
+  constructor(private activatedRouter: ActivatedRoute, private router: Router, private gameService: GameService, private auth: AngularFireAuth) {
 
-    this.router.data
+    this.activatedRouter.data
       .subscribe(data => this.game = data.game);
 
     this.gameService.getGameStories(this.game.$key)
@@ -74,10 +76,21 @@ export class GameControllerComponent implements OnInit {
 
   leaveGame(user: GameUser) {
     this.gameService.deleteUserFromGame(this.game.$key, user.$key);
+    this.router.navigate(['dashboard']);
   }
 
-  takeBreak(user: GameUser) {
-    user.status = "Away";
+  setUserStatus(user: GameUser) {
+    if (user.status == "Away") {
+      this.currentIcon = "break fa fa-coffee";
+      this.currentTip = "Step Away";
+      user.status = "Active";     
+    }
+    else
+    {
+      this.currentIcon = "active fa fa-user";
+      this.currentTip = "Re-join"
+      user.status = "Away";
+    }
     this.gameService.updateGameUser(this.game.$key, user);
   }
 }

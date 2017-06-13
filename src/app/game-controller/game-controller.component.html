@@ -44,17 +44,16 @@
                                     <th>Player</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <!--<tr *ngFor="let gameUser of gameUsers" (click)="selectGameUser(gameUser)" [class.active]="gameUser == selectGameUser">-->
+                            <tbody>                                
                                 <tr *ngFor="let gameUser of gameUsers">
-                                    <td><a class="takeBreak" (click)="takeBreak(gameUser)">
-                                        <i class="break fa fa-coffee" aria-hidden="true" data-toggle="tooltip" data-placement="top"
-                                            title="" data-original-title="Step Away" onmouseenter="$(this).tooltip('show')"
+                                    <td><a class="takeBreak" (click)="setUserStatus(gameUser)">
+                                        <i class="{{currentIcon}}" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                            title="{{currentTip}}" data-original-title="" onmouseenter="$(this).tooltip('show')"
                                             *ngIf="this.auth.auth.currentUser.uid==gameUser.$key"></i></a></td>
                                     <td>{{gameUser.status}}</td>
                                     <td>{{gameUser.displayName}}</td>
                                     <td></td>
-                                    <td><a class="leaveGAme" (click)="leaveGame(gameUser)">
+                                    <td><a class="leaveGame" (click)="leaveGame(gameUser)">
                                         <i class="exit fa fa-sign-out" aria-hidden="true" data-toggle="tooltip" data-placement="top"
                                             title="" data-original-title="Leave Game" onmouseenter="$(this).tooltip('show')"
                                             *ngIf="this.auth.auth.currentUser.uid==gameUser.$key"></i></a></td>
