@@ -50,6 +50,7 @@ var firebaseConfig = {
     GameControllerComponent,
     RegisterUserComponent,
     UserStoryComponent,
+    AccountComponent,
     PasswordResetComponent
   ],
   imports: [
@@ -71,6 +72,7 @@ var firebaseConfig = {
       { path: "dashboard", canActivate: [LoggedInGuardService], component: DashboardComponent },
       { path: "register", component: RegisterUserComponent },
       { path: "userStory", component: UserStoryComponent },
+      { path: "account", component: AccountComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "**", component: DashboardComponent }
     ]),
