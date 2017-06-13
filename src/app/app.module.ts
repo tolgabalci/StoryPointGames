@@ -1,4 +1,3 @@
-import { GameResolverService } from './services/game-resolver.service';
 import { CardDeckService } from './services/card-deck.service';
 import { GameService } from "./services/game.service";
 import { BrowserModule } from '@angular/platform-browser';
@@ -48,7 +47,8 @@ var firebaseConfig = {
     AboutComponent,
     GameControllerComponent,
     RegisterUserComponent,
-    UserStoryComponent
+    UserStoryComponent,
+    AccountComponent
   ],
   imports: [
     Ng2Bs3ModalModule,
@@ -69,6 +69,7 @@ var firebaseConfig = {
       { path: "dashboard", canActivate: [LoggedInGuardService], component: DashboardComponent },
       { path: "register", component: RegisterUserComponent },
       { path: "userStory", component: UserStoryComponent },
+      { path: "account", component: AccountComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "**", component: DashboardComponent }
     ]),
