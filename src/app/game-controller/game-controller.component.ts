@@ -1,3 +1,4 @@
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Story } from 'app/model/story';
 import { GameComponent } from './../game/game.component';
 import { GameService } from './../services/game.service';
@@ -6,6 +7,7 @@ import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angu
 import { Router, ActivatedRoute } from '@angular/router';
 import { Game } from './../model/game';
 import { ModalComponent } from "ng2-bs3-modal/components/modal";
+
 
 
 
@@ -25,12 +27,13 @@ export class GameControllerComponent implements OnInit {
   storyToEdit: Story = new Story();
 
 
+
   @Input() selectedStory: Story = new Story;
 
   @Output() flip: EventEmitter<any> = new EventEmitter();
   @Output() selectStory: EventEmitter<Story> = new EventEmitter<Story>();
 
-  constructor(private router: ActivatedRoute, private gameService: GameService) {
+  constructor(private router: ActivatedRoute, private gameService: GameService, private auth: AngularFireAuth) {
 
     this.router.data
       .subscribe(data => this.game = data.game);
