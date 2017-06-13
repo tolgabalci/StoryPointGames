@@ -6,14 +6,18 @@ import { AngularFireAuth } from "angularfire2/auth";
 import { Observable } from "rxjs/Observable";
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from "angularfire2/database";
 import * as firebase from 'firebase/app';
+import { GameUser } from "app/model/gameUser";
 //import { Subject } from "rxjs/Subject";
 
 
 @Injectable()
 export class GameService {
+  
 
   constructor(private auth: AngularFireAuth,
     private db: AngularFireDatabase) { }
+  
+  userInfo: GameUser = new GameUser();
   
   createGame(game: Game)  {
     game.createdBy = this.auth.auth.currentUser.displayName;
@@ -68,5 +72,12 @@ export class GameService {
   updateStory(gameKey: string, story: Story) {
     var storyRef = this.db.object(`game/${gameKey}/stories/${story.$key}`);
     storyRef.update(story);
+  }
+
+  addUserToGame(gameKey: string, uid: string) {
+    console.log("gameKey, uid ", gameKey, uid);
+    this.userInfo.displayName = this.auth.auth.currentUser.displayName;
+    var gameRef = this.db.object(`game/${gameKey}/users/${uid}`);
+    gameRef.update(this.userInfo);
   }
 }

@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserStoryComponent } from './user-story/user-story.component';
 import { AccountComponent } from "./account/account.component";
 
+
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/do';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
@@ -66,8 +67,9 @@ var firebaseConfig = {
       { path: "createNewGame", component: NewGameComponent },
       { path: "savedGames", component: SavedGamesComponent },
       { path: "about", component: AboutComponent },
-      { path: "game/:id", component: GameComponent, resolve: {
-        game: GameResolverService
+      {
+        path: "game/:id", component: GameComponent, resolve: {
+          game: GameResolverService
         }
       },
       { path: "dashboard", canActivate: [LoggedInGuardService], component: DashboardComponent },
@@ -78,7 +80,7 @@ var firebaseConfig = {
       { path: "**", component: DashboardComponent }
     ]),
     CommonModule,
-    ToastrModule.forRoot({positionClass: "toast-top-center"}),
+    ToastrModule.forRoot({ positionClass: "toast-top-center" }),
     BrowserAnimationsModule
 
   ],

@@ -1,4 +1,5 @@
 import { Story } from "app/model/story";
+import { GameUser } from "app/model/gameUser";
 
 export class Game {
     name: string;
@@ -17,5 +18,5 @@ export class Game {
     createdByUid: string;
     $key: string;
     Stories: Story[];
-
+    Users: GameUser[];
 }
