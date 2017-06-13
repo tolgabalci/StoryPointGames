@@ -16,16 +16,31 @@ export class AccountComponent implements OnInit {
   constructor(private authService: AngularFireAuth, private router: Router) { }
 
   ngOnInit() {
-    this.userName = this.authService.auth.currentUser.displayName
-    this.userEmail = this.authService.auth.currentUser.email
-    this.userProviderID = this.authService.auth.currentUser.providerId
-    this.userPhotoURL = this.authService.auth.currentUser.photoURL
-    console.log("userauth",this.authService.auth)
-
+    this.authService.authState.subscribe(user => {
+      this.userName = user.displayName
+      this.userEmail = user.email
+      this.userProviderID = user.providerData[0].providerId;
+      this.userPhotoURL = user.photoURL
+    });
+    console.log("userauth", this.authService.auth)
   }
-      logout() {
+
+  logout() {
     console.log("logout button pressed");
     this.authService.auth.signOut();
     this.router.navigate(["/about"])
   };
+
+  changeEmail() {
+
+  }
+
+  changeName() {
+
+  }
+
+  changePassword() {
+
+  }
+
 }
