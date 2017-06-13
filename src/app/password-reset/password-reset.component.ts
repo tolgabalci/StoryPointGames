@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
-import * as firebase from 'firebase/app';
-import { Observable } from "rxjs/Observable";
 import { AngularFireAuth } from "angularfire2/auth";
 import { Router } from '@angular/router';
 
@@ -14,20 +11,20 @@ export class PasswordResetComponent implements OnInit {
 
   emailAddress: string;
 
-  constructor(private auth: AngularFireAuth, private router: Router) { }
+  constructor(private auth: AngularFireAuth, private rt: Router) { }
 
   ngOnInit() {
   }
 
-  recoverPass() {
+  async recoverPass() {
     console.log("Entering recoverPass()");
     
     if (!this.emailAddress) {
       alert("Please enter a valid email address.");
     } else {
-      this.auth.auth.sendPasswordResetEmail(this.emailAddress).then(function () {
+      this.auth.auth.sendPasswordResetEmail(this.emailAddress).then(() => {
         alert("Email sent.");
-        this.router.navigate(["/about"]);
+        this.rt.navigate(["/about"]);        
       }, function (error) {
         alert(error.message);
       });
