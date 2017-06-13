@@ -17,6 +17,7 @@ export class GameService {
   
   createGame(game: Game)  {
     game.createdBy = this.auth.auth.currentUser.displayName;
+    game.createdByUid = this.auth.auth.currentUser.uid
     game.createdDate = Date();
     game.status = "Open";
     console.log("createGame service, creating game: ", game.name);

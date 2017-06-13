@@ -14,6 +14,7 @@ export class Game {
     createdDate: string;
     status: string;
     createdBy: string;
+    createdByUid: string;
     $key: string;
     Stories: Story[];
 
