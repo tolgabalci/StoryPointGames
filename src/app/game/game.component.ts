@@ -1,3 +1,6 @@
+import { UserSelectedCard } from 'app/model/userSelectedCard';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { GameService } from './../services/game.service';
 import { Story } from './../model/story';
 import { Game } from './../model/game';
 import { CardDeckService } from './../services/card-deck.service';
@@ -17,9 +20,18 @@ export class GameComponent implements OnInit {
   cardDeck: string;
   game: Game = new Game();
   story: Story = new Story();
+  currentCard: string;
+  userStoryCards: any[];
+  //theCard: string = '100';
   
-  constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute) { 
-
+  constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute, 
+              private gameService: GameService, private auth: AngularFireAuth) { 
+      this.route.data
+      .do(data => console.log("Chekc for key:", data.game))
+      .subscribe(data => this.game = data.game);
+      
+      // this.gameService.getStoryUserCards(this.game.$key,this.story.$key)
+      //       .subscribe(storyCards => { this.userStoryCards = storyCards });
   }
 
   ngOnInit() {
@@ -30,9 +42,7 @@ export class GameComponent implements OnInit {
 
     //console.log("Router data from new game:",this.);
 
-    this.route.data
-      .do(data => console.log("Chekc for key:", data.game))
-      .subscribe(data => this.game = data.game);
+
 
     console.log("card set is...", this.game.cardSet);
     this.cardDeck = this.game.cardSet;
@@ -46,8 +56,17 @@ export class GameComponent implements OnInit {
     this.hideBack = false;
   }
 
+  selectedCard(card: string) {
+    
+    this.currentCard = card;
+    console.log("selected card: ",this.currentCard );
+    this.gameService.addCardToStory(this.game.$key,this.story.$key,this.auth.auth.currentUser.uid,this.currentCard);
+  }
+
   storyChange(event) {
     this.story = event;
+    this.gameService.getStoryUserCards(this.game.$key,this.story.$key)
+      .subscribe(storyCards => { this.userStoryCards = storyCards });
   }
 
 }

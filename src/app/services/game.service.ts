@@ -7,6 +7,7 @@ import { Observable } from "rxjs/Observable";
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from "angularfire2/database";
 import * as firebase from 'firebase/app';
 import { GameUser } from "app/model/gameUser";
+import { UserSelectedCard } from "app/model/userSelectedCard";
 //import { Subject } from "rxjs/Subject";
 
 
@@ -17,6 +18,7 @@ export class GameService {
   constructor(private auth: AngularFireAuth,
     private db: AngularFireDatabase) { }
   
+  cardToAdd: UserSelectedCard = new UserSelectedCard();
   userInfo: GameUser = new GameUser();
   
   createGame(game: Game)  {
@@ -57,7 +59,11 @@ export class GameService {
   }
 
   getStoryByKey(gameKey: string, storyKey: string) : FirebaseObjectObservable<any> {
-    return this.db.object(`game/${gameKey}/${storyKey}`)
+    return this.db.object(`game/${gameKey}/stories/${storyKey}`)
+  }
+
+  getStoryUserCards(gameKey: string, storyKey: string) : FirebaseListObservable<any> {
+    return this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`)
   }
 
   deleteGame(gameKey: string) {
@@ -93,5 +99,11 @@ export class GameService {
     this.userInfo.displayName = this.auth.auth.currentUser.displayName;
     var gameRef = this.db.object(`game/${gameKey}/users/${uid}`);
     gameRef.update(this.userInfo);
+  }
+
+  addCardToStory(gameKey: string, storyKey: string, uid: string, value: string) {
+    this.cardToAdd.value = value;
+    var storyCardRef = this.db.object(`game/${gameKey}/stories/${storyKey}/userSelectedCards/${uid}`)
+    storyCardRef.update(this.cardToAdd);
   }
 }

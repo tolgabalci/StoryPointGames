@@ -26,9 +26,11 @@ game:
                 elapsedTime: "0"
                 completedDate: ""
                 createdDate: ""
-                user-selectedCard:
-                    uid1001: 42
-                    uid1002: 30        
+                userSelectedCard:
+                    uid1001: 
+                        value: 42
+                    uid1002: 
+                        value: 30        
 
         users:
             uid1001:

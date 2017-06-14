@@ -85,8 +85,7 @@ export class GameControllerComponent implements OnInit {
       this.currentTip = "Step Away";
       user.status = "Active";     
     }
-    else
-    {
+    else {
       this.currentIcon = "active fa fa-user";
       this.currentTip = "Re-join"
       user.status = "Away";

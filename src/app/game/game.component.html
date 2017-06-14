@@ -18,24 +18,23 @@
           <p>{{story.title}}</p>
           <hr class="divider" />
         </div>
-        <div class="cardsPlayed">
-          <div class="col-lg-1 col-md-1">
+        
+        <div class="cardsPlayed" *ngFor="let userStoryCard of userStoryCards">
+          <!--<div class="col-lg-1 col-md-1" >-->
             <div class="cardfront" [hidden]="hideFront">
               <!--front content-->
             </div>
             <div class="cardback animated flipInY" [hidden]="hideBack">
               <!--back content-->
-              1
+              <span>{{userStoryCard.value}}</span>             
             </div>
-
-          </div>
-
+          <!--</div>          -->
         </div>
         <div class="col-xs-7 col-sm-7 col-md-8 col-lg-8 cardFooter">
           <hr class="divider" />
 
 
-          <span *ngFor="let card of cards">
+          <span *ngFor="let card of cards" (click)="selectedCard(card.text)">
             <input type="radio" name="cardSelect" id="{{card.text}}" />
             <label class="card" for="{{card.text}}">    
             <span>

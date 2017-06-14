@@ -1,3 +1,5 @@
+import { UserSelectedCard } from "app/model/userSelectedCard";
+
 export class Story {
     storyId: string;
     title: string;
@@ -11,5 +13,6 @@ export class Story {
     completedDate: string;
     createdDate: string;
     createdBy: string;
+    userSelectedCard: UserSelectedCard[];
     $key: string;
 }

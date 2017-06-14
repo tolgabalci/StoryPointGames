@@ -38,6 +38,7 @@ export class SavedGamesComponent implements OnInit {
   selectGame(game){
     //this.gameService.createGame(this.newGame);
     this.router.navigate(['game',game.$key]);
+    this.gameService.addUserToGame(game.$key,this.auth.auth.currentUser.uid);
   }
 
   joinGame(game) {

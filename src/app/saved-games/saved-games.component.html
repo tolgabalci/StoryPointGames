@@ -26,7 +26,8 @@
             *ngIf="this.auth.auth.currentUser.uid!=selectedGame.createdByUid"></i></a></td>
       <td><a class="trashGame" (click)="game=selectedGame" data-toggle="modal" data-target="#deleteGameModal">
           <i class="trash fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top"
-             title="" data-original-title="Delete Game" onmouseenter="$(this).tooltip('show')"></i></a></td>
+             title="" data-original-title="Delete Game" onmouseenter="$(this).tooltip('show')"
+             *ngIf="this.auth.auth.currentUser.uid==selectedGame.createdByUid"></i></a></td>
 
     </tr>
   </tbody>
