@@ -8,6 +8,7 @@ import { GameControllerComponent } from './../game-controller/game-controller.co
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -23,15 +24,15 @@ export class GameComponent implements OnInit {
   currentCard: string;
   userStoryCards: any[];
   //theCard: string = '100';
-  
-  constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute, 
-              private gameService: GameService, private auth: AngularFireAuth) { 
-      this.route.data
+
+  constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute,
+    private gameService: GameService, private auth: AngularFireAuth) {
+    this.route.data
       .do(data => console.log("Chekc for key:", data.game))
       .subscribe(data => this.game = data.game);
-      
-      // this.gameService.getStoryUserCards(this.game.$key,this.story.$key)
-      //       .subscribe(storyCards => { this.userStoryCards = storyCards });
+
+    // this.gameService.getStoryUserCards(this.game.$key,this.story.$key)
+    //       .subscribe(storyCards => { this.userStoryCards = storyCards });
   }
 
   ngOnInit() {
@@ -57,15 +58,20 @@ export class GameComponent implements OnInit {
   }
 
   selectedCard(card: string) {
-    
+
     this.currentCard = card;
-    console.log("selected card: ",this.currentCard );
-    this.gameService.addCardToStory(this.game.$key,this.story.$key,this.auth.auth.currentUser.uid,this.currentCard);
+    console.log("selected card: ", this.currentCard, this.auth.auth.currentUser.displayName);
+    this.gameService.addCardToStory(this.game.$key, this.story.$key, this.auth.auth.currentUser.uid, this.currentCard, this.auth.auth.currentUser.displayName);
+    this.hideFront = false;
+    this.hideBack = true;
   }
+
+
+
 
   storyChange(event) {
     this.story = event;
-    this.gameService.getStoryUserCards(this.game.$key,this.story.$key)
+    this.gameService.getStoryUserCards(this.game.$key, this.story.$key)
       .subscribe(storyCards => { this.userStoryCards = storyCards });
   }
 

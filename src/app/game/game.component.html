@@ -5,34 +5,34 @@
   <div class="container-fluid">
     <div class="game">
       <div class="col-xs-5 col-sm-5 col-md-4 col-lg-4 sidebar">
-        
+
         <app-game-controller (flip)="FlipCards()" [selectedStory]="story" (selectStory)="storyChange($event)">>
 
-        </app-game-controller>       
+        </app-game-controller>
       </div>
 
       <div class="col-xs-7 col-sm-7 col-md-8 col-lg-8 gameBoard">
         <div class="main">
           <h3 class="gameName">{{game.name}}</h3>
-          <h3 class="userStory"> User Story # {{story.storyId}}</h3>          
+          <h3 class="userStory"> User Story # {{story.storyId}}</h3>
           <p>{{story.title}}</p>
           <hr class="divider" />
         </div>
-        
-        <div class="cardsPlayed" *ngFor="let userStoryCard of userStoryCards">
-          <!--<div class="col-lg-1 col-md-1" >-->
+
+        <div class="cardsPlayed">
+          <div class="col-lg-1 col-md-1" *ngFor="let userStoryCard of userStoryCards">
             <div class="cardfront" [hidden]="hideFront">
               <!--front content-->
             </div>
             <div class="cardback animated flipInY" [hidden]="hideBack">
               <!--back content-->
-              <span>{{userStoryCard.value}}</span>             
+              <span>{{userStoryCard.value}}</span>
             </div>
-          <!--</div>          -->
+            <h6>{{userStoryCard.displayName}}</h6>
+          </div>
         </div>
         <div class="col-xs-7 col-sm-7 col-md-8 col-lg-8 cardFooter">
           <hr class="divider" />
-
 
           <span *ngFor="let card of cards" (click)="selectedCard(card.text)">
             <input type="radio" name="cardSelect" id="{{card.text}}" />
