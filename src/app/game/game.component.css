@@ -6,6 +6,10 @@ html, body{
      
 }
 
+.sizing{
+    height: 100vh;
+}
+
 .gameName{
     margin: 0 0 10px 0;
     color: black;
@@ -39,6 +43,7 @@ html, body{
     width: 100%;
     margin-top: 50px;
     color: black;
+
     
 }
 
@@ -94,9 +99,6 @@ html, body{
 
 .main{
     width: 100%;
-    height: 15%;
-   
-
 }
 
 .main .userStory,
@@ -107,19 +109,21 @@ html, body{
 
 
 .cardsPlayed {
-    height: 65%;
+    margin-top: 5px;
+    height: 50vh;
     width: 100%;
 
 
 }
 
-.game {
+/*.game {
     height: 100%;
     width: 100%;
-}
+}*/
 
 .gameBoard{
-    height: 100%;
+    height: 20vh;
+
 }
 
 
@@ -197,8 +201,8 @@ html, body{
 }
 
 .cardFooter{
-    width:100%;
-    height: 20%;
+   
+    height: 20vh;
     margin-bottom: 5px;
 
 

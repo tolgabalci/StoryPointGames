@@ -72,4 +72,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.router.navigate(["/about"])
   };
 
+
+  openPasswordReset() {
+    console.log("password reset");
+    this.PasswordResetComponent.open();
+
+
+  }
+
 }

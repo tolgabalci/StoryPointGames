@@ -58,7 +58,7 @@
 .table .active {
     cursor: pointer;
     font-size: 20px;
-    color: green;
+    /*color: green;*/
 }
 
 .deleteVerbiage {

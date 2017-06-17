@@ -37,7 +37,8 @@
 		<div class="form-group">
 			<label for="password">Password</label>
 			<input type="password" class="form-control" id="password" placeholder="Password" name="pass" [(ngModel)]="userPass" />
-			<a class="registerModal" href="/recoverPassword">Forget Password?</a>
+			<a class="registerModal addClick" (click)="openPasswordReset()" data-dismiss="modal">Forget Password?</a>
+			<app-password-reset></app-password-reset>
 		</div>
 	</form>
 
