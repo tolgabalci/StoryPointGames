@@ -30,17 +30,4 @@ export class AccountComponent implements OnInit {
     this.authService.auth.signOut();
     this.router.navigate(["/about"])
   };
-
-  changeEmail() {
-
-  }
-
-  changeName() {
-
-  }
-
-  changePassword() {
-
-  }
-
 }

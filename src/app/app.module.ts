@@ -83,6 +83,7 @@ var firebaseConfig = {
       { path: "register", component: RegisterUserComponent },
       { path: "userStory", component: UserStoryComponent },
       { path: "account", component: AccountComponent },
+      { path: "account/update-email", component: EmailUpdateComponent },
       { path: "recoverPassword", component: PasswordResetComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "**", component: DashboardComponent }
