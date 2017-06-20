@@ -10,10 +10,11 @@
 </ul>
 
 <ul>
-  <div *ngIf="this.userProviderID == 'firebase'">
-    <li><button (click)="changeName()">Change Name</button></li>
-    <li><button (click)="changeEmail()">Change Email</button></li>
-    <li><button (click)="changePassword()">Change Password</button></li>
+  <div *ngIf="this.userProviderID == 'password'">
+    <li><button>Change Name</button></li>
+    <li><button routerLink="update-email">Change Email</button></li>
+    <li><button>Change Password</button></li>
   </div>
+  <br>
   <li><button (click)="logout()">Logout</button></li>
 </ul>

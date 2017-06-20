@@ -2,9 +2,9 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
+import { AngularFireAuth } from "angularfire2/auth";
 import * as firebase from 'firebase/app';
 import { Observable } from "rxjs/Observable";
-import { AngularFireAuth } from "angularfire2/auth";
 import { ModalComponent } from "ng2-bs3-modal/components/modal";
 
 
