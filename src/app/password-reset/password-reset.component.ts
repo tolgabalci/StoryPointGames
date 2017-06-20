@@ -14,7 +14,7 @@ export class PasswordResetComponent implements OnInit {
   modal: ModalComponent;
   emailAddress: string;
 
-  constructor(private auth: AngularFireAuth, private rt: Router) { }
+  constructor(private authService: AngularFireAuth, private rt: Router) { }
 
   ngOnInit() {
   }
@@ -29,7 +29,7 @@ export class PasswordResetComponent implements OnInit {
     if (!this.emailAddress) {
       alert("Please enter a valid email address.");
     } else {
-      this.auth.auth.sendPasswordResetEmail(this.emailAddress).then(() => {
+      this.authService.auth.sendPasswordResetEmail(this.emailAddress).then(() => {
         alert("Email sent.");
         this.rt.navigate(["/about"]);
       }, function (error) {
