@@ -7,11 +7,16 @@
   background-position: center center;
   background-size: cover;
   margin-right: 10px;
+  border: none;
+  outline: none;
+
 }
 
 .logintext{
   color: white;
   cursor: pointer;
+  border: none;
+  outline: none;
   
 }
 
