@@ -22,7 +22,7 @@
         <input type="text" [(ngModel)]="story.title" [ngModelOptions]="{standalone: true}" class="form-control" id="title" placeholder="Title"
         />
       </div>
-      <div class="col-sm-12">
+      <div class="description col-sm-12">
         <label for="storyDescription">Story Description</label>
         <textarea class="form-control" [(ngModel)]="story.description" [ngModelOptions]="{standalone: true}" id="storyDescription"
           rows="5"></textarea>
@@ -34,5 +34,7 @@
     <button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
     <button class="btn btn-primary" (click)="onSubmitStory()" type="submit" data-dismiss="modal">Submit</button>
   </modal-footer>
+
+
 
 </modal>
