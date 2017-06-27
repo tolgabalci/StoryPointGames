@@ -45,8 +45,14 @@
 			</div>
 
 			<div class="form-group">
+				<p>Form: {{ form.value | json }}</p>
+				<p>Form status: {{ form.status }}</p>
+				<p>Account status: {{ form.errors | json }}</p>
+			</div>
+
+			<div class="form-group">
 				<button class="btn btn-default" type="reset">Cancel</button>
-				<button class="btn btn-primary" (click)="onSubmitSavePlay()" type="submit">Create</button>
+				<button class="btn btn-primary" (click)="onSubmitSavePlay()" type="submit" [disabled]="!form.valid">Create</button>
 			</div>
 
 		</form>

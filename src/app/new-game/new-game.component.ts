@@ -2,7 +2,7 @@ import { GameService } from './../services/game.service';
 import { Game } from './../model/game';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 
 @Component({
@@ -18,10 +18,10 @@ export class NewGameComponent implements OnInit {
 
   constructor(private router: Router, private gameService: GameService, public fb: FormBuilder) {
     this.form = fb.group({
-      name: '',
-      description: '',
-      velocity: '',
-      cardSet: ''
+      name: [null, Validators.required],
+      description: null,  
+      velocity: null,
+      cardSet: [null, Validators.required]
     });
   }
 
