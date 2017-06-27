@@ -14,5 +14,6 @@ export class Story {
     createdDate: string;
     createdBy: string;
     userSelectedCard: UserSelectedCard[];
+    currentlySelectedStory: boolean;
     $key: string;
 }
