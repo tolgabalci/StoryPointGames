@@ -48,7 +48,7 @@
         </label>
         </span>
 
-        <span>
+        <span (click)="selectedCard('I')">
           <input type="radio" name="cardSelect" id="infinity" />
           <label class="card" *ngIf="cardDeck == 'Fibonacci'" for="infinity" value="i" >
           <span>
@@ -58,7 +58,7 @@
         </label>
         </span>
 
-        <span>
+        <span (click)="selectedCard('P')">
             <input type="radio" name="cardSelect" id="pass" value ="pass" />
             <label class="card" for="pass">
           <span>
