@@ -20,21 +20,27 @@ export class UserStoryComponent implements OnInit {
   story: Story = new Story();
   currentMode: string;
   modeVerbiage: string;
+  showLink: boolean;
 
   open(game: Game, story: Story, mode: string) {
     this.game = game;
     this.currentMode = mode;
     switch (this.currentMode) {
-    case "Add":
-      this.story = new Story();
-      this.modeVerbiage = "Add User Story";
-      break;
-    case "Edit":
-      this.story = story;
-      this.modeVerbiage = "Edit User Story";
-      break;
-    default:
-      break;
+      case "Add":
+        this.story = new Story();
+        this.modeVerbiage = "Add User Story";
+        break;
+      case "Edit":
+        this.story = story;
+        this.modeVerbiage = "Edit User Story";
+        break;
+      case "AddFromCreateGame":
+        this.story = new Story();
+        this.modeVerbiage = "Add User Story";
+        this.showLink = true;
+        break;
+      default:
+        break;
     }
 
     this.modal.open();
@@ -42,11 +48,11 @@ export class UserStoryComponent implements OnInit {
 
   onSubmitStory() {
     switch (this.currentMode) {
-      case "Add":        
-        this.gameService.createStory(this.game.$key,this.story);
+      case "Add":
+        this.gameService.createStory(this.game.$key, this.story);
         break;
       case "Edit":
-        this.gameService.updateStory(this.game.$key,this.story);
+        this.gameService.updateStory(this.game.$key, this.story);
         break;
       default:
         break;
@@ -54,7 +60,7 @@ export class UserStoryComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.showLink = false;
   }
 
 }

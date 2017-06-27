@@ -1,5 +1,6 @@
 <modal #modal>
   <modal-header [show-close]="true">
+    <label [hidden]="hideLink">Game link</label>
     <h3 class="modal-title">{{modeVerbiage}}</h3>
     <label for="gameName">{{game.name}}</label>
   </modal-header>
