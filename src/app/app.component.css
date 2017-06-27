@@ -7,11 +7,18 @@
   background-position: center center;
   background-size: cover;
   margin-right: 10px;
+  border: none;
+  outline: none;
+  margin-top:5px;
+
 }
 
 .logintext{
   color: white;
   cursor: pointer;
+  border: none;
+  outline: none;
+  margin-top:5px;
   
 }
 
@@ -29,6 +36,10 @@
   margin-left: 20px;
 }
 
+.logo{
+  height:60px;
+  width: 65px;
+}
 
 
 .navbar-header {
@@ -37,7 +48,12 @@
     font-family: 'Exo', sans-serif !important;
     font-style: normal !important;
     color:white !important;
+    margin-top:5px;
 
+}
+
+.addClick{
+  cursor: pointer;
 }
 
 

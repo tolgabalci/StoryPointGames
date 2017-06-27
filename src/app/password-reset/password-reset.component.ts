@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from "angularfire2/auth";
 import { Router } from '@angular/router';
+import { ModalComponent } from "ng2-bs3-modal/components/modal";
 
 @Component({
   selector: 'app-password-reset',
@@ -9,22 +10,28 @@ import { Router } from '@angular/router';
 })
 export class PasswordResetComponent implements OnInit {
 
+  @ViewChild('modal')
+  modal: ModalComponent;
   emailAddress: string;
 
-  constructor(private auth: AngularFireAuth, private rt: Router) { }
+  constructor(private authService: AngularFireAuth, private rt: Router) { }
 
   ngOnInit() {
   }
 
+  open() {
+    this.modal.open();
+  }
+
   async recoverPass() {
     console.log("Entering recoverPass()");
-    
+
     if (!this.emailAddress) {
       alert("Please enter a valid email address.");
     } else {
-      this.auth.auth.sendPasswordResetEmail(this.emailAddress).then(() => {
+      this.authService.auth.sendPasswordResetEmail(this.emailAddress).then(() => {
         alert("Email sent.");
-        this.rt.navigate(["/about"]);        
+        this.rt.navigate(["/about"]);
       }, function (error) {
         alert(error.message);
       });

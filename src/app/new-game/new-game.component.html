@@ -1,38 +1,34 @@
 <div class="row">
 	<div class="col-md-offset-3 col-md-6">
 		<h1>Create a new game</h1>
-		<form name="form" ng-submit="createGame()" novalidate>
+		<form [formGroup]="form" ng-submit="createGame()" novalidate>
 			<div class="form-group">
 				<label for="inputgameName">Game Name:</label>
-				<input class="form-control" [(ngModel)]="newGame.name" [ngModelOptions]="{standalone: true}" id="inputGameName" type="text"
-				 placeholder="Game Name">
+				<input class="form-control" formControlName="name" id="inputGameName" type="text" placeholder="Game Name">
 			</div>
 			<div class="form-group">
 				<label for="inputDescription">Description:</label>
-				<textarea class="form-control" [(ngModel)]="newGame.description" [ngModelOptions]="{standalone: true}" id="inputDescription"
-				 rows="4"></textarea>
+				<textarea class="form-control" formControlName="description" id="inputDescription" rows="4"></textarea>
 			</div>
 			<div class="form-group">
 				<label for="inputVelocity">Team Velocity:</label>
-				<input class="form-control" [(ngModel)]="newGame.velocity" [ngModelOptions]="{standalone: true}" id="inputVelocity" type="number">
+				<input class="form-control" formControlName="velocity" id="inputVelocity" type="number">
 				<p class="help-block">The amount of work a Team can tackle during a single Sprint.</p>
-
 			</div>
 			<div class="form-group">
 				<label>Share the velocity with all players?</label>
 				<div class="radio">
 					<label>
-						<input name="optionsVelocity" [(ngModel)]="newGame.shareVelocity" [ngModelOptions]="{standalone: true}" id="optionsVelocity1" type="radio"  value="Yes">
+						<input formControlName="shareVelocity" id="optionsVelocity1" type="radio"  value="Yes">
 						Yes
 					</label>
 				</div>
 				<div class="radio">
 					<label>
-						<input name="optionsVelocity" [(ngModel)]="newGame.shareVelocity" [ngModelOptions]="{standalone: true}" id="optionsVelocity2" type="radio" checked="" value="No">
+						<input formControlName="shareVelocity" id="optionsVelocity2" type="radio" checked="" value="No">
 						No
 					</label>
 				</div>
-
 			</div>
 
 			<div class="form-group">
@@ -40,45 +36,45 @@
 
 				<div class="radio">
 					<label>
-						<input name="optionsEffortPoint" [(ngModel)]="newGame.includeDealer" [ngModelOptions]="{standalone: true}" id="optionsEffortPoint1" type="radio"  value="Yes">
+						<input formControlName="includeDealer" id="optionsEffortPoint1" type="radio"  value="Yes">
 						Yes, please deal me cards
 					</label>
 				</div>
 				<div class="radio">
 					<label>
-						<input name="optionsEffortPoint" [(ngModel)]="newGame.includeDealer" [ngModelOptions]="{standalone: true}" id="optionsEffortPoint2" type="radio" checked="" value="No">
+						<input formControlName="includeDealer" id="optionsEffortPoint2" type="radio" checked="" value="No">
 						No, I'm just a dealer
 					</label>
 				</div>
 			</div>
+
 			<div class="form-group">
 				<label>Choose your card set:</label>
 
 				<div class="radio">
 					<label>
-					<input name="optionsCardSet" [(ngModel)]="newGame.cardSet" [ngModelOptions]="{standalone: true}" id="optionsCardSet1" type="radio" checked=""  value="Fibonacci">
+					<input formControlName="cardSet" id="optionsCardSet1" type="radio" checked=""  value="Fibonacci">
 					Fibonacci ( 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ?, Pass, break )
 					</label>
 				</div>
 				<div class="radio">
 					<label>
-				<input name="optionsCardSet" [(ngModel)]="newGame.cardSet" [ngModelOptions]="{standalone: true}" id="optionsCardSet2" type="radio"  value="Modified Fibonacci">
+				<input formControlName="cardSet" id="optionsCardSet2" type="radio"  value="Modified Fibonacci">
 					Modified Fibonacci ( 0, ½, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?, Pass, break )
 				</label>
 				</div>
 				<div class="radio">
 					<label>
-				<input name="optionsCardSet" [(ngModel)]="newGame.cardSet" [ngModelOptions]="{standalone: true}" id="optionsCardSet3" type="radio"  value="T-Shirts">
+				<input formControlName="cardSet" id="optionsCardSet3" type="radio"  value="T-Shirts">
 					T-shirts ( xxs, xs, s, m, l, xl, xxl, ?, Pass, break )
 				</label>
 				</div>
 				<div class="radio">
 					<label>
-				<input name="optionsCardSet" [(ngModel)]="newGame.cardSet" [ngModelOptions]="{standalone: true}" id="optionsCardSet4" type="radio"  value="Powers of 2">
+				<input formControlName="cardSet" id="optionsCardSet4" type="radio"  value="Powers of 2">
 					Powers of 2 ( 0, 1, 2, 4, 8, 16, 32, 64, ?, Pass, break )
 				</label>
 				</div>
-
 			</div>
 
 			<div class="form-group">
@@ -86,13 +82,13 @@
 
 				<div class="radio">
 					<label>
-						<input name="optionsAutoFlip" [(ngModel)]="newGame.autoFlip" [ngModelOptions]="{standalone: true}" id="optionsAutoFlip1" type="radio"  value="Yes">
+						<input formControlName="autoFlip" id="optionsAutoFlip1" type="radio"  value="Yes">
 						Yes
 					</label>
 				</div>
 				<div class="radio">
 					<label>
-						<input name="optionsAutoFlip" [(ngModel)]="newGame.autoFlip" [ngModelOptions]="{standalone: true}" id="optionsAutoFlip2" type="radio" checked="" value="No">
+						<input formControlName="autoFlip" id="optionsAutoFlip2" type="radio" checked="" value="No">
 					    No
         	        </label>
 				</div>
@@ -103,13 +99,13 @@
 
 				<div class="radio">
 					<label>
-						<input name="optionsChangeVote" [(ngModel)]="newGame.changeAfterVote" [ngModelOptions]="{standalone: true}" id="optionsChangeVote1" type="radio"  value="Yes">
+						<input formControlName="changeAfterVote" id="optionsChangeVote1" type="radio"  value="Yes">
 						Yes
 					</label>
 				</div>
 				<div class="radio">
 					<label>
-						<input name="optionsChangeVote" [(ngModel)]="newGame.changeAfterVote" [ngModelOptions]="{standalone: true}" id="optionsChangeVote2" type="radio" checked="" value="No">
+						<input formControlName="changeAfterVote" id="optionsChangeVote2" type="radio" checked="" value="No">
 						No
 					</label>
 				</div>
@@ -120,13 +116,13 @@
 
 				<div class="radio">
 					<label>
-						<input name="optionsScore" [(ngModel)]="newGame.calculateScore" [ngModelOptions]="{standalone: true}" id="optionsScore1" type="radio"  value="Yes">
+						<input formControlName="calculateScore" id="optionsScore1" type="radio"  value="Yes">
 						Yes
 					</label>
 				</div>
 				<div class="radio">
 					<label>
-						<input name="optionsScore" [(ngModel)]="newGame.calculateScore" [ngModelOptions]="{standalone: true}" id="optionsScor2" type="radio" checked="" value="No">
+						<input formControlName="calculateScore" id="optionsScor2" type="radio" checked="" value="No">
 						No
 					</label>
 				</div>
@@ -137,13 +133,13 @@
 
 				<div class="radio">
 					<label>
-						<input name="optionsTimer" [(ngModel)]="newGame.useTimer" [ngModelOptions]="{standalone: true}" id="optionsTimer1" type="radio"  value="Yes">
+						<input formControlName="useTimer" id="optionsTimer1" type="radio"  value="Yes">
 						Yes
 					</label>
 				</div>
 				<div class="radio">
 					<label>
-						<input name="optionsTimer" [(ngModel)]="newGame.useTimer" [ngModelOptions]="{standalone: true}" id="optionsTimer2" type="radio" checked="" value="No">
+						<input formControlName="useTimer" id="optionsTimer2" type="radio" checked="" value="No">
 						No
 					</label>
 				</div>
@@ -156,14 +152,10 @@
 			</div>-->
 
 			<div class="form-group">
-
 				<button class="btn btn-default" type="reset">Cancel</button>
 				<button class="btn btn-default" type="button">Create</button>
 				<button class="btn btn-primary" (click)="onSubmitSavePlay()" type="submit">Save & Play</button>
-
 			</div>
-
-
 
 		</form>
 	</div>

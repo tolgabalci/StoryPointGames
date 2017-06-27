@@ -1,9 +1,12 @@
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { Router } from '@angular/router';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
+import { AngularFireAuth } from "angularfire2/auth";
 import * as firebase from 'firebase/app';
 import { Observable } from "rxjs/Observable";
-import { AngularFireAuth } from "angularfire2/auth";
+import { ModalComponent } from "ng2-bs3-modal/components/modal";
+
 
 
 @Component({
@@ -12,6 +15,8 @@ import { AngularFireAuth } from "angularfire2/auth";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, AfterViewInit {
+  @ViewChild(PasswordResetComponent)
+  PasswordResetComponent: PasswordResetComponent;
   title = 'app works!';
   user: Observable<firebase.User>;
   userEmail: string;
@@ -66,4 +71,13 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.auth.auth.signOut();
     this.router.navigate(["/about"])
   };
+
+
+  openPasswordReset() {
+    console.log("password reset");
+    this.PasswordResetComponent.open();
+
+
+  }
+
 }

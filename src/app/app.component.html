@@ -1,8 +1,9 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
 	<div class="container-fluid">
+
 		<a href="#" routerLink="dashboard">
 			<div class="navbar-header">
-				StoryPointGames.com
+				<img class="logo" src="../assets/images/Logo.png" alt=""> StoryPointGames
 			</div>
 		</a>
 
@@ -37,7 +38,8 @@
 		<div class="form-group">
 			<label for="password">Password</label>
 			<input type="password" class="form-control" id="password" placeholder="Password" name="pass" [(ngModel)]="userPass" />
-			<a class="registerModal" href="/recoverPassword">Forget Password?</a>
+			<a class="registerModal addClick" (click)="openPasswordReset()" data-dismiss="modal">Forget Password?</a>
+			<app-password-reset></app-password-reset>
 		</div>
 	</form>
 
@@ -45,7 +47,7 @@
 		<input type="image" src="../assets/images/googlelogin.png" alt="Submit" class="googleButton" align="left" (click)="login('google')"
 		 data-dismiss="modal">
 		<button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
-		<button class="btn btn-info" type="submit" data-dismiss="modal" (click)="login('custom')">Login</button>
+		<button class="btn btn-primary" type="submit" data-dismiss="modal" (click)="login('custom')">Login</button>
 	</modal-footer>
 
 </modal>

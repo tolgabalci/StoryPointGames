@@ -13,15 +13,15 @@ import { UserSelectedCard } from "app/model/userSelectedCard";
 
 @Injectable()
 export class GameService {
-  
+
 
   constructor(private auth: AngularFireAuth,
     private db: AngularFireDatabase) { }
-  
+
   cardToAdd: UserSelectedCard = new UserSelectedCard();
   userInfo: GameUser = new GameUser();
-  
-  createGame(game: Game)  {
+
+  createGame(game: Game) {
     game.createdBy = this.auth.auth.currentUser.displayName;
     game.createdByUid = this.auth.auth.currentUser.uid
     game.createdDate = Date();
@@ -29,7 +29,7 @@ export class GameService {
     console.log("createGame service, creating game: ", game.name);
     let storyPointGame = this.db.list("game");
     var newGameRef = storyPointGame.push(game);
-    game.$key = newGameRef.key;    
+    game.$key = newGameRef.key;
   }
 
   createStory(gameKey: string, story: Story) {
@@ -38,36 +38,36 @@ export class GameService {
     story.status = "Open";
     let storyPointGameStory = this.db.list(`game/${gameKey}/stories`)
     var newStoryRef = storyPointGameStory.push(story);
-    story.$key = newStoryRef.key;    
+    story.$key = newStoryRef.key;
   }
 
-  getGameStories(gameKey: string) : FirebaseListObservable<any[]> {
+  getGameStories(gameKey: string): FirebaseListObservable<any[]> {
     return this.db.list(`game/${gameKey}/stories`)
   }
 
-  getGameUsers(gameKey: string) : FirebaseListObservable<any[]> {
+  getGameUsers(gameKey: string): FirebaseListObservable<any[]> {
     return this.db.list(`game/${gameKey}/users`);
   }
 
-  getGames() : FirebaseListObservable<any[]> {
+  getGames(): FirebaseListObservable<any[]> {
     console.log("getGames");
     return this.db.list("game", { query: { orderByChild: 'createDate' } });
   }
 
-  getGameByKey(key: string) : FirebaseObjectObservable<any> {
+  getGameByKey(key: string): FirebaseObjectObservable<any> {
     return this.db.object(`game/${key}`)
   }
 
-  getStoryByKey(gameKey: string, storyKey: string) : FirebaseObjectObservable<any> {
+  getStoryByKey(gameKey: string, storyKey: string): FirebaseObjectObservable<any> {
     return this.db.object(`game/${gameKey}/stories/${storyKey}`)
   }
 
-  getStoryUserCards(gameKey: string, storyKey: string) : FirebaseListObservable<any> {
+  getStoryUserCards(gameKey: string, storyKey: string): FirebaseListObservable<any> {
     return this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`)
   }
 
   deleteGame(gameKey: string) {
-  
+
     console.log("game name = ", gameKey);
     var gameToRemove = this.db.list(`game/${gameKey}`)
     gameToRemove.remove();
@@ -101,7 +101,8 @@ export class GameService {
     gameRef.update(this.userInfo);
   }
 
-  addCardToStory(gameKey: string, storyKey: string, uid: string, value: string) {
+  addCardToStory(gameKey: string, storyKey: string, uid: string, value: string, displayName: string) {
+    this.cardToAdd.displayName = displayName;
     this.cardToAdd.value = value;
     var storyCardRef = this.db.object(`game/${gameKey}/stories/${storyKey}/userSelectedCards/${uid}`)
     storyCardRef.update(this.cardToAdd);

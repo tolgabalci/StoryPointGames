@@ -1,9 +1,13 @@
 
 
 html, body{
-    height: 92vh;
+    height: 90vh;
     width: 100%;
      
+}
+
+.sizing{
+    height: 100vh;
 }
 
 .gameName{
@@ -39,6 +43,7 @@ html, body{
     width: 100%;
     margin-top: 50px;
     color: black;
+
     
 }
 
@@ -49,12 +54,15 @@ html, body{
     height: 120px;
     border: 2px solid black;
     border-radius: 10px;
-    background-color: green;
     cursor: pointer;
     color: black;
     text-align: center;
+    background-image: url(./../../assets/images/Logo.png); 
+    background-size: 100px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: lightslategrey;
     
-  
 }
 
 
@@ -94,9 +102,6 @@ html, body{
 
 .main{
     width: 100%;
-    height: 15%;
-   
-
 }
 
 .main .userStory,
@@ -107,19 +112,21 @@ html, body{
 
 
 .cardsPlayed {
-    height: 55%;
+    margin-top: 5px;
+    height: 50vh;
     width: 100%;
 
 
 }
 
-.game {
+/*.game {
     height: 100%;
     width: 100%;
-}
+}*/
 
 .gameBoard{
-    height: 100%;
+    height: 20vh;
+
 }
 
 
@@ -197,8 +204,8 @@ html, body{
 }
 
 .cardFooter{
-    width:100%;
-    height: 18%;
+   
+    height: 20vh;
     margin-bottom: 5px;
 
 

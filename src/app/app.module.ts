@@ -3,7 +3,7 @@ import { CardDeckService } from './services/card-deck.service';
 import { GameService } from "./services/game.service";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -65,6 +65,7 @@ var firebaseConfig = {
     Ng2Bs3ModalModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
@@ -82,6 +83,7 @@ var firebaseConfig = {
       { path: "register", component: RegisterUserComponent },
       { path: "userStory", component: UserStoryComponent },
       { path: "account", component: AccountComponent },
+      { path: "account/update-email", component: EmailUpdateComponent },
       { path: "recoverPassword", component: PasswordResetComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "**", component: DashboardComponent }
