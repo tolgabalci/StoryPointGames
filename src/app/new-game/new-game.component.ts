@@ -21,13 +21,7 @@ export class NewGameComponent implements OnInit {
       name: '',
       description: '',
       velocity: '',
-      shareVelocity: '',
-      includeDealer: '',
-      cardSet: '',
-      autoFlip: '',
-      changeAfterVote: '',
-      calculateScore: '',
-      useTimer: ''
+      cardSet: ''
     });
   }
 

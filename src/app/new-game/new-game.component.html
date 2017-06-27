@@ -11,28 +11,10 @@
 				<textarea class="form-control" formControlName="description" id="inputDescription" rows="4"></textarea>
 			</div>
 			<div class="form-group">
-				<label for="inputVelocity">Team Velocity:</label>
-				<input class="form-control" formControlName="velocity" id="inputVelocity" type="number">
-				<p class="help-block">The amount of work a Team can tackle during a single Sprint.</p>
+				<label for="inputVelocity">Story points in sprint:</label>
+				<input class="form-control" formControlName="velocity" id="inputVelocity" placeholder="The amount of work a Team can tackle during a single Sprint."
+				 type="number">
 			</div>
-			<div class="form-group">
-				<label>How many available hours in sprint?</label>
-				<div class="radio">
-					<label>
-						<input formControlName="shareVelocity" id="optionsVelocity1" type="radio"  value="Yes">
-						Yes
-					</label>
-				</div>
-				<div class="radio">
-					<label>
-						<input formControlName="shareVelocity" id="optionsVelocity2" type="radio" checked="" value="No">
-						No
-					</label>
-				</div>
-			</div>
-
-
-
 			<div class="form-group">
 				<label>Choose your card set:</label>
 
@@ -62,17 +44,9 @@
 				<!--</div>-->
 			</div>
 
-
-
-
-
-
-
-
 			<div class="form-group">
 				<button class="btn btn-default" type="reset">Cancel</button>
-				<button class="btn btn-default" type="button">Create</button>
-				<button class="btn btn-primary" (click)="onSubmitSavePlay()" type="submit">Save & Play</button>
+				<button class="btn btn-primary" (click)="onSubmitSavePlay()" type="submit">Create</button>
 			</div>
 
 		</form>
