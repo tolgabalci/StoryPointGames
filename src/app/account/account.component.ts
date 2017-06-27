@@ -28,6 +28,6 @@ export class AccountComponent implements OnInit {
   logout() {
     console.log("logout button pressed");
     this.authService.auth.signOut();
-    this.router.navigate(["/about"])
+    this.router.navigate(["/about"]);
   };
 }
