@@ -16,7 +16,7 @@
 				<p class="help-block">The amount of work a Team can tackle during a single Sprint.</p>
 			</div>
 			<div class="form-group">
-				<label>Share the velocity with all players?</label>
+				<label>How many available hours in sprint?</label>
 				<div class="radio">
 					<label>
 						<input formControlName="shareVelocity" id="optionsVelocity1" type="radio"  value="Yes">
@@ -31,22 +31,7 @@
 				</div>
 			</div>
 
-			<div class="form-group">
-				<label>Are you also effort pointing?</label>
 
-				<div class="radio">
-					<label>
-						<input formControlName="includeDealer" id="optionsEffortPoint1" type="radio"  value="Yes">
-						Yes, please deal me cards
-					</label>
-				</div>
-				<div class="radio">
-					<label>
-						<input formControlName="includeDealer" id="optionsEffortPoint2" type="radio" checked="" value="No">
-						No, I'm just a dealer
-					</label>
-				</div>
-			</div>
 
 			<div class="form-group">
 				<label>Choose your card set:</label>
@@ -54,102 +39,35 @@
 				<div class="radio">
 					<label>
 					<input formControlName="cardSet" id="optionsCardSet1" type="radio" checked=""  value="Fibonacci">
-					Fibonacci ( 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ?, Pass, break )
+					Fibonacci ( 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ?, Infinity, Pass )
 					</label>
 				</div>
 				<div class="radio">
 					<label>
 				<input formControlName="cardSet" id="optionsCardSet2" type="radio"  value="Modified Fibonacci">
-					Modified Fibonacci ( 0, ½, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?, Pass, break )
+					Rounded Fibonacci ( 0, ½, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?, Infinity, Pass)
 				</label>
 				</div>
 				<div class="radio">
 					<label>
 				<input formControlName="cardSet" id="optionsCardSet3" type="radio"  value="T-Shirts">
-					T-shirts ( xxs, xs, s, m, l, xl, xxl, ?, Pass, break )
+					T-shirts ( xxs, xs, s, m, l, xl, xxl, ?, Pass)
 				</label>
 				</div>
-				<div class="radio">
-					<label>
-				<input formControlName="cardSet" id="optionsCardSet4" type="radio"  value="Powers of 2">
-					Powers of 2 ( 0, 1, 2, 4, 8, 16, 32, 64, ?, Pass, break )
-				</label>
-				</div>
+				<!--<div class="radio">
+					<label>-->
+				<!--<input formControlName="cardSet" id="optionsCardSet4" type="radio"  value="Powers of 2">
+					Powers of 2 ( 0, 1, 2, 4, 8, 16, 32, 64, ?, Pass)
+				</label>-->
+				<!--</div>-->
 			</div>
 
-			<div class="form-group">
-				<label>Auto-flip after everyone has voted?</label>
 
-				<div class="radio">
-					<label>
-						<input formControlName="autoFlip" id="optionsAutoFlip1" type="radio"  value="Yes">
-						Yes
-					</label>
-				</div>
-				<div class="radio">
-					<label>
-						<input formControlName="autoFlip" id="optionsAutoFlip2" type="radio" checked="" value="No">
-					    No
-        	        </label>
-				</div>
-			</div>
 
-			<div class="form-group">
-				<label>Allow players to change their vote after reveal?</label>
 
-				<div class="radio">
-					<label>
-						<input formControlName="changeAfterVote" id="optionsChangeVote1" type="radio"  value="Yes">
-						Yes
-					</label>
-				</div>
-				<div class="radio">
-					<label>
-						<input formControlName="changeAfterVote" id="optionsChangeVote2" type="radio" checked="" value="No">
-						No
-					</label>
-				</div>
-			</div>
 
-			<div class="form-group">
-				<label>Would you like to calculate the score?</label>
 
-				<div class="radio">
-					<label>
-						<input formControlName="calculateScore" id="optionsScore1" type="radio"  value="Yes">
-						Yes
-					</label>
-				</div>
-				<div class="radio">
-					<label>
-						<input formControlName="calculateScore" id="optionsScor2" type="radio" checked="" value="No">
-						No
-					</label>
-				</div>
-			</div>
 
-			<div class="form-group">
-				<label>Would you like a story timer?</label>
-
-				<div class="radio">
-					<label>
-						<input formControlName="useTimer" id="optionsTimer1" type="radio"  value="Yes">
-						Yes
-					</label>
-				</div>
-				<div class="radio">
-					<label>
-						<input formControlName="useTimer" id="optionsTimer2" type="radio" checked="" value="No">
-						No
-					</label>
-				</div>
-			</div>
-
-			<!--<div class="form-group">
-				<label for="stories">Import stories (optional, one per line)</label>
-				<textarea ng-model="newGame.stories" rows="10" class="form-control" id="stories" placeholder="Enter stories"></textarea>
-				<p class="help-block">Copy and paste to import stories into your game.</p>
-			</div>-->
 
 			<div class="form-group">
 				<button class="btn btn-default" type="reset">Cancel</button>

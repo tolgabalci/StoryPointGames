@@ -9,9 +9,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Game } from './../model/game';
 import { ModalComponent } from "ng2-bs3-modal/components/modal";
 
-
-
-
 @Component({
   selector: 'app-game-controller',
   templateUrl: './game-controller.component.html',
@@ -72,6 +69,7 @@ export class GameControllerComponent implements OnInit {
   selectUserStory(story: Story) {
     console.log("game-controller-component story selected from tab: ", story.title)
     this.selectStory.emit(story);
+    
   }
 
   leaveGame(user: GameUser) {
