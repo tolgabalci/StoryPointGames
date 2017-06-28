@@ -32,6 +32,7 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { DisplayNameUpdateComponent } from './display-name-update/display-name-update.component';
 import { PasswordUpdateComponent } from './password-update/password-update.component';
 import { EmailUpdateComponent } from './email-update/email-update.component';
+import { FocusDirective } from './shared/focus.directive';
 
 
 // Initialize Firebase
@@ -59,7 +60,8 @@ var firebaseConfig = {
     PasswordResetComponent,
     DisplayNameUpdateComponent,
     PasswordUpdateComponent,
-    EmailUpdateComponent
+    EmailUpdateComponent,
+    FocusDirective
   ],
   imports: [
     Ng2Bs3ModalModule,

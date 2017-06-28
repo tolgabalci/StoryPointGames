@@ -1,10 +1,10 @@
 <div class="row">
 	<div class="col-md-offset-3 col-md-6">
-		<h1>Create a new game</h1>
+		<h1>NEW GAME</h1>
 		<form [formGroup]="form" ng-submit="createGame()" novalidate>
 			<div class="form-group">
-				<label for="inputgameName">Game Name:</label>
-				<input class="form-control" formControlName="name" id="inputGameName" type="text" placeholder="Game Name">
+				<input class="form-control" [focus]="nameInputFocus" formControlName="name" name="name" id="inputGameName" type="text" placeholder="Game Name">
+				<div class="alert alert-danger" *ngIf="!form.controls['name'].valid && submitAttempted">You must enter a name for your game.</div>
 			</div>
 			<div class="form-group">
 				<label for="inputDescription">Description:</label>
@@ -26,8 +26,8 @@
 				</div>
 				<div class="radio">
 					<label>
-				<input formControlName="cardSet" id="optionsCardSet2" type="radio"  value="Modified Fibonacci">
-					Rounded Fibonacci ( 0, ½, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?, Infinity, Pass)
+				<input formControlName="cardSet" id="optionsCardSet2" type="radio"  value="Simple">
+					Simple ( 0, ½, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?, Infinity, Pass)
 				</label>
 				</div>
 				<div class="radio">
@@ -45,14 +45,8 @@
 			</div>
 
 			<div class="form-group">
-				<p>Form: {{ form.value | json }}</p>
-				<p>Form status: {{ form.status }}</p>
-				<p>Account status: {{ form.errors | json }}</p>
-			</div>
-
-			<div class="form-group">
 				<button class="btn btn-default" type="reset">Cancel</button>
-				<button class="btn btn-primary" (click)="onSubmitSavePlay()" type="submit" [disabled]="!form.valid">Create</button>
+				<button class="btn btn-primary pull-right" (click)="onSubmitSavePlay()" type="submit">Create</button>
 			</div>
 
 		</form>
