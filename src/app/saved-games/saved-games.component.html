@@ -16,6 +16,8 @@
       <td>{{selectedGame.description}}</td>
       <td>{{selectedGame.createdBy}}</td>
       <td>{{selectedGame.createdDate}}</td>
+      <td><a class="addStory" (click)="addStories(selectedGame)"><i class="story fa fa-plus" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add Stories"
+          onmouseenter="$(this).tooltip('show')" *ngIf="this.auth.auth.currentUser.uid==selectedGame.createdByUid"><app-user-story></app-user-story></i></a></td>
       <td><a class="playGame" (click)="selectGame(selectedGame)">
           <i class="play fa fa-play" aria-hidden="true" data-toggle="tooltip" data-placement="top"
             title="" data-original-title="Play Game" onmouseenter="$(this).tooltip('show')" 
@@ -28,6 +30,7 @@
           <i class="trash fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top"
              title="" data-original-title="Delete Game" onmouseenter="$(this).tooltip('show')"
              *ngIf="this.auth.auth.currentUser.uid==selectedGame.createdByUid"></i></a></td>
+
 
     </tr>
   </tbody>

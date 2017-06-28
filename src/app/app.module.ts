@@ -32,6 +32,7 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { DisplayNameUpdateComponent } from './display-name-update/display-name-update.component';
 import { PasswordUpdateComponent } from './password-update/password-update.component';
 import { EmailUpdateComponent } from './email-update/email-update.component';
+import { NameUpdateComponent } from './name-update/name-update.component';
 import { FocusDirective } from './shared/focus.directive';
 
 
@@ -61,7 +62,8 @@ var firebaseConfig = {
     DisplayNameUpdateComponent,
     PasswordUpdateComponent,
     EmailUpdateComponent,
-    FocusDirective
+    FocusDirective,
+    NameUpdateComponent
   ],
   imports: [
     Ng2Bs3ModalModule,
@@ -86,6 +88,7 @@ var firebaseConfig = {
       { path: "userStory", component: UserStoryComponent },
       { path: "account", component: AccountComponent },
       { path: "account/update-email", component: EmailUpdateComponent },
+      { path: "account/update-name", component: NameUpdateComponent },
       { path: "recoverPassword", component: PasswordResetComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "**", component: DashboardComponent }

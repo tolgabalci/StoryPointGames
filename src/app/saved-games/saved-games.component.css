@@ -1,7 +1,9 @@
 .table .break,
 .table .trash,
 .table .edit,
-.table .exit{
+.table .exit,
+.table .story{
+  
   cursor: pointer;
   font-size: 20px;
   color: black;
