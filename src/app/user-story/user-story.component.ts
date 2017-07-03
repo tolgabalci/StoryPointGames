@@ -20,7 +20,7 @@ export class UserStoryComponent implements OnInit {
   story: Story = new Story();
   currentMode: string;
   modeVerbiage: string;
-  showLink: boolean;
+  hideLink: boolean;
 
   open(game: Game, story: Story, mode: string) {
     this.game = game;
@@ -36,8 +36,8 @@ export class UserStoryComponent implements OnInit {
         break;
       case "AddFromCreateGame":
         this.story = new Story();
-        this.modeVerbiage = "Add User Story";
-        this.showLink = true;
+        this.modeVerbiage = "Add User Stories";
+        this.hideLink = false;
         break;
       default:
         break;
@@ -60,7 +60,7 @@ export class UserStoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.showLink = false;
+    this.hideLink = true;
   }
 
 }
