@@ -21,6 +21,7 @@ export class UserStoryComponent implements OnInit {
   currentMode: string;
   modeVerbiage: string;
   hideLink: boolean;
+  gameLink: string;
 
   open(game: Game, story: Story, mode: string) {
     this.game = game;
@@ -38,6 +39,8 @@ export class UserStoryComponent implements OnInit {
         this.story = new Story();
         this.modeVerbiage = "Add User Stories";
         this.hideLink = false;
+        console.log("game.name here ", this.game.name);
+        this.gameLink = "https://storypointgames.com/game/" + this.game.$key;
         break;
       default:
         break;

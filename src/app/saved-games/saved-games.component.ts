@@ -53,7 +53,8 @@ export class SavedGamesComponent implements OnInit {
   }
 
   addStories(game) {
-    this.UserStoryComponent.open(this.game, this.storyToEdit, "AddFromCreateGame");
+    console.log("game name ", game.name)
+    this.UserStoryComponent.open(game, this.storyToEdit, "AddFromCreateGame");
   }
 
   ngOnInit() {

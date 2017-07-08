@@ -1,6 +1,23 @@
 <modal #modal>
   <modal-header [show-close]="true">
-    <label [hidden]="hideLink">Game link</label>
+
+    <!--<input id="copy" class="copyLink" [hidden]="hideLink" value="test here" />
+    <button class="btn btn-primary" (click)="copyLink('copy')"></button>-->
+    <div class="form-group" [hidden]="hideLink">
+      <label class="control-label" [hidden]="hideLink">Click button to copy Game Link</label>
+      <div class="input-group">
+        <!-- Target -->
+        <input type="text" class="form-control" #linkValue value={{gameLink}} readonly="true">
+        <span class="input-group-btn">
+          <!-- Trigger -->
+          <button class="btn btn-primary" type="button" [ngxClipboard]="linkValue">
+            <i class="copy fa fa-clipboard" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Copy Link"
+          onmouseenter="$(this).tooltip('show')" onmousedown=""></i>
+          </button>
+        </span>
+      </div>
+    </div>
+
     <h3 class="modal-title">{{modeVerbiage}}</h3>
     <label for="gameName">{{game.name}}</label>
   </modal-header>
