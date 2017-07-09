@@ -16,6 +16,7 @@
           </button>
         </span>
       </div>
+      <button class="playGame btn btn-primary">Play Game</button>
     </div>
 
     <h3 class="modal-title">{{modeVerbiage}}</h3>
@@ -46,12 +47,41 @@
           rows="5"></textarea>
       </div>
     </div>
+
+
   </form>
 
-  <modal-footer>
+  <modal-footer [hidden]="hideSubmit">
     <button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
-    <button class="btn btn-primary" (click)="onSubmitStory()" type="submit" data-dismiss="modal">Submit</button>
+    <button class="btn btn-primary" (click)="onSubmitStory()" type="submit" [hidden]="hideSubmit" data-dismiss="modal">Submit</button>
   </modal-footer>
+
+  <modal-footer [hidden]="hideLink">
+    <button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
+    <a class="btn btn-primary" (click)="onSubmitStory()" [hidden]="hideLink">Add Story</a>
+  </modal-footer>
+
+  <div class="form-group" [hidden]="hideLink">
+    <table class="table stories table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th class="shirt">T-Shirt</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let story of stories" (click)="selectUserStory(story)" [class.active]="story == selectedStory">
+          <td>{{story.storyId}}</td>
+          <td>{{story.title}}</td>
+          <td class="shirt">{{story.shirtSize}}</td>
+          <td><a class="trashStory" (click)="deleteStory(story)" data-toggle="modal"><i class="trash fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                            title="" data-original-title="Delete Story" onmouseenter="$(this).tooltip('show')"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 
 
