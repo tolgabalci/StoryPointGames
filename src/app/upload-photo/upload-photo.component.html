@@ -1,3 +1,8 @@
-<p>
-  upload-photo works!
-</p>
+<!-- Image Uploader from https://github.com/aberezkin/ng2-image-upload -->
+<image-upload 
+  [max]="1" 
+  [fileTooLargeMessage]="'Image too large!'" 
+  [maxFileSize]="1048576" 
+  [buttonCaption]="'Select Photo'"
+  [dropBoxMessage]="'Add profile picture'">
+</image-upload>

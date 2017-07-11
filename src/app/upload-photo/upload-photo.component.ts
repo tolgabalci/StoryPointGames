@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadPhotoComponent implements OnInit {
 
+  
   constructor() { }
 
   ngOnInit() {
   }
 
+  
 }
