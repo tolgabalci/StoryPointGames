@@ -35,6 +35,7 @@ import { EmailUpdateComponent } from './email-update/email-update.component';
 import { NameUpdateComponent } from './name-update/name-update.component';
 import { FocusDirective } from './shared/focus.directive';
 import { ClipboardModule } from 'ngx-clipboard';
+import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
 
 
 // Initialize Firebase
@@ -64,7 +65,8 @@ var firebaseConfig = {
     PasswordUpdateComponent,
     EmailUpdateComponent,
     FocusDirective,
-    NameUpdateComponent
+    NameUpdateComponent,
+    UploadPhotoComponent
   ],
   imports: [
     ClipboardModule,
