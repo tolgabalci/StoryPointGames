@@ -5,6 +5,7 @@ import { GameService } from './../services/game.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalComponent } from "ng2-bs3-modal/components/modal";
 
+
 @Component({
   selector: 'app-user-story',
   templateUrl: './user-story.component.html',
@@ -74,7 +75,11 @@ export class UserStoryComponent implements OnInit {
         break;
     }
 
+
+
   }
+
+
 
   deleteStory(story: Story) {
     this.gameService.deleteGameStory(this.game.$key, story.$key);
