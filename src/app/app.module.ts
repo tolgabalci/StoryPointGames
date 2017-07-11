@@ -25,7 +25,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserStoryComponent } from './user-story/user-story.component';
 import { AccountComponent } from "./account/account.component";
 
-
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/do';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
@@ -35,6 +34,8 @@ import { EmailUpdateComponent } from './email-update/email-update.component';
 import { NameUpdateComponent } from './name-update/name-update.component';
 import { FocusDirective } from './shared/focus.directive';
 import { ClipboardModule } from 'ngx-clipboard';
+import { ImageUploadModule } from "angular2-image-upload";
+import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
 
 
 // Initialize Firebase
@@ -64,7 +65,8 @@ var firebaseConfig = {
     PasswordUpdateComponent,
     EmailUpdateComponent,
     FocusDirective,
-    NameUpdateComponent
+    NameUpdateComponent,
+    UploadPhotoComponent
   ],
   imports: [
     ClipboardModule,
@@ -76,6 +78,7 @@ var firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    ImageUploadModule.forRoot(),
     RouterModule.forRoot([
       { path: "createNewGame", component: NewGameComponent },
       { path: "savedGames", component: SavedGamesComponent },
@@ -92,6 +95,7 @@ var firebaseConfig = {
       { path: "account/update-email", component: EmailUpdateComponent },
       { path: "account/update-name", component: NameUpdateComponent },
       { path: "recoverPassword", component: PasswordResetComponent },
+      { path: "uploadPhoto", component: UploadPhotoComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "**", component: DashboardComponent }
     ]),
