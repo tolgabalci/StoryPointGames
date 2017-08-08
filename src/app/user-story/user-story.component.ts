@@ -13,7 +13,7 @@ import { ModalComponent } from "ng2-bs3-modal/components/modal";
 })
 export class UserStoryComponent implements OnInit {
   @ViewChild('modal')
-  modal: ModalComponent;
+  public modal: ModalComponent;
   game: Game = new Game();
   story: Story = new Story();
   currentMode: string;
@@ -88,6 +88,8 @@ export class UserStoryComponent implements OnInit {
   ngOnInit() {
     this.hideLink = true;
     this.hideSubmit = true;
+
+    this.modal.onDismiss.subscribe(() => console.log("onDismiss was hit"));
   }
 
 }
