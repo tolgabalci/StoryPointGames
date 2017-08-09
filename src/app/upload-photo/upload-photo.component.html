@@ -3,6 +3,10 @@
   [max]="1" 
   [fileTooLargeMessage]="'Image too large!'" 
   [maxFileSize]="1048576" 
-  [buttonCaption]="'Select Photo'"
-  [dropBoxMessage]="'Add profile picture'">
+  [buttonCaption]="'Select Photo'"  
+  (removed)="onRemoved($event)"
+  (uploadFinished)="onUploadFinished($event)"
+  (uploadStateChanged)="onUploadStateChanged($event)"
+  >
 </image-upload>
+<button class="btn btn-primary" *ngIf="selectedFile" (onClick)="onUploadFinished($event)">Submit</button>
