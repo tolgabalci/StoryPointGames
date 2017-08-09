@@ -8,7 +8,7 @@
             <div class="col-xs-5">
                 Score
             </div>
-            <div class="col-xs-7 dealerHeader">
+            <div class="col-xs-7 dealerHeader" *ngIf="this.auth.auth.currentUser.uid==this.game.createdByUid">
                 Dealer Controls
             </div>
         </div>
@@ -16,7 +16,7 @@
             <div class="col-xs-5 results">
                 8
             </div>
-            <div class="col-xs-7 flip">
+            <div class="col-xs-7 flip" *ngIf="this.auth.auth.currentUser.uid==this.game.createdByUid">
                 <a class="flipcards"><i class="controls fa fa-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Flip Cards"
                     onmouseenter="$(this).tooltip('show')" (click)="flipCards()">  Flip</i></a>
                 <br>
