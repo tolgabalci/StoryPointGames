@@ -4,30 +4,29 @@
     <div class="row">
       <div class="col-xs-5 col-sm-5 col-md-4 col-lg-4 sidebar">
 
-        <app-game-controller (flip)="FlipCards()" [selectedStory]="story" (selectStory)="storyChange($event)">>
-
+        <app-game-controller (flip)="flipCards()" [selectedStory]="story" (selectStory)="storyChange($event)" (reset)="resetCards()">
         </app-game-controller>
       </div>
 
       <div class="col-xs-7 col-sm-7 col-md-8 col-lg-8 gameBoard">
-        <div class="main">
+        <!--<div class="main" *ngFor="let currentStory of currentStories">-->
           <h3 class="gameName">{{game.name}}</h3>
-          <h4 class="userStory"> User Story # {{story.storyId}}</h4>
-          <p>Title: {{story.title}}</p>
+          <h4 class="userStory"> User Story # {{story?.storyId}}</h4>
+          <p>Title: {{story?.title}}</p>
           <br/>
-          <p>Description: {{story.description}}</p>
+          <p>Description: {{story?.description}}</p>
           <hr class="divider" />
-        </div>
+        <!--</div>-->
       </div>
     </div>
 
     <div class="row">
       <div class="col-xs-7 col-sm-7 col-md-8 col-lg-8 cardsPlayed">
         <div class="col-lg-1 col-md-1" *ngFor="let userStoryCard of userStoryCards">
-          <div class="cardfront" [hidden]="hideFront">
+          <div class="cardfront" [hidden]="story.cardsHideFront">
             <!--front content-->
           </div>
-          <div class="cardback animated flipInY" [hidden]="hideBack">
+          <div class="cardback animated flipInY" [hidden]="story.cardsHideBack">
             <!--back content-->
             <span>{{userStoryCard.value}}</span>
           </div>

@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { UserStoryComponent } from './../user-story/user-story.component';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Game } from './../model/game';
@@ -8,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { GameComponent } from './../game/game.component';
 import { ModalComponent } from "ng2-bs3-modal/components/modal";
 import { Story } from 'app/model/story';
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-saved-games',
@@ -22,10 +24,13 @@ export class SavedGamesComponent implements OnInit {
   game: Game = new Game();
   games: any[];
   currentUsersGame: boolean = false;
+  gameSubscription: Subscription;
 
   constructor(private router: Router, private gameService: GameService, private toastrService: ToastrService, private auth: AngularFireAuth) {
-    this.gameService.getGames()
+    console.log('we are in the constructor for saved games')
+    this.gameSubscription = this.gameService.getGames()
       .subscribe(gamesData => { this.games = gamesData });
+
   }
 
   showSuccess() {
@@ -53,8 +58,13 @@ export class SavedGamesComponent implements OnInit {
   }
 
   addStories(game) {
-    console.log("game name ", game.name)
+    this.gameSubscription.unsubscribe();
+    console.log("game name ", game.name);
     this.UserStoryComponent.open(game, this.storyToEdit, "AddFromCreateGame");
+    this.UserStoryComponent.modal.onDismiss.subscribe(() => {
+      this.gameSubscription = this.gameService.getGames()
+        .subscribe(gamesData => { this.games = gamesData })
+    });
   }
 
   ngOnInit() {
