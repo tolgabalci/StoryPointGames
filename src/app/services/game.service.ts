@@ -130,33 +130,10 @@ export class GameService {
 
     return currentStory            
             .filter(stories => stories !== undefined && stories.length > 0)
-            .map(stories => stories[0]);
-            
-
+            .map(stories => stories[0]);            
   } 
-  // selectedStory: string = '';
-  // getCurrentStory(gameKey: string): FirebaseObjectObservable<Story> {
-  //   this.stories = this.db.list(`game/${gameKey}/stories`);
-    
-  //   var storySubscription = this.stories.subscribe(
-  //       stories => {
-  //       stories.forEach(story =>{
-  //           var storyRef = this.db.object(`game/${gameKey}/stories/${story.$key}`);
-  //           console.log("looping, story: " + story.currentlySelectedStory + " key: " + story.$key);
 
-  //           if (story.currentlySelectedStory == true)
-  //           {
-  //             this.selectedStory = story.$key;
-  //           }            
-  //       })
-  //   });
-  //   console.log("selectedStory: " + this.selectedStory);
-  //   storySubscription.unsubscribe();
-  //   var currentStory = this.db.object(`game/${gameKey}/stories/` + this.selectedStory);      
-  //   return currentStory;
-  // }
-
-  stories: FirebaseListObservable<any>;// = new Story();
+  stories: FirebaseListObservable<any>;
   markAsCurrentStory(gameKey: string, newStoryKey: string, oldStoryKey: string) {
     console.log("newStoryKey oldStoryKey",newStoryKey,oldStoryKey);
     this.stories = this.db.list(`game/${gameKey}/stories`);
@@ -172,9 +149,10 @@ export class GameService {
 
     this.storySelected = true;
     var newStory = this.db.object(`game/${gameKey}/stories/${newStoryKey}`);
-    newStory.subscribe(myStory => { this.story = myStory });
+    storySubscription = newStory.subscribe(myStory => { this.story = myStory });
     this.story.currentlySelectedStory = true;
     newStory.update(this.story);
+    storySubscription.unsubscribe();
     
   }
 
