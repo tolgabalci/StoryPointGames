@@ -15,5 +15,7 @@ export class Story {
     createdBy: string;
     userSelectedCard: UserSelectedCard[];
     currentlySelectedStory: boolean;
+    cardsHideFront: boolean;
+    cardsHideBack: boolean;
     $key: string;
 }

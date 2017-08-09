@@ -1,4 +1,4 @@
-import { Story } from 'app/model/story';
+import { Story } from './../model/story';
 import { Game } from './../model/game';
 //import { UserService } from './../shared/user.service';
 import { Injectable } from '@angular/core';
@@ -8,8 +8,11 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 import * as firebase from 'firebase/app';
 import { GameUser } from "app/model/gameUser";
 import { UserSelectedCard } from "app/model/userSelectedCard";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
 //import { Subject } from "rxjs/Subject";
-
+//import 'rxjs/first';
+//mport 'rxjs/add/operator/first';
+import 'rxjs/Rx';
 
 @Injectable()
 export class GameService {
@@ -17,9 +20,17 @@ export class GameService {
 
   constructor(private auth: AngularFireAuth,
     private db: AngularFireDatabase) { }
-
+  story: Story = new Story();
+  game: Game = new Game();
   cardToAdd: UserSelectedCard = new UserSelectedCard();
   userInfo: GameUser = new GameUser();
+  storySelected: boolean = false;
+  private _cardIsFlipped = new BehaviorSubject<boolean>(false);
+  cardIsFlipped$ = this._cardIsFlipped.asObservable();
+  //not used
+  static DEFAULT_STORY: Story = new Story();
+  currentStorySubject: BehaviorSubject<Story> = new BehaviorSubject<Story>(GameService.DEFAULT_STORY);
+  currentStory: Observable<Story> = this.currentStorySubject.asObservable();
 
   createGame(game: Game) {
     game.createdBy = this.auth.auth.currentUser.displayName;
@@ -104,7 +115,88 @@ export class GameService {
   addCardToStory(gameKey: string, storyKey: string, uid: string, value: string, displayName: string) {
     this.cardToAdd.displayName = displayName;
     this.cardToAdd.value = value;
-    var storyCardRef = this.db.object(`game/${gameKey}/stories/${storyKey}/userSelectedCards/${uid}`)
+    var storyCardRef = this.db.object(`game/${gameKey}/stories/${storyKey}/userSelectedCards/${uid}`);
     storyCardRef.update(this.cardToAdd);
   }
+  
+  getCurrentStory(gameKey: string): Observable<Story> {
+    var currentStory: FirebaseListObservable<Story[]> = this.db.list(`game/${gameKey}/stories`, {
+      query: {
+        orderByChild: 'currentlySelectedStory',
+        equalTo: true
+      }
+    });
+    
+
+    return currentStory            
+            .filter(stories => stories !== undefined && stories.length > 0)
+            .map(stories => stories[0]);
+            
+
+  } 
+  // selectedStory: string = '';
+  // getCurrentStory(gameKey: string): FirebaseObjectObservable<Story> {
+  //   this.stories = this.db.list(`game/${gameKey}/stories`);
+    
+  //   var storySubscription = this.stories.subscribe(
+  //       stories => {
+  //       stories.forEach(story =>{
+  //           var storyRef = this.db.object(`game/${gameKey}/stories/${story.$key}`);
+  //           console.log("looping, story: " + story.currentlySelectedStory + " key: " + story.$key);
+
+  //           if (story.currentlySelectedStory == true)
+  //           {
+  //             this.selectedStory = story.$key;
+  //           }            
+  //       })
+  //   });
+  //   console.log("selectedStory: " + this.selectedStory);
+  //   storySubscription.unsubscribe();
+  //   var currentStory = this.db.object(`game/${gameKey}/stories/` + this.selectedStory);      
+  //   return currentStory;
+  // }
+
+  stories: FirebaseListObservable<any>;// = new Story();
+  markAsCurrentStory(gameKey: string, newStoryKey: string, oldStoryKey: string) {
+    console.log("newStoryKey oldStoryKey",newStoryKey,oldStoryKey);
+    this.stories = this.db.list(`game/${gameKey}/stories`);
+    var storySubscription = this.stories.subscribe(
+        stories => {
+        stories.forEach(story =>{
+            var storyRef = this.db.object(`game/${gameKey}/stories/${story.$key}`);
+            story.currentlySelectedStory = false;
+            storyRef.update(story);
+        })
+    });
+    storySubscription.unsubscribe();
+
+    this.storySelected = true;
+    var newStory = this.db.object(`game/${gameKey}/stories/${newStoryKey}`);
+    newStory.subscribe(myStory => { this.story = myStory });
+    this.story.currentlySelectedStory = true;
+    newStory.update(this.story);
+    
+  }
+
+  markFlippedFlag(gameKey: string, storyKey: string, setState: string)
+  {
+    var theStory = this.db.object(`game/${gameKey}/stories/${storyKey}`);
+    var storySubscription = theStory.subscribe(myStory => this.story = myStory);
+    console.log("flippedflag store ", this.story.title);
+    switch (setState) {
+      case "hidden":
+        this.story.cardsHideBack = true;
+        this.story.cardsHideFront = false;
+        break;
+      case "unhidden":
+        this.story.cardsHideBack = false;
+        this.story.cardsHideFront = true;
+        break;
+      default:
+        break;
+    }
+    theStory.update(this.story);
+    storySubscription.unsubscribe();
+  }
+
 }
