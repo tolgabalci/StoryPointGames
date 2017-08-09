@@ -1,38 +1,20 @@
 <div class="row">
 	<div class="col-md-offset-3 col-md-6">
-		<h1>Create a new game</h1>
+		<h1>NEW GAME</h1>
 		<form [formGroup]="form" ng-submit="createGame()" novalidate>
 			<div class="form-group">
-				<label for="inputgameName">Game Name:</label>
-				<input class="form-control" formControlName="name" id="inputGameName" type="text" placeholder="Game Name">
+				<input class="form-control" [focus]="nameInputFocus" formControlName="name" name="name" id="inputGameName" type="text" placeholder="Game Name">
+				<div class="alert alert-danger" *ngIf="!form.controls['name'].valid && submitAttempted">You must enter a name for your game.</div>
 			</div>
 			<div class="form-group">
 				<label for="inputDescription">Description:</label>
 				<textarea class="form-control" formControlName="description" id="inputDescription" rows="4"></textarea>
 			</div>
 			<div class="form-group">
-				<label for="inputVelocity">Team Velocity:</label>
-				<input class="form-control" formControlName="velocity" id="inputVelocity" type="number">
-				<p class="help-block">The amount of work a Team can tackle during a single Sprint.</p>
+				<label for="inputVelocity">Story points in sprint:</label>
+				<input class="form-control" formControlName="velocity" id="inputVelocity" placeholder="The amount of work a Team can tackle during a single Sprint."
+				 type="number">
 			</div>
-			<div class="form-group">
-				<label>How many available hours in sprint?</label>
-				<div class="radio">
-					<label>
-						<input formControlName="shareVelocity" id="optionsVelocity1" type="radio"  value="Yes">
-						Yes
-					</label>
-				</div>
-				<div class="radio">
-					<label>
-						<input formControlName="shareVelocity" id="optionsVelocity2" type="radio" checked="" value="No">
-						No
-					</label>
-				</div>
-			</div>
-
-
-
 			<div class="form-group">
 				<label>Choose your card set:</label>
 
@@ -44,8 +26,8 @@
 				</div>
 				<div class="radio">
 					<label>
-				<input formControlName="cardSet" id="optionsCardSet2" type="radio"  value="Modified Fibonacci">
-					Rounded Fibonacci ( 0, ½, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?, Infinity, Pass)
+				<input formControlName="cardSet" id="optionsCardSet2" type="radio"  value="Simple">
+					Simple ( 0, ½, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?, Infinity, Pass)
 				</label>
 				</div>
 				<div class="radio">
@@ -62,17 +44,9 @@
 				<!--</div>-->
 			</div>
 
-
-
-
-
-
-
-
 			<div class="form-group">
 				<button class="btn btn-default" type="reset">Cancel</button>
-				<button class="btn btn-default" type="button">Create</button>
-				<button class="btn btn-primary" (click)="onSubmitSavePlay()" type="submit">Save & Play</button>
+				<button class="btn btn-primary pull-right" (click)="onSubmitSavePlay()" type="submit">Create</button>
 			</div>
 
 		</form>

@@ -5,27 +5,31 @@
 
     <div class="container-fluid">
         <div class="row estimate">
-            Score
-            <div class="col-xs-12 results">
+            <div class="col-xs-5">
+                Score
+            </div>
+            <div class="col-xs-7 dealerHeader">
+                Dealer Controls
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 results">
                 8
             </div>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row dealer" *ngIf="this.auth.auth.currentUser.uid==this.game.createdByUid">
-            <div class="col-xs-12 dealerHeader">
-                <h4>Dealer Controls</h4>
-            </div>
-            <div class="col-xs-12 flip">
+            <div class="col-xs-7 flip">
                 <a class="flipcards"><i class="controls fa fa-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Flip Cards"
                     onmouseenter="$(this).tooltip('show')" (click)="flipCards()">  Flip</i></a>
+                <br>
                 <a class="resetBoard"><i class="controls fa fa-undo" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reset board"
-                      onmouseenter="$(this).tooltip('show')"  (click)="resetCards()">  Reset</i></a>
-                <a class="add" (click)="openAddUserStory()"><i class="addStory fa fa-plus" aria-hidden="true">  Add User Story </i></a>
+                      onmouseenter="$(this).tooltip('show') click)="resetCards()">  Reset</i></a>
+
+                <a class="add" (click)="openAddUserStory()"><i class="controls fa fa-plus" aria-hidden="true">  Add User Story </i></a>
                 <app-user-story></app-user-story>
+
             </div>
         </div>
     </div>
+
     <div class="container-fluid tabs">
 
         <div class="row ">

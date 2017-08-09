@@ -1,13 +1,13 @@
 
 
 html, body{
-    height: 90vh;
+    height: 70vh;
     width: 100%;
      
 }
 
 .sizing{
-    height: 100vh;
+    height: 70vh;
 }
 
 .gameName{
@@ -87,7 +87,7 @@ html, body{
  * Main content
  */
 .container-fluid{
-    height: 100% !important;
+    height: 70% !important;
     width: 100% !important;
 }
 
@@ -205,7 +205,7 @@ html, body{
 
 .cardFooter{
    
-    height: 20vh;
+    height: 15vh;
     margin-bottom: 5px;
 
 

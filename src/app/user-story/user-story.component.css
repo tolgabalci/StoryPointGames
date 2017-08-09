@@ -16,3 +16,21 @@
 .description{
   margin-top: 15px;
 }
+
+.copy{
+  color: white;
+}
+
+.playGame{
+  margin-top: 10px;
+  float: right;
+}
+
+.shirt{
+  float: right;
+}
+
+.trashStory{
+  float: right;
+  cursor: pointer;
+}
