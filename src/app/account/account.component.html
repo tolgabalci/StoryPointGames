@@ -8,9 +8,9 @@
   <li>provider {{this.userProviderID}} </li>
   <li>PhotoURL {{this.userPhotoURL}} </li>
 </ul>
-
+<app-email-update></app-email-update>
 <ul>
-  <div *ngIf="this.userProviderID == 'password'">
+  <div *ngIf="this.userProviderID !== 'passwordx'">
     <li><button routerLink="update-name">Change Name</button></li>
     <li><button routerLink="update-email">Change Email</button></li>
     <li><button>Change Password</button></li>
