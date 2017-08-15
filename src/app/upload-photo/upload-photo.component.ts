@@ -10,37 +10,41 @@ import { AngularFireAuth } from "angularfire2/auth";
 export class UploadPhotoComponent implements OnInit {
 
   selectedFile;
-  
+
   constructor(private authService: AngularFireAuth, private fbApp: AngularFireDatabase) { }
 
   ngOnInit() {
   }
 
   onUploadFinished(event) {
-    console.log("Finished");    
-    console.log(event.file);    
+    console.log("Finished");
+    console.log(event.file);
     var fileName = this.selectedFile.name;
-    var storageRef = this.fbApp.database.app.storage().ref('/profileImages/' + fileName);    
+
+    var storageRef = this.fbApp.database.app.storage().ref('/profileImages/' + this.authService.auth.currentUser.uid + '/' + fileName);
+
     var uploadTask = storageRef.put(this.selectedFile)
+
     uploadTask.on('state_changed', function (snapshot) {
       // Observe state change events such as progress, pause, and resume
       // See below for more detail
     }, function (error) {
       // Handle unsuccessful uploads
-      }, function () {
+    }, function () {
       // Handle successful uploads on complete
       // For instance, get the download URL: https://firebasestorage.googleapis.com/..
-        var downloadURL = uploadTask.snapshot.downloadURL;
-        console.log(downloadURL);
-        
-    }
-  )
+      var downloadURL = uploadTask.snapshot.downloadURL;
+      console.log(downloadURL);
+
+    })
   }
 
   onUploadStateChanged(event) {
     this.selectedFile = event.file;
-    console.log("state changed");    
+    console.log("state changed");
   }
 
-  onRemoved(event){}
+  onRemoved(event) {
+
+  }
 }
