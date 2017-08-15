@@ -133,6 +133,7 @@ html, body{
 .sidebar {
   display: none;
   height: 100%;
+  margin-top: 15px;
 }
 @media (min-width: 768px) {
   .sidebar {
@@ -232,6 +233,14 @@ html, body{
 [name="cardSelect"]{
     display: none;
 }
+
+.infinity{
+   display: inline-block;
+   padding-bottom: 15px;
+
+}
+
+
 
 
 
