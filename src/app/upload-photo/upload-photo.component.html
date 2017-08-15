@@ -1,13 +1,12 @@
 <!-- Image Uploader from https://github.com/aberezkin/ng2-image-upload -->
 <image-upload 
   [max]="1" 
-  [fileTooLargeMessage]="'Image too large!'" 
-  [maxFileSize]="1048576" 
-  [buttonCaption]="'Select Image'"  
-  [dropBoxMessage]="'Upload a new profile image!'"
+  [fileTooLargeMessage]="'Image too large!'"
+  [maxFileSize]="1048576"
+  [buttonCaption]="'Select Image'"
+  [dropBoxMessage]="'Upload a profile image!'"
   (removed)="onRemoved($event)"
   (uploadFinished)="onUploadFinished($event)"
-  (uploadStateChanged)="onUploadStateChanged($event)"
-  >
+  (uploadStateChanged)="onUploadStateChanged($event)">
 </image-upload>
 <button class="btn btn-primary" *ngIf="selectedFile" (onClick)="onUploadFinished($event)">Submit</button>
