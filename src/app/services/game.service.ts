@@ -48,8 +48,11 @@ export class GameService {
     story.createdDate = Date();
     story.status = "Open";
     let storyPointGameStory = this.db.list(`game/${gameKey}/stories`)
+    console.log('what is the story ', story.$key)
     var newStoryRef = storyPointGameStory.push(story);
     story.$key = newStoryRef.key;
+
+
   }
 
   getGameStories(gameKey: string): FirebaseListObservable<any[]> {
@@ -118,7 +121,7 @@ export class GameService {
     var storyCardRef = this.db.object(`game/${gameKey}/stories/${storyKey}/userSelectedCards/${uid}`);
     storyCardRef.update(this.cardToAdd);
   }
-  
+
   getCurrentStory(gameKey: string): Observable<Story> {
     var currentStory: FirebaseListObservable<Story[]> = this.db.list(`game/${gameKey}/stories`, {
       query: {
@@ -126,25 +129,25 @@ export class GameService {
         equalTo: true
       }
     });
-    
 
-    return currentStory            
-            .filter(stories => stories !== undefined && stories.length > 0)
-            .map(stories => stories[0]);            
-  } 
+
+    return currentStory
+      .filter(stories => stories !== undefined && stories.length > 0)
+      .map(stories => stories[0]);
+  }
 
   stories: FirebaseListObservable<any>;
   markAsCurrentStory(gameKey: string, newStoryKey: string, oldStoryKey: string) {
-    console.log("newStoryKey oldStoryKey",newStoryKey,oldStoryKey);
+    console.log("newStoryKey oldStoryKey", newStoryKey, oldStoryKey);
     this.stories = this.db.list(`game/${gameKey}/stories`);
     var storySubscription = this.stories.subscribe(
-        stories => {
-        stories.forEach(story =>{
-            var storyRef = this.db.object(`game/${gameKey}/stories/${story.$key}`);
-            story.currentlySelectedStory = false;
-            storyRef.update(story);
+      stories => {
+        stories.forEach(story => {
+          var storyRef = this.db.object(`game/${gameKey}/stories/${story.$key}`);
+          story.currentlySelectedStory = false;
+          storyRef.update(story);
         })
-    });
+      });
     storySubscription.unsubscribe();
 
     this.storySelected = true;
@@ -153,11 +156,10 @@ export class GameService {
     this.story.currentlySelectedStory = true;
     newStory.update(this.story);
     storySubscription.unsubscribe();
-    
+
   }
 
-  markFlippedFlag(gameKey: string, storyKey: string, setState: string)
-  {
+  markFlippedFlag(gameKey: string, storyKey: string, setState: string) {
     var theStory = this.db.object(`game/${gameKey}/stories/${storyKey}`);
     var storySubscription = theStory.subscribe(myStory => this.story = myStory);
     console.log("flippedflag store ", this.story.title);

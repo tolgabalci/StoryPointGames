@@ -70,6 +70,7 @@ export class UserStoryComponent implements OnInit {
         break;
       case "AddFromCreateGame":
         this.gameService.createStory(this.game.$key, this.story);
+        this.story = new Story();
         break;
       default:
         break;
@@ -78,7 +79,6 @@ export class UserStoryComponent implements OnInit {
 
 
   }
-
 
 
   deleteStory(story: Story) {
