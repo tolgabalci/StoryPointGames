@@ -41,4 +41,6 @@ export class UploadPhotoComponent implements OnInit {
     this.selectedFile = event.file;
     console.log("state changed");    
   }
+
+  onRemoved(event){}
 }
