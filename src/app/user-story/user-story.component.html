@@ -72,7 +72,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let story of stories" (click)="selectUserStory(story)" [class.active]="story == selectedStory">
+        <tr *ngFor="let story of stories" [class.active]="story == selectedStory">
           <td>{{story.storyId}}</td>
           <td>{{story.title}}</td>
           <td class="shirt">{{story.shirtSize}}</td>

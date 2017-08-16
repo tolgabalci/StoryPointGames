@@ -64,7 +64,9 @@ export class SavedGamesComponent implements OnInit {
     this.UserStoryComponent.modal.onDismiss.subscribe(() => {
       this.gameSubscription = this.gameService.getGames()
         .subscribe(gamesData => { this.games = gamesData })
+      console.log("getting games");
     });
+
   }
 
   ngOnInit() {
