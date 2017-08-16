@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
 })
 export class AccountComponent implements OnInit {
   userName: string;
-  userEmail: string;
-  userProviderID: string;
+  userEmail: string;  
+  providerPassword: boolean;
   userPhotoURL: string;
+  debug: string;
 
   constructor(private authService: AngularFireAuth, private router: Router) { }
 
@@ -19,7 +20,11 @@ export class AccountComponent implements OnInit {
     this.authService.authState.subscribe(user => {
       this.userName = user.displayName
       this.userEmail = user.email
-      this.userProviderID = user.providerData[0].providerId;
+      for( var providerData of user.providerData) {
+        if (providerData.providerId == 'password') {
+          this.providerPassword = true;
+        }
+      }      
       this.userPhotoURL = user.photoURL
     });
     console.log("userauth", this.authService.auth)

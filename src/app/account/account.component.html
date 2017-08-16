@@ -3,17 +3,16 @@
 </h1>
 
 <ul>
-  <li>name {{this.userName}} </li>
-  <li>email {{this.userEmail}} </li>
-  <li>provider {{this.userProviderID}} </li>
-  <li>PhotoURL {{this.userPhotoURL}} </li>
+  <li>name: {{this.userName}} </li>
+  <li>email: {{this.userEmail}} </li>
+  <li>PhotoURL: <img src="{{this.userPhotoURL}}"></li>
 </ul>
 
 <ul>
-  <div *ngIf="this.userProviderID == 'password'">
-    <li><button routerLink="update-name">Change Name</button></li>
-    <li><button routerLink="update-email">Change Email</button></li>
-    <li><button>Change Password</button></li>
+  <div *ngIf="this.providerPassword">
+    <app-email-update></app-email-update>
+    <app-display-name-update></app-display-name-update>
+    <app-password-update></app-password-update>
   </div>
   <br>
   <li><button (click)="logout()">Logout</button></li>
