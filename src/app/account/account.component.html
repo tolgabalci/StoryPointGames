@@ -5,15 +5,22 @@
 <ul>
   <li>name: {{this.userName}} </li>
   <li>email: {{this.userEmail}} </li>
-  <li>PhotoURL: <img src="{{this.userPhotoURL}}"></li>
+  <li>PhotoURL: <img class="userimg" src="{{this.userPhotoURL}}"></li>
 </ul>
 
-<ul>
-  <div *ngIf="this.providerPassword">
-    <app-email-update></app-email-update>
-    <app-display-name-update></app-display-name-update>
-    <app-password-update></app-password-update>
-  </div>
-  <br>
-  <li><button (click)="logout()">Logout</button></li>
-</ul>
+<br><br>
+
+<div *ngIf="this.providerIsPassword">
+  <p>
+    <input type="email" id="email" placeholder="your.email@domain.com" [(ngModel)]="inputUserEmail" />
+    <button class="btn btn-primary" (click)="updateEmail()">Update Email</button>
+  </p>
+  <p>
+    <input type="input" id="inputDisplayName" [(ngModel)]="inputDisplayName" />
+    <button class="btn btn-primary" (click)="updateDisplayName()">Update Name</button>
+  </p>
+</div>
+
+<br>
+
+<button (click)="logout()">Logout</button>
