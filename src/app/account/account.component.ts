@@ -15,6 +15,8 @@ export class AccountComponent implements OnInit {
   debug: string;
   inputDisplayName: string;
   inputUserEmail: string;
+  inputPassword: string;
+  inputPhotoURL: string;
 
   constructor(private authService: AngularFireAuth, private router: Router) { }
 
@@ -38,10 +40,7 @@ export class AccountComponent implements OnInit {
     this.router.navigate(["/about"]);
   };
 
-  updatePassword() {
-    // gomer :)
-    // check out the password-reset module
-  };
+  
 
   updateDisplayName() {
     if (!this.inputDisplayName) {
@@ -52,11 +51,49 @@ export class AccountComponent implements OnInit {
         photoURL: this.authService.auth.currentUser.photoURL
       }).then(() => {
         alert("Display name updated.");
+        this.userName = this.inputDisplayName; // I changed this
+        this.inputDisplayName = '';            // I changed this
       }, function (error) {
         alert(error.message);
       });
     }
   };
+
+  updatePhotoURL() {
+    if (!this.inputDisplayName) {
+      alert("Please enter a name you wish to display.");
+    } else {
+      this.authService.auth.currentUser.updateProfile({
+        displayName: this.userName,
+        photoURL: this.inputPhotoURL
+      }).then(() => {
+        alert("Display name updated.");
+        this.userName = this.inputDisplayName; // I changed this
+        this.inputDisplayName = '';            // I changed this
+      }, function (error) {
+        alert(error.message);
+      });
+    }
+  };
+
+  updatePassword() {
+    if (!this.inputPassword) {
+      alert("Please enter a new password you wish to use.");
+    } else {
+      this.authService.auth.currentUser.updatePassword(
+      this.inputPassword       
+      ).then(() => {
+        alert("Password updated.");
+        
+        this.inputPassword = '';
+      }, function (error) {            // I changed this
+        alert(error.message);
+      });
+    }
+  };
+
+
+
 
   updateEmail() {
     if (!this.inputUserEmail) {
