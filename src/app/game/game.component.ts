@@ -25,7 +25,6 @@ export class GameComponent implements OnInit {
   currentStories: any[];
   currentCard: string;
   userStoryCards: any[];
-  flipped: boolean = false;
   //theCard: string = '100';
 
   constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute,
@@ -62,13 +61,11 @@ export class GameComponent implements OnInit {
   }
 
   flipCards() {
-    if (this.flipped == false) {
+    console.log("cardsHideFront ", this.story.cardsHideFront)
+    if (this.story.cardsHideFront == false) {
       this.gameService.markFlippedFlag(this.game.$key, this.story.$key, "unhidden");
-      this.flipped = true;
     } else {
       this.gameService.markFlippedFlag(this.game.$key, this.story.$key, "hidden");
-      this.flipped = false
-        ;
     }
     console.log('flip the cards!');
     //this.hideFront =true;
