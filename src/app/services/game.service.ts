@@ -98,6 +98,11 @@ export class GameService {
     userToRemove.remove();
   }
 
+  deleteGameStoryCards(gameKey: string, storyKey: string) {
+    var cardsToRemove = this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`)
+    cardsToRemove.remove();
+  }
+
   updateStory(gameKey: string, story: Story) {
     var storyRef = this.db.object(`game/${gameKey}/stories/${story.$key}`);
     storyRef.update(story);
