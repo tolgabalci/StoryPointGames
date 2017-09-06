@@ -25,25 +25,28 @@ export class GameComponent implements OnInit {
   currentStories: any[];
   currentCard: string;
   userStoryCards: any[];
+  score: string;
   //theCard: string = '100';
 
   constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute,
     private gameService: GameService, private auth: AngularFireAuth) {
+
     this.route.data
-      .do(data => console.log("Check for key:", data.game))
       .subscribe(data => this.game = data.game);
 
-    this.gameService.getGameStories(this.game.$key)
-      .subscribe(myStories => {
+    // this.gameService.getGameStories(this.game.$key)
+    //   .subscribe(myStories => {
+    //     this.stories = myStories;        
+    //});
 
-        this.stories = myStories;
-        
-    });
     this.gameService.getCurrentStory(this.game.$key)
-        .do(story => this.story = story)        
-        .switchMap(story => this.gameService.getStoryUserCards(this.game.$key,story.$key))
-        .subscribe(storyCards => { this.userStoryCards = storyCards });
-    
+      .do(story => this.story = story)
+      .switchMap(story => this.gameService.getStoryUserCards(this.game.$key, story.$key))
+      .do(storyCards => { this.userStoryCards = storyCards })
+      .switchMap(stories => this.gameService.getGameStories(this.game.$key))
+      .subscribe(stories => { this.stories = stories });
+    //.subscribe(storyCards => { this.userStoryCards = storyCards });
+
   }
 
   ngOnInit() {
@@ -61,24 +64,23 @@ export class GameComponent implements OnInit {
   }
 
   flipCards() {
-    
-    this.gameService.markFlippedFlag(this.game.$key,this.story.$key,"unhidden");
-    console.log('flip the cards!');
-    //this.hideFront =true;
-    //this.hideBack = false;
+
+    this.gameService.markFlippedFlag(this.game.$key, this.story.$key, "unhidden");
+    //console.log('flip the cards!');
+    //this.score = this.gameService.getScore(this.game.$key, this.story.$key);
   }
 
   resetCards() {
-    this.gameService.markFlippedFlag(this.game.$key,this.story.$key,"hidden");
+    this.gameService.markFlippedFlag(this.game.$key, this.story.$key, "hidden");
   }
 
   selectedCard(card: string) {
 
     this.currentCard = card;
     console.log("selected card: ", this.currentCard, this.auth.auth.currentUser.displayName);
-    
+
     this.gameService.addCardToStory(this.game.$key, this.story.$key, this.auth.auth.currentUser.uid, this.currentCard, this.auth.auth.currentUser.displayName);
-    this.gameService.markFlippedFlag(this.game.$key,this.story.$key,"hidden");
+    this.gameService.markFlippedFlag(this.game.$key, this.story.$key, "hidden");
     //this.hideFront = false;
     //this.hideBack = true;
   }

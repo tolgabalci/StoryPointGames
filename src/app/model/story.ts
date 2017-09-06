@@ -17,5 +17,6 @@ export class Story {
     currentlySelectedStory: boolean;
     cardsHideFront: boolean;
     cardsHideBack: boolean;
+    score: string;
     $key: string;
 }

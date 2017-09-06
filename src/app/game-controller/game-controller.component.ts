@@ -28,6 +28,7 @@ export class GameControllerComponent implements OnInit {
   currentIcon: string = "break fa fa-coffee";
   currentTip: string = "Step Away";
   isCardFlipped: boolean = false;
+  score: string = "-";
 
   @Input() selectedStory: Story = new Story;
 
@@ -39,27 +40,25 @@ export class GameControllerComponent implements OnInit {
   //     console.log('onChange fired');
   //     console.log('changing', args);
   // }
-  
+
   constructor(private activatedRouter: ActivatedRoute, private router: Router, private gameService: GameService, public auth: AngularFireAuth) {
 
     this.activatedRouter.data
       .subscribe(data => this.game = data.game);
-    
-    this.gameService.getGameStories(this.game.$key)
-      .subscribe(stories => { 
-                 this.stories = stories;
-                 });
-    
 
     this.gameService.getGameUsers(this.game.$key)
-      .subscribe(users => { this.gameUsers = users});
+      .subscribe(users => { this.gameUsers = users });
 
-    //this.gameService.cardIsFlipped$.subscribe(flipped => {this.isCardFlipped = flipped});
-    
+
+    this.gameService.getGameStories(this.game.$key)
+      .do(stories => { this.stories = stories })
+      .switchMap(currentStory => this.gameService.getCurrentStory(this.game.$key))
+      .subscribe(story => this.story = story)
+
   }
 
   ngOnInit() {
-
+    this.currentStory = this.story;
   }
 
   editStory(story: Story) {
@@ -75,20 +74,23 @@ export class GameControllerComponent implements OnInit {
     console.log("here");
     this.UserStoryComponent.open(this.game, this.storyToEdit, "Add");
   }
-  
+
   flipCards() {
     this.flip.emit(null);
+    this.score = this.gameService.getScore(this.game.$key, this.currentStory.$key);
+    console.log('mode IS:', this.score);
   }
 
   resetCards() {
     this.reset.emit(null);
   }
+
   selectUserStory(story: Story) {
-    this.gameService.markAsCurrentStory(this.game.$key,story.$key,this.currentStory.$key);
+    this.gameService.markAsCurrentStory(this.game.$key, story.$key, this.currentStory.$key);
     this.currentStory = story;
     console.log("game-controller-component story selected from tab: ", story.title)
     this.selectStory.emit(story);
-    
+
   }
 
   leaveGame(user: GameUser) {
@@ -100,7 +102,7 @@ export class GameControllerComponent implements OnInit {
     if (user.status == "Away") {
       this.currentIcon = "break fa fa-coffee";
       this.currentTip = "Step Away";
-      user.status = "Active";     
+      user.status = "Active";
     }
     else {
       this.currentIcon = "active fa fa-user";

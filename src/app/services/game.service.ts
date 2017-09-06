@@ -47,6 +47,7 @@ export class GameService {
     story.createdBy = this.auth.auth.currentUser.displayName;
     story.createdDate = Date();
     story.status = "Open";
+    story.score = "";
     let storyPointGameStory = this.db.list(`game/${gameKey}/stories`)
     var newStoryRef = storyPointGameStory.push(story);
     story.$key = newStoryRef.key;
@@ -118,7 +119,7 @@ export class GameService {
     var storyCardRef = this.db.object(`game/${gameKey}/stories/${storyKey}/userSelectedCards/${uid}`);
     storyCardRef.update(this.cardToAdd);
   }
-  
+
   getCurrentStory(gameKey: string): Observable<Story> {
     var currentStory: FirebaseListObservable<Story[]> = this.db.list(`game/${gameKey}/stories`, {
       query: {
@@ -126,25 +127,25 @@ export class GameService {
         equalTo: true
       }
     });
-    
 
-    return currentStory            
-            .filter(stories => stories !== undefined && stories.length > 0)
-            .map(stories => stories[0]);            
-  } 
+
+    return currentStory
+      .filter(stories => stories !== undefined && stories.length > 0)
+      .map(stories => stories[0]);
+  }
 
   stories: FirebaseListObservable<any>;
   markAsCurrentStory(gameKey: string, newStoryKey: string, oldStoryKey: string) {
-    console.log("newStoryKey oldStoryKey",newStoryKey,oldStoryKey);
+    console.log("newStoryKey oldStoryKey", newStoryKey, oldStoryKey);
     this.stories = this.db.list(`game/${gameKey}/stories`);
     var storySubscription = this.stories.subscribe(
-        stories => {
-        stories.forEach(story =>{
-            var storyRef = this.db.object(`game/${gameKey}/stories/${story.$key}`);
-            story.currentlySelectedStory = false;
-            storyRef.update(story);
+      stories => {
+        stories.forEach(story => {
+          var storyRef = this.db.object(`game/${gameKey}/stories/${story.$key}`);
+          story.currentlySelectedStory = false;
+          storyRef.update(story);
         })
-    });
+      });
     storySubscription.unsubscribe();
 
     this.storySelected = true;
@@ -153,11 +154,10 @@ export class GameService {
     this.story.currentlySelectedStory = true;
     newStory.update(this.story);
     storySubscription.unsubscribe();
-    
+
   }
 
-  markFlippedFlag(gameKey: string, storyKey: string, setState: string)
-  {
+  markFlippedFlag(gameKey: string, storyKey: string, setState: string) {
     var theStory = this.db.object(`game/${gameKey}/stories/${storyKey}`);
     var storySubscription = theStory.subscribe(myStory => this.story = myStory);
     console.log("flippedflag store ", this.story.title);
@@ -165,6 +165,7 @@ export class GameService {
       case "hidden":
         this.story.cardsHideBack = true;
         this.story.cardsHideFront = false;
+        this.story.score = "";
         break;
       case "unhidden":
         this.story.cardsHideBack = false;
@@ -175,6 +176,54 @@ export class GameService {
     }
     theStory.update(this.story);
     storySubscription.unsubscribe();
+  }
+
+  uniqueCards: FirebaseListObservable<any>;
+  cardArray: string[] = [];
+  getScore(gameKey: string, storyKey: string): string {
+    //var cards: FirebaseListObservable<UserSelectedCard[]> = this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`)
+
+    this.uniqueCards = this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`)
+    var storySubscription = this.uniqueCards.subscribe(
+      uniqueCards => {
+        uniqueCards.forEach(card => {
+          var cardRef = this.db.object(`game/${gameKey}/stories/${storyKey}/userSelectedCards/${card.$key}`);
+          var cardValue: string = card.value;
+          this.cardArray.push(cardValue);
+        })
+      });
+    storySubscription.unsubscribe();
+    if (this.cardArray.length == 0)
+      return null;
+
+    var modeMap = {},
+      maxCount = 1;
+    var maxEl: string = this.cardArray[0];
+
+    for (var i = 0; i < this.cardArray.length; i++) {
+      var el = this.cardArray[i];
+
+      if (modeMap[el] == null)
+        modeMap[el] = 1;
+      else
+        modeMap[el]++;
+
+      if (modeMap[el] > maxCount) {
+        maxEl = el;
+        maxCount = modeMap[el];
+      }
+      else if (modeMap[el] == maxCount) {
+        //maxEl += '&' + el;
+        maxEl = "Mult";
+        maxCount = modeMap[el];
+      }
+    }
+    this.cardArray = [];
+    var storyCardRef = this.db.object(`game/${gameKey}/stories/${storyKey}`);
+    this.story.score = maxEl;
+    storyCardRef.update(this.story);
+    return maxEl;
+
   }
 
 }
