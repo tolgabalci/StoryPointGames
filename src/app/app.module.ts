@@ -32,6 +32,7 @@ import { FocusDirective } from './shared/focus.directive';
 import { ClipboardModule } from 'ngx-clipboard';
 import { ImageUploadModule } from "angular2-image-upload";
 import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
+import { GameLinkComponent } from "app/game-link/game-link.component";
 
 
 // Initialize Firebase
@@ -58,7 +59,8 @@ var firebaseConfig = {
     AccountComponent,
     PasswordResetComponent,
     FocusDirective,
-    UploadPhotoComponent
+    UploadPhotoComponent,
+    GameLinkComponent
   ],
   imports: [
     ClipboardModule,
