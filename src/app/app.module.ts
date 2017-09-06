@@ -28,14 +28,11 @@ import { AccountComponent } from "./account/account.component";
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/do';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
-import { DisplayNameUpdateComponent } from './display-name-update/display-name-update.component';
-import { PasswordUpdateComponent } from './password-update/password-update.component';
-import { EmailUpdateComponent } from './email-update/email-update.component';
-import { NameUpdateComponent } from './name-update/name-update.component';
 import { FocusDirective } from './shared/focus.directive';
 import { ClipboardModule } from 'ngx-clipboard';
 import { ImageUploadModule } from "angular2-image-upload";
 import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
+import { GameLinkComponent } from "app/game-link/game-link.component";
 
 
 // Initialize Firebase
@@ -61,12 +58,9 @@ var firebaseConfig = {
     UserStoryComponent,
     AccountComponent,
     PasswordResetComponent,
-    DisplayNameUpdateComponent,
-    PasswordUpdateComponent,
-    EmailUpdateComponent,
     FocusDirective,
-    NameUpdateComponent,
-    UploadPhotoComponent
+    UploadPhotoComponent,
+    GameLinkComponent
   ],
   imports: [
     ClipboardModule,
@@ -92,8 +86,6 @@ var firebaseConfig = {
       { path: "register", component: RegisterUserComponent },
       { path: "userStory", component: UserStoryComponent },
       { path: "account", component: AccountComponent },
-      { path: "account/update-email", component: EmailUpdateComponent },
-      { path: "account/update-name", component: NameUpdateComponent },
       { path: "recoverPassword", component: PasswordResetComponent },
       { path: "uploadPhoto", component: UploadPhotoComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },

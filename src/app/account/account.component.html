@@ -3,18 +3,34 @@
 </h1>
 
 <ul>
-  <li>name {{this.userName}} </li>
-  <li>email {{this.userEmail}} </li>
-  <li>provider {{this.userProviderID}} </li>
-  <li>PhotoURL {{this.userPhotoURL}} </li>
+  <li>name: {{this.userName}} </li>
+  <li>email: {{this.userEmail}} </li>
+  <li>PhotoURL: <img class="userimg" src="{{this.userPhotoURL}}"></li>
 </ul>
 
-<ul>
-  <div *ngIf="this.userProviderID == 'password'">
-    <li><button routerLink="update-name">Change Name</button></li>
-    <li><button routerLink="update-email">Change Email</button></li>
-    <li><button>Change Password</button></li>
-  </div>
-  <br>
-  <li><button (click)="logout()">Logout</button></li>
-</ul>
+<br><br>
+
+<div *ngIf="this.providerIsPassword">
+  <p>
+    <input type="email" id="email" placeholder="your.email@domain.com" [(ngModel)]="inputUserEmail" />
+    <button class="btn btn-primary" (click)="updateEmail()">Update Email</button>
+  </p>
+  <p>
+    <input type="input" id="inputDisplayName" [(ngModel)]="inputDisplayName" />
+    <button class="btn btn-primary" (click)="updateDisplayName()">Update Name</button>
+  </p>
+  <p>
+    <!-- <input type="input" id="inputPhotoURL" [(ngModel)]="inputPhotoURL" />
+    <button class="btn btn-primary" (click)="updatePhotoURL()">Update Photo URL</button> -->
+    <app-upload-photo></app-upload-photo>
+  </p>
+  <p>
+    <input type="input" id="inputPassword" [(ngModel)]="inputPassword" />
+    <button class="btn btn-primary" (click)="updatePassword()">Update Password</button>
+  </p>
+
+</div>
+
+<br>
+
+<button (click)="logout()">Logout</button>

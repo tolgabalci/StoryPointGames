@@ -49,8 +49,11 @@ export class GameService {
     story.status = "Open";
     story.score = "";
     let storyPointGameStory = this.db.list(`game/${gameKey}/stories`)
+    console.log('what is the story ', story.$key)
     var newStoryRef = storyPointGameStory.push(story);
     story.$key = newStoryRef.key;
+
+
   }
 
   getGameStories(gameKey: string): FirebaseListObservable<any[]> {
@@ -94,6 +97,11 @@ export class GameService {
   deleteUserFromGame(gameKey: string, userKey: string) {
     var userToRemove = this.db.list(`game/${gameKey}/users/${userKey}`)
     userToRemove.remove();
+  }
+
+  deleteGameStoryCards(gameKey: string, storyKey: string) {
+    var cardsToRemove = this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`)
+    cardsToRemove.remove();
   }
 
   updateStory(gameKey: string, story: Story) {
