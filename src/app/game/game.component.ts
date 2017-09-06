@@ -67,7 +67,8 @@ export class GameComponent implements OnInit {
       this.flipped = true;
     } else {
       this.gameService.markFlippedFlag(this.game.$key, this.story.$key, "hidden");
-      this.flipped = false;
+      this.flipped = false
+        ;
     }
     console.log('flip the cards!');
     //this.hideFront =true;
@@ -96,6 +97,8 @@ export class GameComponent implements OnInit {
     // this.story = event;
     // this.gameService.getStoryUserCards(this.game.$key, this.story.$key)
     //   .subscribe(storyCards => { this.userStoryCards = storyCards; });
+    this.currentCard = null;
+    this.cards = this._cardDeckService.getCards(this.cardDeck);
   }
 
 }
