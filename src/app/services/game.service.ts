@@ -183,13 +183,13 @@ export class GameService {
         break;
     }
 
-    const update = {
+    const updateData = {
       cardsHideBack: this.story.cardsHideBack,
       cardsHideFront: this.story.cardsHideFront,
       score: this.story.score
     };
     
-    theStory.update(update);
+    theStory.update(updateData);
     storySubscription.unsubscribe();
   }
 
