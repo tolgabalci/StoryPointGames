@@ -3170,9 +3170,9 @@ ngx-clipboard@^8.0.3:
   dependencies:
     ngx-window-token "0.0.2"
 
-ngx-toastr@^5.2.3:
-  version "5.2.3"
-  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-5.2.3.tgz#3519d18884f9838d863b6bc1479e2598cb10736c"
+ngx-toastr@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-6.2.1.tgz#6d04e11b67574c9bf9718c9f4e298e36157cd8c4"
 
 ngx-window-token@0.0.2:
   version "0.0.2"
