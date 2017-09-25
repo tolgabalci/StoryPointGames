@@ -42,7 +42,7 @@ export class Init {
 
             ];
         }
-        else if (cardDeck == "Modified Fibonacci") {
+        else if (cardDeck == "Simple") {
             var cards = [
                 {
                     text: "0"
