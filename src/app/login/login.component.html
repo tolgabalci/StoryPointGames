@@ -1,23 +1,31 @@
-<header>
-  <h4 class="modal-title">Please Log In</h4>
-</header>
-<form role="form">
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" [(ngModel)]="userEmail" />
-    <a class="registerModal" href="register">Not Registered?</a>
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Password" name="pass" [(ngModel)]="userPass" />
-    <a class="registerModal addClick" (click)="openPasswordReset()" data-dismiss="modal">Forget Password?</a>
-    <app-password-reset></app-password-reset>
-  </div>
-</form>
+<div class="container">
+  <div class="col-md-12 column">
+    <div class="theform">
+      <header>
+        <h4 class="modal-title">Please Log In</h4>
+      </header>
 
-<footer>
-  <input type="image" src="../assets/images/googlelogin.png" alt="Submit" class="googleButton" align="left" (click)="login('google')"
-   data-dismiss="modal">
-  <button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
-  <button class="btn btn-primary" type="submit" data-dismiss="modal" (click)="login('custom')">Login</button>
-</footer>
+      <form role="form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" [(ngModel)]="userEmail" />
+          <a class="registerModal" href="register">Not Registered?</a>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" name="pass" [(ngModel)]="userPass" />
+          <a class="registerModal addClick" (click)="openPasswordReset()" data-dismiss="modal">Forget Password?</a>
+          <app-password-reset></app-password-reset>
+        </div>
+      </form>
+
+      <footer>
+        <input type="image" src="../assets/images/googlelogin.png" alt="Submit" class="googleButton" align="left" (click)="login('google')"
+          data-dismiss="modal">
+        <button class="btn btn-default" type="cancel" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit" data-dismiss="modal" (click)="login('custom')">Login</button>
+      </footer>
+
+    </div>
+  </div>
+</div>

@@ -33,40 +33,40 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   login(loginType: string) {
-  this.router.navigate(["/login"]);
+    this.router.navigate(["/login"]);
     return;
 
-    console.log("login button pressed");
-    switch (loginType) {
-      case "google": {
-        this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(auth => {
-          if (auth !== null) {
-            console.log('Super GARY login complete.');
-            this.router.navigate(["/dashboard"]);
-          }
-        });
-        break;
-      }
-      case "custom": {
-        this.auth.auth.signInWithEmailAndPassword(this.userEmail, this.userPass)
-          .then(auth => {
-            if (auth !== null) {
-              console.log('Super GARY custom login complete.');
-              this.router.navigate(["/dashboard"]);
-            }
-          })
-          .catch(function (error: any) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            if (errorCode) {
-              alert(errorMessage);
-            }
-          })
-        this.userEmail = "";
-        this.userPass = "";
-        break;
-      }
-    }
+    // console.log("login button pressed");
+    // switch (loginType) {
+    //   case "google": {
+    //     this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(auth => {
+    //       if (auth !== null) {
+    //         console.log('Super GARY login complete.');
+    //         this.router.navigate(["/dashboard"]);
+    //       }
+    //     });
+    //     break;
+    //   }
+    //   case "custom": {
+    //     this.auth.auth.signInWithEmailAndPassword(this.userEmail, this.userPass)
+    //       .then(auth => {
+    //         if (auth !== null) {
+    //           console.log('Super GARY custom login complete.');
+    //           this.router.navigate(["/dashboard"]);
+    //         }
+    //       })
+    //       .catch(function (error: any) {
+    //         var errorCode = error.code;
+    //         var errorMessage = error.message;
+    //         if (errorCode) {
+    //           alert(errorMessage);
+    //         }
+    //       })
+    //     this.userEmail = "";
+    //     this.userPass = "";
+    //     break;
+    //   }
+    // }
   };
 
   logout() {

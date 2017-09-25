@@ -76,15 +76,15 @@ var firebaseConfig = {
     AngularFireDatabaseModule,
     ImageUploadModule.forRoot(),
     RouterModule.forRoot([
-      { path: "createNewGame", component: NewGameComponent },
-      { path: "savedGames", component: SavedGamesComponent },
+      { path: "createNewGame", component: NewGameComponent, canActivate: [LoggedInGuardService] },
+      { path: "savedGames", component: SavedGamesComponent, canActivate: [LoggedInGuardService] },
       { path: "about", component: AboutComponent },
       {
-        path: "game/:id", component: GameComponent, resolve: {
+        path: "game/:id", component: GameComponent, canActivate: [LoggedInGuardService], resolve: {
           game: GameResolverService
         }
       },
-      { path: "login", component: LoginComponent},
+      { path: "login", component: LoginComponent },
       { path: "dashboard", canActivate: [LoggedInGuardService], component: DashboardComponent },
       { path: "register", component: RegisterUserComponent },
       { path: "userStory", component: UserStoryComponent },

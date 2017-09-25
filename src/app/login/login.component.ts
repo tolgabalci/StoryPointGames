@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from "firebase";
+import { PasswordResetComponent } from 'app/password-reset/password-reset.component';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +17,17 @@ export class LoginComponent implements OnInit {
   user: Observable<firebase.User>;
   userEmail: string;
   userPass: string;
+  returnUrl: string;
 
-  constructor(private auth: AngularFireAuth, private router: Router) {
+  constructor(private auth: AngularFireAuth, private route: ActivatedRoute, private router: Router) {
     this.user = auth.authState;
   }
 
   ngOnInit() {
+    this.route.queryParamMap
+      .do(params => console.log("login queryParams:", params))
+      .map(params => this.returnUrl = params.get('returnUrl'))
+      .subscribe();
   }
 
   login(loginType: string) {
@@ -30,8 +36,12 @@ export class LoginComponent implements OnInit {
       case "google": {
         this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(auth => {
           if (auth !== null) {
-            console.log('Super GARY login complete.');
-            this.router.navigate(["/dashboard"]);
+            console.log('Super GARY login complete.', this.returnUrl);
+            if (this.returnUrl) {
+              this.router.navigateByUrl(this.returnUrl, { replaceUrl: true });
+            } else {
+              this.router.navigate(["/dashboard"], { replaceUrl: true });
+            }
           }
         });
         break;
@@ -41,7 +51,11 @@ export class LoginComponent implements OnInit {
           .then(auth => {
             if (auth !== null) {
               console.log('Super GARY custom login complete.');
-              this.router.navigate(["/dashboard"]);
+              if (this.returnUrl) {
+                this.router.navigateByUrl(this.returnUrl, { replaceUrl: true });
+              } else {
+                this.router.navigate(["/dashboard"], { replaceUrl: true });
+              }
             }
           })
           .catch(function (error: any) {
