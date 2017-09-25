@@ -15,8 +15,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="logintext" *ngIf="!(user | async)?.uid"><a href="register">Register</a></li>
 				<li routerLink="/account" class="logintext"><img *ngIf="(user | async)?.uid" class="userimg" src="{{(user | async)?.photoURL}}"> {{(user | async)?.displayName}}</li>
-				<li><a class="logintext" routerLink="login" *ngIf="!(user | async)?.uid">Login</a></li>
-				<!-- <li><a class="logintext" (click)="LoginModal.open()" *ngIf="!(user | async)?.uid">Login</a></li> -->
+				<li><a class="logintext" (click)="LoginModal.open()" *ngIf="!(user | async)?.uid">Login</a></li>
 				<!--<button type="button" class="btn btn-default" (click)="LoginModal.open()">test</button>-->
 			</ul>
 		</div>
