@@ -10,10 +10,18 @@ export class LoggedInGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
    
+    console.log("canActivate router", this.router);
+    console.log("canActivate route", route);
+    console.log("canActivate state", state);
+    
     return this.authService.authState
       .map(auth => {
         if (auth === null) {
-          this.router.navigate(["/about"])
+          if (state.url === "/dashboard") {
+            this.router.navigate(["/about"]);
+          } else {
+            this.router.navigate(["/about"]);
+          }
           return false;
         }
         else {

@@ -33,6 +33,7 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { ImageUploadModule } from "angular2-image-upload";
 import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
 import { GameLinkComponent } from "app/game-link/game-link.component";
+import { LoginComponent } from './login/login.component';
 
 
 // Initialize Firebase
@@ -60,7 +61,8 @@ var firebaseConfig = {
     PasswordResetComponent,
     FocusDirective,
     UploadPhotoComponent,
-    GameLinkComponent
+    GameLinkComponent,
+    LoginComponent
   ],
   imports: [
     ClipboardModule,
@@ -82,6 +84,7 @@ var firebaseConfig = {
           game: GameResolverService
         }
       },
+      { path: "login", component: LoginComponent},
       { path: "dashboard", canActivate: [LoggedInGuardService], component: DashboardComponent },
       { path: "register", component: RegisterUserComponent },
       { path: "userStory", component: UserStoryComponent },

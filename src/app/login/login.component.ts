@@ -1,20 +1,15 @@
-import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
-import { AngularFireAuth } from "angularfire2/auth";
-import * as firebase from 'firebase/app';
-import { Observable } from "rxjs/Observable";
-import { ModalComponent } from "ng2-bs3-modal/components/modal";
-
-
+import { Observable } from 'rxjs/Observable';
+import * as firebase from "firebase";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class LoginComponent implements OnInit {
   @ViewChild(PasswordResetComponent)
   PasswordResetComponent: PasswordResetComponent;
   title = 'app works!';
@@ -26,16 +21,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.user = auth.authState;
   }
 
-  ngAfterViewInit(): void {
-  }
-
   ngOnInit() {
   }
 
   login(loginType: string) {
-  this.router.navigate(["/login"]);
-    return;
-
     console.log("login button pressed");
     switch (loginType) {
       case "google": {
@@ -82,5 +71,4 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
   }
-
 }
