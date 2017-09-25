@@ -12,3 +12,6 @@
     margin-top:5px;
   
   }
+  .strikethrough {
+    text-decoration: line-through;
+}
