@@ -26,7 +26,7 @@ export class SavedGamesComponent implements OnInit {
   currentUsersGame: boolean = false;
   gameSubscription: Subscription;
 
-  constructor(private router: Router, private gameService: GameService, private toastrService: ToastrService, private auth: AngularFireAuth) {
+  constructor(private router: Router, private gameService: GameService, private toastrService: ToastrService, protected auth: AngularFireAuth) {
     console.log('we are in the constructor for saved games')
     this.gameSubscription = this.gameService.getGames()
       .subscribe(gamesData => { this.games = gamesData.reverse() }); // added reverse() to make newest games listed on top
