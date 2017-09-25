@@ -71,6 +71,7 @@ export class GameComponent implements OnInit {
     } else {
       this.gameService.markFlippedFlag(this.game.$key, this.story.$key, "hidden");
     }
+    this.score = this.gameService.getScore(this.game.$key, this.story.$key);
     console.log('flip the cards!');
     //this.hideFront =true;
     //this.hideBack = false;
@@ -79,6 +80,7 @@ export class GameComponent implements OnInit {
   resetCards() {
     this.gameService.markFlippedFlag(this.game.$key, this.story.$key, "hidden");
     this.gameService.deleteGameStoryCards(this.game.$key, this.story.$key);
+    this.gameService.updateScore(this.game.$key, this.story.$key, "-")
     this.currentCard = null;
     this.cards = this._cardDeckService.getCards(this.cardDeck);
   }
@@ -87,9 +89,9 @@ export class GameComponent implements OnInit {
 
     this.currentCard = card;
     console.log("selected card: ", this.currentCard, this.auth.auth.currentUser.displayName);
-    
+
     this.gameService.addCardToStory(this.game.$key, this.story.$key, this.auth.auth.currentUser.uid, this.currentCard, this.auth.auth.currentUser.displayName);
-    this.gameService.markFlippedFlag(this.game.$key,this.story.$key,"hidden");
+    this.gameService.markFlippedFlag(this.game.$key, this.story.$key, "hidden");
     //this.hideFront = false;
     //this.hideBack = true;
   }

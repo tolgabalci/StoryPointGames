@@ -51,12 +51,12 @@ export class GameControllerComponent implements OnInit {
 
     this.activatedRouter.data
       .subscribe(data => this.game = data.game);
-    
 
-    
+
+
 
     this.gameService.getGameUsers(this.game.$key)
-      .subscribe(users => { this.gameUsers = users});
+      .subscribe(users => { this.gameUsers = users });
 
 
     this.gameService.getGameStories(this.game.$key)
@@ -80,7 +80,7 @@ export class GameControllerComponent implements OnInit {
   }
 
   openAddUserStory() {
- 
+
     this.UserStoryComponent.open(this.game, this.storyToEdit, "Add");
   }
 
@@ -90,7 +90,7 @@ export class GameControllerComponent implements OnInit {
 
   flipCards() {
     this.flip.emit(null);
-    this.score = this.gameService.getScore(this.game.$key, this.currentStory.$key);
+    //this.score = this.gameService.getScore(this.game.$key, this.currentStory.$key);
     console.log('mode IS:', this.score);
   }
 
@@ -99,11 +99,11 @@ export class GameControllerComponent implements OnInit {
   }
 
   selectUserStory(story: Story) {
-    this.gameService.markAsCurrentStory(this.game.$key,story.$key,this.currentStory.$key);
+    this.gameService.markAsCurrentStory(this.game.$key, story.$key, this.currentStory.$key);
     this.currentStory = story;
     console.log("game-controller-component story selected from tab: ", story.title)
     this.selectStory.emit(story);
-    
+
   }
 
   leaveGame(user: GameUser) {
@@ -115,7 +115,7 @@ export class GameControllerComponent implements OnInit {
     if (user.status == "Away") {
       this.currentIcon = "break fa fa-coffee";
       this.currentTip = "Step Away";
-      user.status = "Active";     
+      user.status = "Active";
     }
     else {
       this.currentIcon = "active fa fa-user";

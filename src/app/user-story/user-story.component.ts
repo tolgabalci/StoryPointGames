@@ -63,6 +63,7 @@ export class UserStoryComponent implements OnInit {
   onSubmitStory() {
     switch (this.currentMode) {
       case "Add":
+        this.story.score = "-";
         this.gameService.createStory(this.game.$key, this.story);
         break;
       case "Edit":

@@ -109,6 +109,16 @@ export class GameService {
     storyRef.update(story);
   }
 
+  updateScore(gameKey: string, storyKey: string, score: string) {
+    var storyRef = this.db.object(`game/${gameKey}/stories/${storyKey}`);
+    this.story.score = score;
+    const updateData = {
+      score: this.story.score
+    };
+    storyRef.update(updateData);
+  }
+
+
   updateGameUser(gameKey: string, user: GameUser) {
     var userRef = this.db.object(`game/${gameKey}/users/${user.$key}`)
     userRef.update(user);
@@ -188,7 +198,7 @@ export class GameService {
       cardsHideFront: this.story.cardsHideFront,
       score: this.story.score
     };
-    
+
     theStory.update(updateData);
     storySubscription.unsubscribe();
   }
@@ -236,7 +246,11 @@ export class GameService {
     this.cardArray = [];
     var storyCardRef = this.db.object(`game/${gameKey}/stories/${storyKey}`);
     this.story.score = maxEl;
-    storyCardRef.update(this.story);
+    const updateData = {
+      score: this.story.score
+    };
+
+    storyCardRef.update(updateData);
     return maxEl;
 
   }
