@@ -102,6 +102,7 @@ export class GameControllerComponent implements OnInit {
     this.gameService.markAsCurrentStory(this.game.$key, story.$key, this.currentStory.$key);
     this.currentStory = story;
     console.log("game-controller-component story selected from tab: ", story.title)
+    this.gameService.updateAllVotes(this.game.$key, story.$key, true);
     this.selectStory.emit(story);
 
   }

@@ -1,3 +1,4 @@
+import { UserSelectedCard } from './../model/userSelectedCard';
 import { Story } from './../model/story';
 import { Game } from './../model/game';
 //import { UserService } from './../shared/user.service';
@@ -7,7 +8,6 @@ import { Observable } from "rxjs/Observable";
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from "angularfire2/database";
 import * as firebase from 'firebase/app';
 import { GameUser } from "app/model/gameUser";
-import { UserSelectedCard } from "app/model/userSelectedCard";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 //import { Subject } from "rxjs/Subject";
 //import 'rxjs/first';
@@ -23,6 +23,7 @@ export class GameService {
   story: Story = new Story();
   game: Game = new Game();
   cardToAdd: UserSelectedCard = new UserSelectedCard();
+  cardToResetVote: UserSelectedCard = new UserSelectedCard();
   userInfo: GameUser = new GameUser();
   storySelected: boolean = false;
   private _cardIsFlipped = new BehaviorSubject<boolean>(false);
@@ -124,6 +125,45 @@ export class GameService {
     userRef.update(user);
   }
 
+  users: FirebaseListObservable<any>;
+  userStoryCards: FirebaseListObservable<any>;
+  //card: UserSelectedCard = new UserSelectedCard();
+  updateAllVotes(gameKey: string, storyKey: string, udateValue: boolean) {
+    this.users = this.db.list(`game/${gameKey}/users`)
+    var usersSubscription = this.users.subscribe(
+      users => {
+        users.forEach(user => {
+          var userRef = this.db.object(`game/${gameKey}/users/${user.$key}`)
+          var theyVoted: boolean = false;
+          if (this.cardToResetVote.$key != null) {
+            theyVoted = true
+          }
+          const updateData = {
+            voted: theyVoted
+          };
+          userRef.update(updateData);
+
+        })
+      });
+    usersSubscription.unsubscribe();
+
+    this.userStoryCards = this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`)
+    var userStoryCardsSubscription = this.userStoryCards.subscribe(
+      userCards => {
+        userCards.forEach(card => {
+
+          var userRef = this.db.object(`game/${gameKey}/users/${card.$key}`);
+          var theyVoted: boolean = true;
+          const updateData = {
+            voted: theyVoted
+          };
+          userRef.update(updateData);
+        });
+      }
+    )
+    userStoryCardsSubscription.unsubscribe();
+  }
+
   addUserToGame(gameKey: string, uid: string) {
     this.userInfo.status = "Active";
     this.userInfo.displayName = this.auth.auth.currentUser.displayName;
@@ -136,6 +176,11 @@ export class GameService {
     this.cardToAdd.value = value;
     var storyCardRef = this.db.object(`game/${gameKey}/stories/${storyKey}/userSelectedCards/${uid}`);
     storyCardRef.update(this.cardToAdd);
+    var gameUserRef = this.db.object(`game/${gameKey}/users/${uid}`);
+    const updateData = {
+      voted: true
+    };
+    gameUserRef.update(updateData);
   }
 
   getCurrentStory(gameKey: string): Observable<Story> {

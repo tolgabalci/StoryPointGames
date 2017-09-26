@@ -83,6 +83,7 @@ export class GameComponent implements OnInit {
     this.gameService.updateScore(this.game.$key, this.story.$key, "-")
     this.currentCard = null;
     this.cards = this._cardDeckService.getCards(this.cardDeck);
+    this.gameService.updateAllVotes(this.game.$key, this.story.$key, true);
   }
 
   selectedCard(card: string) {
@@ -102,6 +103,7 @@ export class GameComponent implements OnInit {
     //   .subscribe(storyCards => { this.userStoryCards = storyCards; });
     this.currentCard = null;
     this.cards = this._cardDeckService.getCards(this.cardDeck);
+
   }
 
 }

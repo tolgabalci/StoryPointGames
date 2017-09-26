@@ -39,9 +39,7 @@
             <div class="col-xs-12 controlTabs">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#players" data-toggle="tab" aria-expanded="true">Players</a></li>
-                    <li class=""><a href="#stories" data-toggle="tab" aria-expanded="false"
-                        *ngIf="this.auth.auth.currentUser.uid==game.createdByUid"
-                        >User Stories</a></li>
+                    <li class=""><a href="#stories" data-toggle="tab" aria-expanded="false" *ngIf="this.auth.auth.currentUser.uid==game.createdByUid">User Stories</a></li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade active in" id="players">
@@ -50,6 +48,7 @@
                                 <tr>
                                     <th></th>
                                     <th>Status</th>
+                                    <th>Voted</th>
                                     <th>Player</th>
                                 </tr>
                             </thead>
@@ -60,6 +59,10 @@
                                             title="{{currentTip}}" data-original-title="" onmouseenter="$(this).tooltip('show')"
                                             *ngIf="this.auth.auth.currentUser.uid==gameUser.$key"></i></a></td>
                                     <td>{{gameUser.status}}</td>
+                                    <!-- <td>{{gameUser.voted}}</td> -->
+                                    <td><a class="votedOn">
+                                        <i class="voted fa fa-check-circle" aria-hidden="true" 
+                                            *ngIf="gameUser.voted"></i></a></td>
                                     <td>{{gameUser.displayName}}</td>
                                     <td></td>
                                     <td><a class="leaveGame" (click)="leaveGame(gameUser)">
