@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody *ngFor="let selectedGame of games">
-    <tr>
+    <tr [routerLink]="'/game/' + selectedGame.$key">
       <td>{{selectedGame.name}}</td>
       <td>{{selectedGame.description}}</td>
       <td>{{selectedGame.createdBy}}</td>
