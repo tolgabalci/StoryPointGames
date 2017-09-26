@@ -237,7 +237,13 @@ html, body{
 .infinity{
    display: inline-block;
    padding-bottom: 15px;
+}
 
+.infinityImage {
+    height: 15px;
+    width: 35px;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 

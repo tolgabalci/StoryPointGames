@@ -57,10 +57,9 @@
 
         <span (click)="selectedCard('I')">
           <input type="radio" name="cardSelect" id="infinity" />
-          <label class="card" *ngIf="cardDeck == 'Fibonacci'" for="infinity" value="i" >
+          <label class="card" *ngIf="cardDeck == 'Fibonacci' || cardDeck == 'Simple'" for="infinity" value="i" >
           <span>
-              <img src="../assets/images/infinity2.png" alt="">
-            
+              <img class="infinityImage" src="../assets/images/infinity2.png" alt="">            
           </span>
         </label>
         </span>
