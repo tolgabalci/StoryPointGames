@@ -21,8 +21,8 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-7 col-sm-7 col-md-8 col-lg-8 cardsPlayed">
-        <div class="col-lg-1 col-md-1" *ngFor="let userStoryCard of userStoryCards">
+      <div class="col-xs-5 col-sm-5 col-md-6 col-lg-6 cardsPlayed">
+        <div class="col-lg-2 col-md-2" *ngFor="let userStoryCard of userStoryCards">
           <div class="cardfront" [hidden]="story.cardsHideFront">
             <!--front content-->
           </div>
@@ -47,11 +47,11 @@
         <hr class="divider" />
 
         <span *ngFor="let card of cards" (click)="selectedCard(card.text)">
-            <input type="radio" name="cardSelect" id="{{card.text}}" />
-            <label class="card" for="{{card.text}}">    
-            <span>
-            {{card.text}}
-           </span>
+          <input type="radio" name="cardSelect" id="{{card.text}}" />
+          <label class="card" for="{{card.text}}">    
+          <span>
+          {{card.text}}
+         </span>
         </label>
         </span>
 

@@ -78,6 +78,7 @@ html, body{
     backface-visibility: hidden;
     font-size: 60px;
     padding-top: 20px;
+    margin-top: 100px;
 
 }
 
@@ -112,9 +113,8 @@ html, body{
 
 
 .cardsPlayed {
-    margin-top: 5px;
-    height: 50vh;
-    width: 100%;
+    margin-top: 50px;
+    width: 65%;
 
 
 }
