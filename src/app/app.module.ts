@@ -34,6 +34,7 @@ import { ImageUploadModule } from "angular2-image-upload";
 import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
 import { GameLinkComponent } from "app/game-link/game-link.component";
 import { LoginComponent } from './login/login.component';
+import { ReversePipe } from './shared/reverse.pipe';
 
 
 // Initialize Firebase
@@ -62,7 +63,8 @@ var firebaseConfig = {
     FocusDirective,
     UploadPhotoComponent,
     GameLinkComponent,
-    LoginComponent
+    LoginComponent,
+    ReversePipe,
   ],
   imports: [
     ClipboardModule,
@@ -99,7 +101,7 @@ var firebaseConfig = {
     BrowserAnimationsModule
 
   ],
-  providers: [GameService, CardDeckService, LoggedInGuardService, GameResolverService],
+  providers: [GameService, CardDeckService, LoggedInGuardService, GameResolverService, ReversePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
