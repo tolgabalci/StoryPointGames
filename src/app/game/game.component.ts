@@ -1,3 +1,5 @@
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 import { UserSelectedCard } from 'app/model/userSelectedCard';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { GameService } from './../services/game.service';
@@ -7,7 +9,7 @@ import { CardDeckService } from './../services/card-deck.service';
 import { GameControllerComponent } from './../game-controller/game-controller.component';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-//import 'rxjs/first';
+
 
 @Component({
   selector: 'app-game',
@@ -45,8 +47,10 @@ export class GameComponent implements OnInit {
       .switchMap(story => this.gameService.getStoryUserCards(this.game.$key, story.$key))
       .do(storyCards => { this.userStoryCards = storyCards })
       .switchMap(stories => this.gameService.getGameStories(this.game.$key))
-      .subscribe(stories => { this.stories = stories });
+      .subscribe(stories => { this.stories = stories })
+
     //.subscribe(storyCards => { this.userStoryCards = storyCards });
+
 
   }
 
@@ -61,7 +65,6 @@ export class GameComponent implements OnInit {
     console.log("card set is...", this.game.cardSet);
     this.cardDeck = this.game.cardSet;
     this.cards = this._cardDeckService.getCards(this.cardDeck);
-
   }
 
   flipCards() {

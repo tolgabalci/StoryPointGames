@@ -46,11 +46,15 @@
    margin-top: 20px;
 }
 
+.table .voted {
+    font-size: 20px;
+    color: black;
+}
+
 .table .break,
 .table .trash,
 .table .edit,
-.table .exit,
-.table .voted {
+.table .exit {
   cursor: pointer;
   font-size: 20px;
   color: black;

@@ -62,7 +62,7 @@ export class GameService {
   }
 
   getGameUsers(gameKey: string): FirebaseListObservable<any[]> {
-    return this.db.list(`game/${gameKey}/users`);
+    return this.db.list(`game/${gameKey}/users`, { query: { orderByChild: 'displayName_NoCase' } });
   }
 
   getGames(): FirebaseListObservable<any[]> {
@@ -79,7 +79,7 @@ export class GameService {
   }
 
   getStoryUserCards(gameKey: string, storyKey: string): FirebaseListObservable<any> {
-    return this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`)
+    return this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`, { query: { orderByChild: 'displayName_NoCase' } });
   }
 
   deleteGame(gameKey: string) {
@@ -127,17 +127,30 @@ export class GameService {
 
   users: FirebaseListObservable<any>;
   userStoryCards: FirebaseListObservable<any>;
+  // storiesForVotes: FirebaseListObservable<any>;
+  // selectedStory: string;
   //card: UserSelectedCard = new UserSelectedCard();
   updateAllVotes(gameKey: string, storyKey: string, udateValue: boolean) {
+    //bwe-keep this, possibly need if have to update voted
+    // this.storiesForVotes = this.db.list(`game/${gameKey}/stories`)
+    // var storiesSubscription = this.storiesForVotes.subscribe(
+    //   stories => {
+    //     stories.forEach(story => {
+
+    //       if (story.currentlySelectedStory == true) {
+    //         this.selectedStory = this.story.$key;
+    //       }
+    //     });
+    //   }
+    // )
+
+
     this.users = this.db.list(`game/${gameKey}/users`)
     var usersSubscription = this.users.subscribe(
       users => {
         users.forEach(user => {
           var userRef = this.db.object(`game/${gameKey}/users/${user.$key}`)
           var theyVoted: boolean = false;
-          if (this.cardToResetVote.$key != null) {
-            theyVoted = true
-          }
           const updateData = {
             voted: theyVoted
           };
@@ -167,12 +180,14 @@ export class GameService {
   addUserToGame(gameKey: string, uid: string) {
     this.userInfo.status = "Active";
     this.userInfo.displayName = this.auth.auth.currentUser.displayName;
+    this.userInfo.displayName_NoCase = this.auth.auth.currentUser.displayName.toLocaleLowerCase();
     var gameRef = this.db.object(`game/${gameKey}/users/${uid}`);
     gameRef.update(this.userInfo);
   }
 
   addCardToStory(gameKey: string, storyKey: string, uid: string, value: string, displayName: string) {
     this.cardToAdd.displayName = displayName;
+    this.cardToAdd.displayName_NoCase = displayName.toLocaleLowerCase();
     this.cardToAdd.value = value;
     var storyCardRef = this.db.object(`game/${gameKey}/stories/${storyKey}/userSelectedCards/${uid}`);
     storyCardRef.update(this.cardToAdd);

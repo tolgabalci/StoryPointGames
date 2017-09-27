@@ -68,6 +68,7 @@ export class GameControllerComponent implements OnInit {
 
   ngOnInit() {
     this.currentStory = this.story;
+
   }
 
   editStory(story: Story) {
