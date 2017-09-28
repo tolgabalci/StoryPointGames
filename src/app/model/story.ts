@@ -18,5 +18,6 @@ export class Story {
     cardsHideFront: boolean;
     cardsHideBack: boolean;
     score: string;
+    sequence: number;
     $key: string;
 }

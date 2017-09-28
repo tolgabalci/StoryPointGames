@@ -11,7 +11,7 @@ import { GameUser } from "app/model/gameUser";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 //import { Subject } from "rxjs/Subject";
 //import 'rxjs/first';
-//mport 'rxjs/add/operator/first';
+//import 'rxjs';
 import 'rxjs/Rx';
 
 @Injectable()
@@ -49,6 +49,7 @@ export class GameService {
     story.createdDate = Date();
     story.status = "Open";
     story.score = "";
+    story.sequence = 0;
     let storyPointGameStory = this.db.list(`game/${gameKey}/stories`)
     console.log('what is the story ', story.$key)
     var newStoryRef = storyPointGameStory.push(story);
@@ -79,7 +80,7 @@ export class GameService {
   }
 
   getStoryUserCards(gameKey: string, storyKey: string): FirebaseListObservable<any> {
-    return this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`, { query: { orderByChild: 'displayName_NoCase' } });
+    return this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`, { query: { orderByChild: 'sequence' } });
   }
 
   deleteGame(gameKey: string) {
@@ -185,17 +186,48 @@ export class GameService {
     gameRef.update(this.userInfo);
   }
 
+  storyUpdateSequence: Story = new Story();
+  newSequence: number;
+  cardExists: boolean;
   addCardToStory(gameKey: string, storyKey: string, uid: string, value: string, displayName: string) {
+
+    this.cardExists = false;
+
     this.cardToAdd.displayName = displayName;
     this.cardToAdd.displayName_NoCase = displayName.toLocaleLowerCase();
     this.cardToAdd.value = value;
     var storyCardRef = this.db.object(`game/${gameKey}/stories/${storyKey}/userSelectedCards/${uid}`);
+    var storyCardSub = storyCardRef.subscribe(snapshot => {
+      if (snapshot.$exists()) {
+        this.cardExists = true;
+      }
+    });
+    storyCardSub.unsubscribe();
+
+    if (!this.cardExists) {
+      var storyRef = this.db.object(`game/${gameKey}/stories/${storyKey}`);
+      this.storyUpdateSequence.sequence = 1
+      var storySub = storyRef.subscribe(myStory => { this.storyUpdateSequence = myStory });
+      if (this.storyUpdateSequence.sequence == null) {
+        this.newSequence = 1
+      }
+      else {
+        this.newSequence = this.storyUpdateSequence.sequence + 1;
+      }
+
+      const updateStoryData = {
+        sequence: this.newSequence
+      };
+      storyRef.update(updateStoryData);
+      storySub.unsubscribe();
+      this.cardToAdd.sequence = updateStoryData.sequence;
+    }
     storyCardRef.update(this.cardToAdd);
     var gameUserRef = this.db.object(`game/${gameKey}/users/${uid}`);
-    const updateData = {
+    const updateCardData = {
       voted: true
     };
-    gameUserRef.update(updateData);
+    gameUserRef.update(updateCardData);
   }
 
   getCurrentStory(gameKey: string): Observable<Story> {
@@ -283,11 +315,13 @@ export class GameService {
 
     var modeMap = {},
       maxCount = 1;
-    var maxEl: string = this.cardArray[0];
+    var maxEl: string = "-";
 
     for (var i = 0; i < this.cardArray.length; i++) {
       var el = this.cardArray[i];
-
+      if (el == "P") {
+        continue;
+      }
       if (modeMap[el] == null)
         modeMap[el] = 1;
       else
