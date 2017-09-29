@@ -317,30 +317,34 @@ export class GameService {
       maxCount = 1;
     var maxEl: string = "-";
 
-    for (var i = 0; i < this.cardArray.length; i++) {
-      var el = this.cardArray[i];
-      if (el == "P") {
-        continue;
-      }
-      if (modeMap[el] == null)
-        modeMap[el] = 1;
-      else
-        modeMap[el]++;
+    if (this.cardArray.length == 1) {
+      maxEl = this.cardArray[0];
+    }
+    else {
+      for (var i = 0; i < this.cardArray.length; i++) {
+        var el = this.cardArray[i];
+        if (el == "P") {
+          continue;
+        }
+        if (modeMap[el] == null)
+          modeMap[el] = 1;
+        else
+          modeMap[el]++;
 
-      if (modeMap[el] > maxCount) {
-        maxEl = el;
-        maxCount = modeMap[el];
-      }
-      else if (maxCount == 1) {
-        maxEl = el;
-      }
-      else if (modeMap[el] == maxCount) {
-        //maxEl += '&' + el;
-        maxEl = "Mult";
-        maxCount = modeMap[el];
+        if (modeMap[el] > maxCount) {
+          maxEl = el;
+          maxCount = modeMap[el];
+        }
+        // else if (maxCount == 1) {
+        //   maxEl = el;
+        // }
+        else if (modeMap[el] == maxCount) {
+          //maxEl += '&' + el;
+          maxEl = "Mult";
+          maxCount = modeMap[el];
+        }
       }
     }
-
     this.cardArray = [];
     var storyCardRef = this.db.object(`game/${gameKey}/stories/${storyKey}`);
     this.story.score = maxEl;
