@@ -331,12 +331,16 @@ export class GameService {
         maxEl = el;
         maxCount = modeMap[el];
       }
+      else if (maxCount == 1) {
+        maxEl = el;
+      }
       else if (modeMap[el] == maxCount) {
         //maxEl += '&' + el;
         maxEl = "Mult";
         maxCount = modeMap[el];
       }
     }
+
     this.cardArray = [];
     var storyCardRef = this.db.object(`game/${gameKey}/stories/${storyKey}`);
     this.story.score = maxEl;
