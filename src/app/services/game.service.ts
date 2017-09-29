@@ -68,6 +68,7 @@ export class GameService {
 
   getGames(): FirebaseListObservable<any[]> {
     console.log("getGames");
+    //return this.db.list("game"); //.map(arr => { return arr.reverse(); });
     return this.db.list("game", { query: { orderByChild: 'createDate' } });
   }
 
@@ -335,9 +336,7 @@ export class GameService {
           maxEl = el;
           maxCount = modeMap[el];
         }
-        // else if (maxCount == 1) {
-        //   maxEl = el;
-        // }
+
         else if (modeMap[el] == maxCount) {
           //maxEl += '&' + el;
           maxEl = "Mult";

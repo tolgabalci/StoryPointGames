@@ -3,7 +3,7 @@ import { UserStoryComponent } from './../user-story/user-story.component';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Game } from './../model/game';
 import { GameService } from './../services/game.service';
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, SimpleChanges } from '@angular/core';
 import { Router } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
 import { GameComponent } from './../game/game.component';
@@ -29,7 +29,7 @@ export class SavedGamesComponent implements OnInit {
   constructor(private router: Router, private gameService: GameService, private toastrService: ToastrService, protected auth: AngularFireAuth) {
     console.log('we are in the constructor for saved games')
     this.gameSubscription = this.gameService.getGames()
-      .subscribe(gamesData => { this.games = gamesData }); 
+      .subscribe(gamesData => { this.games = gamesData });
 
   }
 
@@ -69,8 +69,19 @@ export class SavedGamesComponent implements OnInit {
 
   }
 
+  // trackCreateDate(index, selectedGame) {
+  //   //console.log(hero);
+  //   return selectedGame ? selectedGame.createdDate : undefined;
+
+  // }
+
   ngOnInit() {
 
   }
+
+  // public ngOnChanges(changes: SimpleChanges): void {
+  //   console.log('list changed', changes);
+  //   this.games.reverse();
+  // }
 
 }
