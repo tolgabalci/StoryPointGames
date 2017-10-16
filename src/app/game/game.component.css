@@ -39,15 +39,8 @@
     color: black;
 }
 
-.cardheader {
-    padding: 20px 0 80px;
-    height: 600px;
-    width: 100%;
-    margin-top: 50px;
-    color: black;
 
-    
-}
+
 
 .last-row {
     position: fixed;
@@ -124,7 +117,15 @@
 }
 
 .cardsPanel {
+    width: 100%;
+    background-color:green;
+    float:left;
+    max-height: calc(100vh - 210px);
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
+
+
 
 [name="cardSelect"]{
     display: none;
@@ -159,6 +160,9 @@
   .sidebar {
     background-color: #f5f5f5;
     border-right: 1px solid #eee;  
+    float:right;
+    max-height: calc(100vh - 210px);
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
-
 
