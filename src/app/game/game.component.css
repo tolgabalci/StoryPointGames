@@ -2,7 +2,163 @@
     display: block;
 }
 
-.back {
-    background: orange;
-    height: 100px;
+.block-center {
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
 }
+
+
+.back {
+    height: 200px;
+    text-align: center;
+    align-content: center;   
+    align-items: center; 
+}
+
+.gameBoard {
+    padding: 0px 0px 0px 25px;
+    
+}
+
+.gameName{
+    color: black;
+    text-align: center;
+    font-style: italic;
+}
+
+.userStory h3,
+.userStory p,
+{
+    color: black;
+}
+
+.cardHolder{
+    width: 100px;
+    height: 140px;
+    color: black;
+}
+
+.cardheader {
+    padding: 20px 0 80px;
+    height: 600px;
+    width: 100%;
+    margin-top: 50px;
+    color: black;
+
+    
+}
+
+.last-row {
+    position: fixed;
+    bottom: 0px;
+}
+
+ .cardfront {
+    width: 80px;
+    height: 120px;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    color: black;
+    text-align: center;
+    background-image: url(./../../assets/images/Logo.png); 
+    background-size: 100px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: lightslategrey;
+    
+}
+
+.cardFooter {
+    padding: 0px 0px 0px 15px;
+    width: 100%;
+}
+
+.cardback {
+    text-align: center;
+    color: black;
+    width: 80px;
+    height: 120px; 
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+    backface-visibility: hidden;
+    font-size: 60px;
+}
+
+
+
+ .card {
+    padding: 40px 0 40px 0;
+    border: 1px solid black;
+    background-color: white;    
+    border-radius: 5px;
+    width: 5%;
+    text-align: center;
+    margin-left: 15px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 500ms ease-in-out;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    
+   
+}
+
+.divider {
+  height: 1px;
+  width:100%;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: gray;
+}
+
+
+ input:checked + label{
+   color: #fff;
+   background-color: #428bca;
+
+  
+}
+
+.cardsPanel {
+}
+
+[name="cardSelect"]{
+    display: none;
+}
+
+.infinity{
+   display: inline-block;
+   padding-bottom: 15px;
+}
+
+.infinityImage {
+    height: 15px;
+    width: 35px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.page {
+    display: table;
+    width: 100%;
+  }
+
+.page-content {
+    padding: 0 50px 0 25px;
+}
+
+  .page-content,
+  .sidebar {
+    display: table-cell;
+  }
+
+  .sidebar {
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;  
+}
+
+
