@@ -2,3 +2,7 @@
     display: block;
 }
 
+.back {
+    background: orange;
+    height: 100px;
+}
