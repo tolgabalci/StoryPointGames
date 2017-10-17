@@ -15,23 +15,31 @@
         <div class="row">
             <div class="scoredisplay col-xs-5 results">
                 <span *ngIf="story.score == 'I'">
-                    <img class="infinity" src="../assets/images/infinity2.png" alt=""> 
+                    <img class="infinity" src="../assets/images/infinity2.png" alt="">
                 </span>
                 <span *ngIf="story.score != 'I'">
                     {{story.score}}
                 </span>
             </div>
             <div class="col-xs-7 flip" *ngIf="this.auth.auth.currentUser.uid==this.game.createdByUid">
-                <a (click)="openGameLink()"><i class="controls fa fa-link" aria-hidden="true">  Game Link </i></a>
+                <a (click)="openGameLink()">
+                    <i class="controls fa fa-link" aria-hidden="true"> Game Link </i>
+                </a>
                 <app-game-link></app-game-link>
 
-                <a class="flipcards"><i class="controls fa fa-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Flip Cards"
-                    onmouseenter="$(this).tooltip('show')" (click)="flipCards()">  Flip</i></a>
+                <a class="flipcards">
+                    <i class="controls fa fa-eye" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Flip Cards"
+                        onmouseenter="$(this).tooltip('show')" (click)="flipCards()"> Flip</i>
+                </a>
                 <br>
-                <a class="resetBoard"><i class="controls fa fa-undo" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reset board"
-                      onmouseenter="$(this).tooltip('show')" (click)="resetCards()">  Reset</i></a>
+                <a class="resetBoard">
+                    <i class="controls fa fa-undo" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reset board"
+                        onmouseenter="$(this).tooltip('show')" (click)="resetCards()"> Reset</i>
+                </a>
 
-                <a class="add" (click)="openAddUserStory()"><i class="controls fa fa-plus" aria-hidden="true">  Add User Story </i></a>
+                <a class="add" (click)="openAddUserStory()">
+                    <i class="controls fa fa-plus" aria-hidden="true"> Add User Story </i>
+                </a>
                 <app-user-story></app-user-story>
 
             </div>
@@ -43,8 +51,12 @@
         <div class="row ">
             <div class="col-xs-12 controlTabs">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#players" data-toggle="tab" aria-expanded="true">Players</a></li>
-                    <li class=""><a href="#stories" data-toggle="tab" aria-expanded="false" *ngIf="this.auth.auth.currentUser.uid==game.createdByUid">User Stories</a></li>
+                    <li class="active">
+                        <a href="#players" data-toggle="tab" aria-expanded="true">Players</a>
+                    </li>
+                    <li class="">
+                        <a href="#stories" data-toggle="tab" aria-expanded="false" *ngIf="this.auth.auth.currentUser.uid==game.createdByUid">User Stories</a>
+                    </li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade active in" id="players">
@@ -59,35 +71,39 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let gameUser of gameUsers">
-                                    <td><a class="takeBreak" (click)="setUserStatus(gameUser)">
-                                        <i class="{{currentIcon}}" aria-hidden="true" data-toggle="tooltip" data-placement="top"
-                                            title="{{currentTip}}" data-original-title="" onmouseenter="$(this).tooltip('show')"
-                                            *ngIf="this.auth.auth.currentUser.uid==gameUser.$key"></i></a></td>
+                                    <td>
+                                        <a class="takeBreak" (click)="setUserStatus(gameUser)">
+                                            <i class="{{currentIcon}}" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{currentTip}}" data-original-title=""
+                                                onmouseenter="$(this).tooltip('show')" *ngIf="this.auth.auth.currentUser.uid==gameUser.$key"></i>
+                                        </a>
+                                    </td>
                                     <td>{{gameUser.status}}</td>
                                     <!-- <td>{{gameUser.voted}}</td> -->
-                                    <td><a class="votedOn">
-                                        <i class="voted fa fa-check-circle" aria-hidden="true" 
-                                            *ngIf="gameUser.voted"></i></a></td>
+                                    <td>
+                                        <a class="votedOn">
+                                            <i class="voted fa fa-check-circle" aria-hidden="true" *ngIf="gameUser.voted"></i>
+                                        </a>
+                                    </td>
                                     <td>{{gameUser.displayName}}</td>
                                     <td></td>
-                                    <td><a class="leaveGame" (click)="leaveGame(gameUser)">
-                                        <i class="exit fa fa-sign-out" aria-hidden="true" data-toggle="tooltip" data-placement="top"
-                                            title="" data-original-title="Leave Game" onmouseenter="$(this).tooltip('show')"
-                                            *ngIf="this.auth.auth.currentUser.uid==gameUser.$key"></i></a></td>
+                                    <td>
+                                        <a class="leaveGame" (click)="leaveGame(gameUser)">
+                                            <i class="exit fa fa-sign-out" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Leave Game"
+                                                onmouseenter="$(this).tooltip('show')" *ngIf="this.auth.auth.currentUser.uid==gameUser.$key"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="tab-pane fade" id="stories">
-
-
                         <table class="table storyControls table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Title</th>
                                     <th>Points</th>
-                                    <th>T-Shirt</th>
+                                    <th>Shirt</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -97,10 +113,18 @@
                                     <td>{{story.title}}</td>
                                     <td>-</td>
                                     <td>{{story.shirtSize}}</td>
-                                    <td><a class="editStory"><i (click)="editStory(story)" class="edit fa fa-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="top"
-                                            title="" data-original-title="Edit Story" onmouseenter="$(this).tooltip('show')"></i></a></td>
-                                    <td><a class="trashStory" (click)="storyToDelete=story" data-toggle="modal" data-target="#deleteStoryModal"><i class="trash fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top"
-                                            title="" data-original-title="Delete Story" onmouseenter="$(this).tooltip('show')"></i></a></td>
+                                    <td>
+                                        <a class="editStory">
+                                            <i (click)="editStory(story)" class="edit fa fa-pencil" aria-hidden="true" data-toggle="tooltip"
+                                                data-placement="top" title="" data-original-title="Edit Story" onmouseenter="$(this).tooltip('show')"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="trashStory" (click)="storyToDelete=story" data-toggle="modal" data-target="#deleteStoryModal">
+                                            <i class="trash fa fa-trash" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                                title="" data-original-title="Delete Story" onmouseenter="$(this).tooltip('show')"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

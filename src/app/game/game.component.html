@@ -1,82 +1,85 @@
-<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="page">
+      <div class="page-content">
+        <!-- Left Panel -->
+        <div class="cardsPanel">
 
-  <div class="container-fluid sizing">
-    <div class="row">
-      <div class="col-xs-5 col-sm-5 col-md-4 col-lg-4 sidebar">
+          <!-- Game Board -->
+          <div class="row">
+            <div class="gameBoard">
+              <!--<div class="main " *ngFor="let currentStory of currentStories ">-->
+              <div class="gameName">{{game.name}}</div>
+              <h4 class="userStory"> User Story # {{story?.storyId}}</h4>
+              <p class="title">Title: {{story?.title}}</p>
+              <p>Description: {{story?.description}}</p>
+              <hr class="divider" />
+              <!--</div>-->
+            </div>
+          </div>
 
-        <app-game-controller (flip)="flipCards()" [selectedStory]="story" (selectStory)="storyChange($event)" (reset)="resetCards()">
+          <!-- Played Cards -->
+          <div class="row">
+            <!-- Add the extra clearfix for only the required viewport -->
+            <div class="col-xs-4 col-sm-3 col-lg-2 col-xl-1 back" *ngFor="let userStoryCard of userStoryCards ">
+              <div class="cardfront block-center" *ngIf="!story.cardsHideFront">
+                <!--front content-->
+              </div>
+              <div class="cardback block-center animated flipInY" *ngIf="!story.cardsHideBack ">
+                <!--back content-->
+                <span *ngIf="userStoryCard.value=='I' ">
+                  <img class="infinity " src="../assets/images/infinity2.png " alt=" ">
+                </span>
+                <span *ngIf="userStoryCard.value=='P' ">
+                  <h1>Pass</h1>
+                </span>
+
+                <h1 *ngIf="userStoryCard.value !='I' && userStoryCard.value !='P' ">{{userStoryCard.value}}</h1>
+              </div>
+
+              <h6>{{userStoryCard.displayName}}</h6>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Right Panel -->
+      <div class="sidebar ">
+        <app-game-controller (flip)="flipCards() " [selectedStory]="story " (selectStory)="storyChange($event)
+          " (reset)="resetCards() ">
         </app-game-controller>
       </div>
 
-      <div class="col-xs-7 col-sm-7 col-md-8 col-lg-8 gameBoard">
-        <!--<div class="main" *ngFor="let currentStory of currentStories">-->
-        <h3 class="gameName">{{game.name}}</h3>
-        <h4 class="userStory"> User Story # {{story?.storyId}}</h4>
-        <p>Title: {{story?.title}}</p>
-        <br/>
-        <p>Description: {{story?.description}}</p>
-        <hr class="divider" />
-        <!--</div>-->
-      </div>
     </div>
+    <div *ngIf="!this.story.cardsHideFront" class="row cardFooter">
+      <hr class="divider" />
 
-    <div class="row">
-      <div class="col-xs-5 col-sm-5 col-md-6 col-lg-6 cardsPlayed">
-        <div class="col-lg-2 col-md-2" *ngFor="let userStoryCard of userStoryCards">
-          <div class="cardfront" [hidden]="story.cardsHideFront">
-            <!--front content-->
-          </div>
-          <div class="cardback animated flipInY" [hidden]="story.cardsHideBack">
-            <!--back content-->
-            <span *ngIf="userStoryCard.value == 'I'">
-                <img class="infinity" src="../assets/images/infinity2.png" alt=""> 
-            </span>
-            <span *ngIf="userStoryCard.value == 'P'">
-                <h1>Pass</h1>
-            </span>
-
-            <h1 *ngIf="userStoryCard.value != 'I' && userStoryCard.value != 'P'">{{userStoryCard.value}}</h1>
-          </div>
-
-          <h6>{{userStoryCard.displayName}}</h6>
-        </div>
-      </div>
-    </div>
-    <div class="row" *ngIf="!this.story.cardsHideFront">
-      <div class="col-xs-7 col-sm-7 col-md-8 col-lg-8 cardFooter">
-        <hr class="divider" />
-
-        <span *ngFor="let card of cards" (click)="selectedCard(card.text)">
-          <input type="radio" name="cardSelect" id="{{card.text}}" />
-          <label class="card" for="{{card.text}}">    
+      <span *ngFor="let card of cards" (click)="selectedCard(card.text)">
+        <input type="radio" name="cardSelect" id="{{card.text}}" />
+        <label class="card" for="{{card.text}}">
           <span>
-          {{card.text}}
-         </span>
-        </label>
-        </span>
-
-        <span (click)="selectedCard('I')">
-          <input type="radio" name="cardSelect" id="infinity" />
-          <label class="card" *ngIf="cardDeck == 'Fibonacci' || cardDeck == 'Simple'" for="infinity" value="i" >
-          <span>
-              <img class="infinityImage" src="../assets/images/infinity2.png" alt="">            
+            {{card.text}}
           </span>
         </label>
-        </span>
+      </span>
 
-        <span (click)="selectedCard('P')">
-            <input type="radio" name="cardSelect" id="pass" value ="pass" />
-            <label class="card" for="pass">
+      <span (click)="selectedCard('I')">
+        <input type="radio" name="cardSelect" id="infinity" />
+        <label class="card" *ngIf="cardDeck == 'Fibonacci' || cardDeck == 'Simple'" for="infinity" value="i">
           <span>
-              Pass
+            <img class="infinityImage" src="../assets/images/infinity2.png" alt="">
           </span>
         </label>
-        </span>
+      </span>
 
-      </div>
+      <span (click)="selectedCard('P')">
+        <input type="radio" name="cardSelect" id="pass" value="pass" />
+        <label class="card" for="pass">
+          <span>
+            Pass
+          </span>
+        </label>
+      </span>
+
     </div>
-
   </div>
-
-
-</body>
