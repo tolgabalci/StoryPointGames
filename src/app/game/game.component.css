@@ -95,11 +95,30 @@
     font-weight: bold;
     font-size: 20px;
     color: black;
+    max-width: 70px;
 
     width: 5.5%;
     text-align: center;
   
 }
+
+@media (min-width: 1400px) {
+    .card {
+        margin-left: 1.5%;
+    }
+  }
+
+  @media (min-width: 1650px) {
+    .card {
+        margin-left: 2%;
+    }
+  }
+
+  @media (min-width: 1800px) {
+    .card {
+        margin-left: 2.8%;
+    }
+  }
 
 .divider {
   height: 1px;
