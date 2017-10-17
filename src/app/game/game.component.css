@@ -26,6 +26,8 @@
     color: black;
     text-align: center;
     font-style: italic;
+    margin-top: 0px;
+    padding-top: 0px;
 }
 
 .userStory h3,
@@ -57,18 +59,6 @@
     
 }
 
-.cardFooter {
-    width: 100%;
-    display: inline-block;
-    padding: 0px 0px 0px 15px;
-    position: fixed;
-    bottom: 0px;
-    overflow-x: auto; 
-    white-space: nowrap;
-    text-align: center;
-}
-
-
 .cardback {
     text-align: center;
     color: black;
@@ -81,6 +71,16 @@
     font-size: 60px;
 }
 
+.cardFooter {
+    width: 100%;
+    display: inline-block;
+    padding: 0px 0px 0px 15px;
+    position: fixed;
+    bottom: 0px;
+    overflow-x: auto; 
+    white-space: nowrap;
+    text-align: center;
+}
 
 
  .card {
@@ -121,7 +121,7 @@
     width: 100%;
     height: calc(100vh - 240px);
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 
@@ -142,6 +142,9 @@
     background-position: center center;
 }
 
+.title {
+    font-weight: bold;
+}
 
 .page {
     display: table;
@@ -149,7 +152,7 @@
 }
 
 .page-content {
-    padding: 0 10px 0 15px;
+    padding: 0 15px 0 15px;
     width: 100%;
 }
 

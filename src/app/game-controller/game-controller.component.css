@@ -25,10 +25,10 @@
 
 .controls{
     color: black;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     text-align: left;  
-    margin-top: 5px;
+    margin-top: 10px;
     cursor: pointer;
     padding-right: 20px;
 }
