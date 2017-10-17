@@ -18,7 +18,7 @@
 }
 
 .gameBoard {
-    padding: 0px 0px 0px 25px;
+    padding: 0px 15px 0px 25px;
     
 }
 
@@ -120,8 +120,11 @@
 .cardsPanel {
     width: 100%;
     height: calc(100vh - 240px);
+    top: 0px;
     overflow-x: hidden;
     overflow-y: auto;
+    vertical-align: top;
+    float: left;
 }
 
 
@@ -152,11 +155,17 @@
 }
 
 .page-content {
+    margin-top: 0;
     padding: 0 15px 0 15px;
     width: 100%;
+    top: 0px;
 }
 
-  .page-content,
+  .page-content {
+    display: table-cell;
+
+  }
+
   .sidebar {
     display: table-cell;
 }
