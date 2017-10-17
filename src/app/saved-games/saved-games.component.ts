@@ -29,7 +29,7 @@ export class SavedGamesComponent implements OnInit {
   constructor(private router: Router, private gameService: GameService, private toastrService: ToastrService, protected auth: AngularFireAuth) {
     console.log('we are in the constructor for saved games')
     this.gameSubscription = this.gameService.getGames()
-      .subscribe(gamesData => { this.games = gamesData });
+      .subscribe(gamesData => { this.games = gamesData.slice().reverse() });
 
   }
 
@@ -63,7 +63,7 @@ export class SavedGamesComponent implements OnInit {
     this.UserStoryComponent.open(game, this.storyToEdit, "AddFromCreateGame");
     this.UserStoryComponent.modal.onDismiss.subscribe(() => {
       this.gameSubscription = this.gameService.getGames()
-        .subscribe(gamesData => { this.games = gamesData })
+        .subscribe(gamesData => { this.games = gamesData.slice().reverse() })
       console.log("getting games");
     });
 

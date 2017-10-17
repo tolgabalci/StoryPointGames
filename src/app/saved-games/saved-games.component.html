@@ -9,7 +9,7 @@
       <th>Date</th>
     </tr>
   </thead>
-  <tbody *ngFor="let selectedGame of games.splice().reverse()">
+  <tbody *ngFor="let selectedGame of games">
     <tr>
       <td [routerLink]="'/game/' + selectedGame.$key">{{selectedGame.name}}</td>
       <td [routerLink]="'/game/' + selectedGame.$key">{{selectedGame.description}}</td>
