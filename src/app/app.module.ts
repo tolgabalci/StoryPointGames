@@ -1,6 +1,7 @@
 import { GameResolverService } from './services/game-resolver.service';
 import { CardDeckService } from './services/card-deck.service';
 import { GameService } from "./services/game.service";
+import { UserGameService } from "./services/user-game.service";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -101,7 +102,7 @@ var firebaseConfig = {
     BrowserAnimationsModule
 
   ],
-  providers: [GameService, CardDeckService, LoggedInGuardService, GameResolverService, ReversePipe],
+  providers: [UserGameService, GameService, CardDeckService, LoggedInGuardService, GameResolverService, ReversePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
