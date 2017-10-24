@@ -35,9 +35,9 @@ export class UserGameService {
   //currentStory: Observable<Story> = this.currentStorySubject.asObservable();
 
   createGame(userGame: UserGame, gameKey: string) {
-    userGame.createdByUid = this.auth.auth.currentUser.uid;
+    //userGame.createdByUid = this.auth.auth.currentUser.uid;
     //userGame.name = 
-    userGame.gameKey = gameKey;
+    //userGame.gameKey = gameKey;
     userGame.createdBy = this.auth.auth.currentUser.displayName;
     userGame.createdDate = Date();
     console.log("createGame service, creating game: ", userGame.name);
@@ -60,18 +60,26 @@ export class UserGameService {
 
   //}
 
+  getUserGames(): FirebaseListObservable<any[]> {
+    console.log("getUserGames");
+    //return this.db.list("game"); //.map(arr => { return arr.reverse(); });
+    //return this.db.list("game", { query: { orderByChild: 'createDate' } });
+    return this.db.list(`user-game/${this.auth.auth.currentUser.uid}`, { query: { orderByChild: 'createDate' } });
+  }
+
+  // brians code that i copied to start getUserGames
+  //getGames(): FirebaseListObservable<any[]> {
+  //  console.log("getUserGames");
+  //  //return this.db.list("game"); //.map(arr => { return arr.reverse(); });
+  //  return this.db.list("game", { query: { orderByChild: 'createDate' } });
+ // }
+
   getGameStories(gameKey: string): FirebaseListObservable<any[]> {
     return this.db.list(`game/${gameKey}/stories`)
   }
 
   getGameUsers(gameKey: string): FirebaseListObservable<any[]> {
     return this.db.list(`game/${gameKey}/users`, { query: { orderByChild: 'displayName_NoCase' } });
-  }
-
-  getGames(): FirebaseListObservable<any[]> {
-    console.log("getGames");
-    //return this.db.list("game"); //.map(arr => { return arr.reverse(); });
-    return this.db.list("game", { query: { orderByChild: 'createDate' } });
   }
 
   getGameByKey(key: string): FirebaseObjectObservable<any> {

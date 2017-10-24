@@ -8,6 +8,7 @@ import { Observable } from "rxjs/Observable";
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from "angularfire2/database";
 import * as firebase from 'firebase/app';
 import { GameUser } from "app/model/gameUser";
+import { UserGame } from "app/model/userGame";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 //import { Subject } from "rxjs/Subject";
 //import 'rxjs/first';
@@ -20,6 +21,7 @@ export class GameService {
 
   constructor(private auth: AngularFireAuth,
     private db: AngularFireDatabase) { }
+    
   story: Story = new Story();
   game: Game = new Game();
   cardToAdd: UserSelectedCard = new UserSelectedCard();
@@ -32,7 +34,7 @@ export class GameService {
   static DEFAULT_STORY: Story = new Story();
   currentStorySubject: BehaviorSubject<Story> = new BehaviorSubject<Story>(GameService.DEFAULT_STORY);
   currentStory: Observable<Story> = this.currentStorySubject.asObservable();
-
+  
   createGame(game: Game) {
     game.createdBy = this.auth.auth.currentUser.displayName;
     game.createdByUid = this.auth.auth.currentUser.uid
@@ -59,6 +61,7 @@ export class GameService {
   }
 
   getGameStories(gameKey: string): FirebaseListObservable<any[]> {
+    console.log("gomer getGameStories");
     return this.db.list(`game/${gameKey}/stories`)
   }
 
@@ -66,7 +69,7 @@ export class GameService {
     return this.db.list(`game/${gameKey}/users`, { query: { orderByChild: 'displayName_NoCase' } });
   }
 
-  getGames(): FirebaseListObservable<any[]> {
+  getGames(): FirebaseListObservable<any[]> {    
     console.log("getGames");
     //return this.db.list("game"); //.map(arr => { return arr.reverse(); });
     return this.db.list("game", { query: { orderByChild: 'createDate' } });

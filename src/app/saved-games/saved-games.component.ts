@@ -2,6 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import { UserStoryComponent } from './../user-story/user-story.component';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Game } from './../model/game';
+import { UserGameService } from './../services/user-game.service';
 import { GameService } from './../services/game.service';
 import { Component, OnInit, Input, ViewChild, SimpleChanges } from '@angular/core';
 import { Router } from "@angular/router";
@@ -10,6 +11,7 @@ import { GameComponent } from './../game/game.component';
 import { ModalComponent } from "ng2-bs3-modal/components/modal";
 import { Story } from 'app/model/story';
 import { Subscription } from "rxjs/Subscription";
+
 
 @Component({
   selector: 'app-saved-games',
@@ -26,9 +28,14 @@ export class SavedGamesComponent implements OnInit {
   currentUsersGame: boolean = false;
   gameSubscription: Subscription;
 
-  constructor(private router: Router, private gameService: GameService, private toastrService: ToastrService, protected auth: AngularFireAuth) {
+  constructor(private router: Router, private gameService: GameService, private usergameService: UserGameService, private toastrService: ToastrService, protected auth: AngularFireAuth) {
     console.log('we are in the constructor for saved games')
-    this.gameSubscription = this.gameService.getGames()
+
+    // Brian's code before I "fixed" it ??
+    //this.gameSubscription = this.gameService.getGames()
+    //  .subscribe(gamesData => { this.games = gamesData.slice().reverse() });
+    
+    this.gameSubscription = this.usergameService.getUserGames()
       .subscribe(gamesData => { this.games = gamesData.slice().reverse() });
 
   }
