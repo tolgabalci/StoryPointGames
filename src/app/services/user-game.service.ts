@@ -39,6 +39,7 @@ export class UserGameService {
     //userGame.name = 
     //userGame.gameKey = gameKey;
     userGame.createdBy = this.auth.auth.currentUser.displayName;
+    userGame.createdByUid = this.auth.auth.currentUser.uid;
     userGame.createdDate = Date();
     console.log("createGame service, creating game: ", userGame.name);
     let storyPointGame = this.db.object(`user-game/${this.auth.auth.currentUser.uid}/${gameKey}`);
