@@ -35,6 +35,8 @@ export class GameComponent implements OnInit {
     this.route.data
       .do(data => console.log("Check for key:", data.game))
       .subscribe(data => this.game = data.game);
+    
+      
 
     // this.gameService.getGameStories(this.game.$key)
     //   .subscribe(myStories => {
@@ -48,6 +50,8 @@ export class GameComponent implements OnInit {
       .do(storyCards => { this.userStoryCards = storyCards })
       .switchMap(stories => this.gameService.getGameStories(this.game.$key))
       .subscribe(stories => { this.stories = stories })
+    
+      
 
     //.subscribe(storyCards => { this.userStoryCards = storyCards });
 
@@ -62,7 +66,8 @@ export class GameComponent implements OnInit {
 
     //console.log("Router data from new game:",this.);
 
-    console.log("card set is...", this.game.cardSet);
+    console.log("card set is.....", this.game.cardSet);
+    console.log("game.component.ts game key is.....", this.game.$key);
     this.cardDeck = this.game.cardSet;
     this.cards = this._cardDeckService.getCards(this.cardDeck);
   }

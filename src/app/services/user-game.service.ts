@@ -61,7 +61,7 @@ export class UserGameService {
   //}
 
   getUserGames(): FirebaseListObservable<any[]> {
-    console.log("getUserGames");
+    console.log("user-game.service getUserGames");
     //return this.db.list("game"); //.map(arr => { return arr.reverse(); });
     //return this.db.list("game", { query: { orderByChild: 'createDate' } });
     return this.db.list(`user-game/${this.auth.auth.currentUser.uid}`, { query: { orderByChild: 'createDate' } });
