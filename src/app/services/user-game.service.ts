@@ -34,7 +34,7 @@ export class UserGameService {
   //currentStorySubject: BehaviorSubject<Story> = new BehaviorSubject<Story>(GameService.DEFAULT_STORY);
   //currentStory: Observable<Story> = this.currentStorySubject.asObservable();
 
-  createGame(userGame: UserGame, gameKey: string) {
+  createUserGame(userGame: UserGame, gameKey: string) {
     //userGame.name = 
     //userGame.gameKey = gameKey;
     userGame.createdBy = this.auth.auth.currentUser.displayName;
@@ -67,6 +67,14 @@ export class UserGameService {
     return this.db.list(`user-game/${this.auth.auth.currentUser.uid}`, { query: { orderByChild: 'createDate' } });
   }
 
+  deleteUserGame(gameKey: string, userKey: string) {
+    
+        console.log("user-game.service userKey gameKey = ", userKey, gameKey);
+        var gameToRemove = this.db.list(`user-game/${userKey}/${gameKey}`)
+        gameToRemove.remove();
+    
+      }
+
   // brians code that i copied to start getUserGames
   //getGames(): FirebaseListObservable<any[]> {
   //  console.log("getUserGames");
@@ -94,13 +102,7 @@ export class UserGameService {
     return this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`, { query: { orderByChild: 'sequence' } });
   }
 
-  deleteGame(gameKey: string) {
-
-    console.log("game name = ", gameKey);
-    var gameToRemove = this.db.list(`game/${gameKey}`)
-    gameToRemove.remove();
-
-  }
+  
 
   deleteGameStory(gameKey: string, storyKey: string) {
     var storyToRemove = this.db.list(`game/${gameKey}/stories/${storyKey}`)

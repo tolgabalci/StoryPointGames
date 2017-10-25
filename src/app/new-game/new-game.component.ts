@@ -51,8 +51,7 @@ export class NewGameComponent implements OnInit {
     console.log("this.newUserGame", this.newUserGame);
 
     this.gameService.createGame(this.newGame);
-    //this.userGameService.createGame(this.newUserGame);
-    this.userGameService.createGame(this.newUserGame, this.newGame.$key);
+    this.userGameService.createUserGame(this.newUserGame, this.newGame.$key);
 
     this.router.navigate(['game', this.newGame.$key]);
   }
