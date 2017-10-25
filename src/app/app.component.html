@@ -3,19 +3,36 @@
 
 		<a href="#" routerLink="dashboard">
 			<div class="navbar-header">
-				<img class="logo" src="../assets/images/Logo.png" alt=""> StoryPointGames
+				<img class="logo" src="../assets/images/Logo.png" alt="">
+				<span>StoryPointGames</span>
+				<button type="button" class="navbar-toggle navbar-right collapsed" data-toggle="collapse" data-target=".navbar-collapse"
+				 aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
 			</div>
 		</a>
 
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="listpadded"><a href="#" routerLink="createNewGame" *ngIf="(user | async)?.uid">Create New Game</a></li>
-				<li class="listpadded"><a href="#" routerLink="savedGames" [queryParams]="{gerbil: 'true'}" *ngIf="(user | async)?.uid">Saved Games</a></li>
+				<li class="listpadded text-right">
+					<a href="#" routerLink="createNewGame" *ngIf="(user | async)?.uid">New Game</a>
+				</li>
+				<li class="listpadded  text-right">
+					<a href="#" routerLink="savedGames" [queryParams]="{gerbil: 'true'}" *ngIf="(user | async)?.uid">Saved Games</a>
+				</li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="logintext" *ngIf="!(user | async)?.uid"><a href="register">Register</a></li>
-				<li routerLink="/account" class="logintext"><img *ngIf="(user | async)?.uid" class="userimg" src="{{(user | async)?.photoURL}}"> {{(user | async)?.displayName}}</li>
-				<li><a class="logintext" (click)="LoginModal.open()" *ngIf="!(user | async)?.uid">Login</a></li>
+			<ul class="nav navbar-nav navbar-right text-right margin-right margin-to-none">
+				<li class="logintext" *ngIf="!(user | async)?.uid">
+					<a href="register">Register</a>
+				</li>
+				<li routerLink="/account" class="logintext">
+					<img *ngIf="(user | async)?.uid" class="userimg" src="{{(user | async)?.photoURL}}"> {{(user | async)?.displayName}}</li>
+				<li>
+					<a class="logintext" (click)="LoginModal.open()" *ngIf="!(user | async)?.uid">Login</a>
+				</li>
 				<!--<button type="button" class="btn btn-default" (click)="LoginModal.open()">test</button>-->
 			</ul>
 		</div>

@@ -34,6 +34,8 @@
 
 .listpadded{
   margin-left: 20px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 .logo{
@@ -43,13 +45,12 @@
 
 
 .navbar-header {
-    float: left !important;
     font-size: 30px !important;
     font-family: 'Exo', sans-serif !important;
     font-style: normal !important;
     color:white !important;
     margin-top:5px;
-
+    text-decoration: none !important;
 }
 
 .addClick{
@@ -57,5 +58,25 @@
 }
 
 
+a.deco-none {
+  color:#000000 !important;
+  text-decoration:none  !important;
 
+}
 
+.bg-menu:hover {
+  background-color:#0079C1  !important;
+  color:#FFFFFF !important;
+}
+
+.clickable {
+  cursor:pointer !important; 
+}
+
+a:hover, a:focus {
+  text-decoration: none !important;
+}
+
+.margin-right {
+  margin-right: 5px; 
+}

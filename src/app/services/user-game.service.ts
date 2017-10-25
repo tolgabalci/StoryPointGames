@@ -35,10 +35,10 @@ export class UserGameService {
   //currentStory: Observable<Story> = this.currentStorySubject.asObservable();
 
   createGame(userGame: UserGame, gameKey: string) {
-    //userGame.createdByUid = this.auth.auth.currentUser.uid;
     //userGame.name = 
     //userGame.gameKey = gameKey;
     userGame.createdBy = this.auth.auth.currentUser.displayName;
+    userGame.createdByUid = this.auth.auth.currentUser.uid;
     userGame.createdDate = Date();
     console.log("createGame service, creating game: ", userGame.name);
     let storyPointGame = this.db.object(`user-game/${this.auth.auth.currentUser.uid}/${gameKey}`);
@@ -72,7 +72,7 @@ export class UserGameService {
   //  console.log("getUserGames");
   //  //return this.db.list("game"); //.map(arr => { return arr.reverse(); });
   //  return this.db.list("game", { query: { orderByChild: 'createDate' } });
- // }
+  // }
 
   getGameStories(gameKey: string): FirebaseListObservable<any[]> {
     return this.db.list(`game/${gameKey}/stories`)
@@ -144,51 +144,51 @@ export class UserGameService {
   // selectedStory: string;
   //card: UserSelectedCard = new UserSelectedCard();
   //updateAllVotes(gameKey: string, storyKey: string, udateValue: boolean) {
-    //bwe-keep this, possibly need if have to update voted
-    // this.storiesForVotes = this.db.list(`game/${gameKey}/stories`)
-    // var storiesSubscription = this.storiesForVotes.subscribe(
-    //   stories => {
-    //     stories.forEach(story => {
+  //bwe-keep this, possibly need if have to update voted
+  // this.storiesForVotes = this.db.list(`game/${gameKey}/stories`)
+  // var storiesSubscription = this.storiesForVotes.subscribe(
+  //   stories => {
+  //     stories.forEach(story => {
 
-    //       if (story.currentlySelectedStory == true) {
-    //         this.selectedStory = this.story.$key;
-    //       }
-    //     });
-    //   }
-    // )
+  //       if (story.currentlySelectedStory == true) {
+  //         this.selectedStory = this.story.$key;
+  //       }
+  //     });
+  //   }
+  // )
 
 
-    //this.users = this.db.list(`game/${gameKey}/users`)
-    //var usersSubscription = this.users.subscribe(
-     // users => {
-     //   users.forEach(user => {
-       //   var userRef = this.db.object(`game/${gameKey}/users/${user.$key}`)
-         // var theyVoted: boolean = false;
-         // const updateData = {
-           // voted: theyVoted
-         // };
-        //  userRef.update(updateData);
+  //this.users = this.db.list(`game/${gameKey}/users`)
+  //var usersSubscription = this.users.subscribe(
+  // users => {
+  //   users.forEach(user => {
+  //   var userRef = this.db.object(`game/${gameKey}/users/${user.$key}`)
+  // var theyVoted: boolean = false;
+  // const updateData = {
+  // voted: theyVoted
+  // };
+  //  userRef.update(updateData);
 
-       // })
-      //});
-    //usersSubscription.unsubscribe();
+  // })
+  //});
+  //usersSubscription.unsubscribe();
 
-    //this.userStoryCards = this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`)
-    //var userStoryCardsSubscription = this.userStoryCards.subscribe(
-    //  userCards => {
-      //  userCards.forEach(card => {
+  //this.userStoryCards = this.db.list(`game/${gameKey}/stories/${storyKey}/userSelectedCards`)
+  //var userStoryCardsSubscription = this.userStoryCards.subscribe(
+  //  userCards => {
+  //  userCards.forEach(card => {
 
-        //  var userRef = this.db.object(`game/${gameKey}/users/${card.$key}`);
-          //var theyVoted: boolean = true;
-          //const updateData = {
-            //voted: theyVoted
-          //};
-          //userRef.update(updateData);
-        //});
-     // }
-   // )
-   // userStoryCardsSubscription.unsubscribe();
- // }
+  //  var userRef = this.db.object(`game/${gameKey}/users/${card.$key}`);
+  //var theyVoted: boolean = true;
+  //const updateData = {
+  //voted: theyVoted
+  //};
+  //userRef.update(updateData);
+  //});
+  // }
+  // )
+  // userStoryCardsSubscription.unsubscribe();
+  // }
   /*
   addUserToGame(gameKey: string, uid: string) {
     this.userInfo.status = "Active";
@@ -371,4 +371,4 @@ export class UserGameService {
    *////////
 
 }
-  
+
