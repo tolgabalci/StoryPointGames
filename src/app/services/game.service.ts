@@ -61,7 +61,7 @@ export class GameService {
   }
 
   getGameStories(gameKey: string): FirebaseListObservable<any[]> {
-    console.log("gomer getGameStories");
+    console.log("getGameStories");
     return this.db.list(`game/${gameKey}/stories`)
   }
 
