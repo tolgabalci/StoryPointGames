@@ -3,8 +3,10 @@ import { Observable } from 'rxjs/Observable';
 import { UserSelectedCard } from 'app/model/userSelectedCard';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { GameService } from './../services/game.service';
+import { UserGameService } from './../services/user-game.service';
 import { Story } from './../model/story';
 import { Game } from './../model/game';
+import { UserGame } from './../model/userGame';
 import { CardDeckService } from './../services/card-deck.service';
 import { GameControllerComponent } from './../game-controller/game-controller.component';
 import { Component, OnInit, Input } from '@angular/core';
@@ -29,14 +31,23 @@ export class GameComponent implements OnInit {
   userStoryCards: any[];
   score: string;
   //theCard: string = '100';
+  newUserGame: UserGame = new UserGame();
+  garyName: string;
 
   constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute,
-    private gameService: GameService, private auth: AngularFireAuth) {
+    private gameService: GameService, private auth: AngularFireAuth, private usergameService: UserGameService) {
     this.route.data
       .do(data => console.log("Check for key:", data.game))
       .subscribe(data => this.game = data.game);
+    // gomer add it here
+    //this.garyName = this.game.name;
+    this.newUserGame.name = this.game.name;
+    this.newUserGame.createdByUid = this.game.createdByUid;
+    //this.newUserGame.description = this.game.description;
+    this.newUserGame.createdBy = this.game.createdBy;
+    this.newUserGame.createdDate = this.game.createdDate;
     
-      
+    usergameService.addUserGame(this.newUserGame, this.game.$key);
 
     // this.gameService.getGameStories(this.game.$key)
     //   .subscribe(myStories => {

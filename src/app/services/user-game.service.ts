@@ -32,6 +32,7 @@ export class UserGameService {
     console.log("user-game.service createUserGame", userGame.name);
     let storyPointGame = this.db.object(`user-game/${this.auth.auth.currentUser.uid}/${gameKey}`);
     var newGameRef = storyPointGame.set(userGame);
+    this.db.list
     
   }
 
@@ -48,7 +49,22 @@ export class UserGameService {
         var gameToRemove = this.db.list(`user-game/${userKey}/${gameKey}`)
         gameToRemove.remove();
     
-      }
+  }
+
+  addUserGame(userGame: UserGame, gameKey: string) {
+  // addUserGame() {
+    
+    userGame.createdBy = this.auth.auth.currentUser.displayName;
+    userGame.createdByUid = this.auth.auth.currentUser.uid;
+    userGame.createdDate = Date();
+    console.log("user-game.service createUserGame", userGame.name);
+    let storyPointGame = this.db.object(`user-game/${this.auth.auth.currentUser.uid}/${gameKey}`);
+    var newGameRef = storyPointGame.set(userGame);
+    this.db.list
+    
+  }
+  
+  
 
 }
 
