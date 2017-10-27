@@ -32,29 +32,21 @@ export class GameComponent implements OnInit {
   score: string;
   //theCard: string = '100';
   newUserGame: UserGame = new UserGame();
-  garyName: string;
+ 
 
   constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute,
     private gameService: GameService, private auth: AngularFireAuth, private usergameService: UserGameService) {
     this.route.data
       .do(data => console.log("game.component Check for key:", data.game))
       .subscribe(data => this.game = data.game);
-    // gomer add it here
-    //this.garyName = this.game.name;
+   
     this.newUserGame.name = this.game.name;
     this.newUserGame.createdByUid = this.game.createdByUid;
     this.newUserGame.description = this.game.description;
     this.newUserGame.createdBy = this.game.createdBy; /// using current date and time not saved one
-    this.newUserGame.createdDate = this.game.createdDate;
-    
+    this.newUserGame.createdDate = this.game.createdDate;    
     usergameService.addUserGame(this.newUserGame, this.game.$key);
-
-    // this.gameService.getGameStories(this.game.$key)
-    //   .subscribe(myStories => {
-    //     this.stories = myStories;        
-    //});
-
-
+    
     this.gameService.getCurrentStory(this.game.$key)
       .do(story => this.story = story)
       .switchMap(story => this.gameService.getStoryUserCards(this.game.$key, story.$key))
