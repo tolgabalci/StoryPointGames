@@ -37,14 +37,14 @@ export class GameComponent implements OnInit {
   constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute,
     private gameService: GameService, private auth: AngularFireAuth, private usergameService: UserGameService) {
     this.route.data
-      .do(data => console.log("Check for key:", data.game))
+      .do(data => console.log("game.component Check for key:", data.game))
       .subscribe(data => this.game = data.game);
     // gomer add it here
     //this.garyName = this.game.name;
     this.newUserGame.name = this.game.name;
     this.newUserGame.createdByUid = this.game.createdByUid;
-    //this.newUserGame.description = this.game.description;
-    this.newUserGame.createdBy = this.game.createdBy;
+    this.newUserGame.description = this.game.description;
+    this.newUserGame.createdBy = this.game.createdBy; /// using current date and time not saved one
     this.newUserGame.createdDate = this.game.createdDate;
     
     usergameService.addUserGame(this.newUserGame, this.game.$key);
