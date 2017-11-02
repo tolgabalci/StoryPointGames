@@ -40,7 +40,7 @@ export class GameComponent implements OnInit {
       .do(data => console.log("game.component Check for key:", data.game))
       .do(data => this.game = data.game)
       .do(data => {
-        console.log("in constructor game:", this.game);
+        console.log("in game.component constructor:", this.game);
         this.newUserGame.name = this.game.name;
         this.newUserGame.createdByUid = this.game.createdByUid;
         this.newUserGame.description = this.game.description;
