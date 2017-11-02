@@ -32,29 +32,30 @@ export class GameComponent implements OnInit {
   score: string;
   //theCard: string = '100';
   newUserGame: UserGame = new UserGame();
- 
+
 
   constructor(private router: Router, private _cardDeckService: CardDeckService, private route: ActivatedRoute,
     private gameService: GameService, private auth: AngularFireAuth, private usergameService: UserGameService) {
     this.route.data
       .do(data => console.log("game.component Check for key:", data.game))
-      .subscribe(data => this.game = data.game);
-   
-    this.newUserGame.name = this.game.name;
-    this.newUserGame.createdByUid = this.game.createdByUid;
-    this.newUserGame.description = this.game.description;
-    this.newUserGame.createdBy = this.game.createdBy; /// using current date and time not saved one
-    this.newUserGame.createdDate = this.game.createdDate;    
-    usergameService.addUserGame(this.newUserGame, this.game.$key);
-    
-    this.gameService.getCurrentStory(this.game.$key)
+      .do(data => this.game = data.game)
+      .do(data => {
+        console.log("in constructor game:", this.game);
+        this.newUserGame.name = this.game.name;
+        this.newUserGame.createdByUid = this.game.createdByUid;
+        this.newUserGame.description = this.game.description;
+        this.newUserGame.createdBy = this.game.createdBy;
+        this.newUserGame.createdDate = this.game.createdDate;
+        usergameService.addUserGame(this.newUserGame, this.game.$key);
+      })
+      .switchMap(data => this.gameService.getCurrentStory(this.game.$key))
       .do(story => this.story = story)
       .switchMap(story => this.gameService.getStoryUserCards(this.game.$key, story.$key))
       .do(storyCards => { this.userStoryCards = storyCards })
-      .switchMap(stories => this.gameService.getGameStories(this.game.$key))
-      .subscribe(stories => { this.stories = stories })
-    
-      
+      .switchMap(() => this.gameService.getGameStories(this.game.$key))
+      .subscribe(stories => { this.stories = stories });
+
+
 
     //.subscribe(storyCards => { this.userStoryCards = storyCards });
 
