@@ -30,7 +30,7 @@ export class PasswordResetComponent implements OnInit {
       alert("Please enter a valid email address.");
     } else {
       this.authService.auth.sendPasswordResetEmail(this.emailAddress).then(() => {
-        alert("Email sent.");
+        console.log("Email sent to ", this.emailAddress);
         this.rt.navigate(["/about"]);
       }, function (error) {
         alert(error.message);
