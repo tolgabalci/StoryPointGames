@@ -51,7 +51,8 @@
       </div>
 
     </div>
-    <div *ngIf="!this.story.cardsHideFront" class="row cardFooter">
+
+    <div *ngIf="!this.story.cardsHideFront && this.story.storyId" class="row cardFooter">
       <hr class="divider" />
 
       <span *ngFor="let card of cards" (click)="selectedCard(card.text)">
