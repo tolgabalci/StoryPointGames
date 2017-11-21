@@ -21,7 +21,7 @@ export class GameService {
 
   constructor(private auth: AngularFireAuth,
     private db: AngularFireDatabase) { }
-    
+
   story: Story = new Story();
   game: Game = new Game();
   cardToAdd: UserSelectedCard = new UserSelectedCard();
@@ -34,7 +34,7 @@ export class GameService {
   static DEFAULT_STORY: Story = new Story();
   currentStorySubject: BehaviorSubject<Story> = new BehaviorSubject<Story>(GameService.DEFAULT_STORY);
   currentStory: Observable<Story> = this.currentStorySubject.asObservable();
-  
+
   createGame(game: Game) {
     game.createdBy = this.auth.auth.currentUser.displayName;
     game.createdByUid = this.auth.auth.currentUser.uid
@@ -69,7 +69,7 @@ export class GameService {
     return this.db.list(`game/${gameKey}/users`, { query: { orderByChild: 'displayName_NoCase' } });
   }
 
-  getGames(): FirebaseListObservable<any[]> {    
+  getGames(): FirebaseListObservable<any[]> {
     console.log("getGames");
     //return this.db.list("game"); //.map(arr => { return arr.reverse(); });
     return this.db.list("game", { query: { orderByChild: 'createDate' } });
@@ -187,7 +187,12 @@ export class GameService {
     this.userInfo.displayName = this.auth.auth.currentUser.displayName;
     this.userInfo.displayName_NoCase = this.auth.auth.currentUser.displayName.toLocaleLowerCase();
     var gameRef = this.db.object(`game/${gameKey}/users/${uid}`);
-    gameRef.update(this.userInfo);
+    const updateCardData = {
+      status: this.userInfo.status,
+      displayName: this.userInfo.displayName,
+      displayName_NoCase: this.userInfo.displayName_NoCase
+    };
+    gameRef.update(updateCardData);
   }
 
   storyUpdateSequence: Story = new Story();
