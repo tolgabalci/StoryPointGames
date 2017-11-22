@@ -186,13 +186,18 @@ export class GameService {
     this.userInfo.status = "Active";
     this.userInfo.displayName = this.auth.auth.currentUser.displayName;
     this.userInfo.displayName_NoCase = this.auth.auth.currentUser.displayName.toLocaleLowerCase();
-    var gameRef = this.db.object(`game/${gameKey}/users/${uid}`);
+    //var gameRef = this.db.object(`game/${gameKey}/users/${uid}`);
+    var gameRef = this.db.database.ref(`game/${gameKey}`);
+    var userRef = gameRef.child(`/users/${uid}`);
+    //var newUserRef = userRef.push();
+    //newUserRef.set(this.userInfo);
     const updateCardData = {
+
       status: this.userInfo.status,
       displayName: this.userInfo.displayName,
       displayName_NoCase: this.userInfo.displayName_NoCase
     };
-    gameRef.update(updateCardData);
+    userRef.update(updateCardData);
   }
 
   storyUpdateSequence: Story = new Story();

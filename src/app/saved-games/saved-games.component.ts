@@ -34,7 +34,7 @@ export class SavedGamesComponent implements OnInit {
     // Brian's code before I "fixed" it ??
     //this.gameSubscription = this.gameService.getGames()
     //  .subscribe(gamesData => { this.games = gamesData.slice().reverse() });
-    
+
     this.gameSubscription = this.usergameService.getUserGames()
       .subscribe(gamesData => { this.games = gamesData.slice().reverse() });
 
@@ -56,11 +56,11 @@ export class SavedGamesComponent implements OnInit {
   selectGame(game) {
     //this.gameService.createGame(this.newGame);
     this.router.navigate(['game', game.$key]);
-    this.gameService.addUserToGame(game.$key, this.auth.auth.currentUser.uid);
+    //this.gameService.addUserToGame(game.$key, this.auth.auth.currentUser.uid);
   }
 
   joinGame(game) {
-    this.gameService.addUserToGame(game.$key, this.auth.auth.currentUser.uid);
+    //this.gameService.addUserToGame(game.$key, this.auth.auth.currentUser.uid);
     console.log("game key: ", game.$key);
     this.router.navigate(['game', game.$key]);
   }

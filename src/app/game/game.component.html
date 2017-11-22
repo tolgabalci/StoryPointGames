@@ -45,14 +45,13 @@
       </div>
       <!-- Right Panel -->
       <div class="sidebar ">
-        <app-game-controller (flip)="flipCards() " [selectedStory]="story " (selectStory)="storyChange($event)
-          " (reset)="resetCards() ">
+        <app-game-controller (flip)="flipCards()" [selectedStory]="story" (selectStory)="storyChange($event)" (reset)="resetCards()">
         </app-game-controller>
       </div>
 
     </div>
 
-    <div *ngIf="!this.story.cardsHideFront && this.story.storyId" class="row cardFooter">
+    <div *ngIf="(!this.story.cardsHideFront) && this.story?.storyId" class="row cardFooter">
       <hr class="divider" />
 
       <span *ngFor="let card of cards" (click)="selectedCard(card.text)">

@@ -48,6 +48,9 @@ export class GameComponent implements OnInit {
         this.newUserGame.createdDate = this.game.createdDate;
         usergameService.addUserGame(this.newUserGame, this.game.$key);
       })
+      .do(data => {
+        this.gameService.addUserToGame(this.game.$key, this.auth.auth.currentUser.uid);
+      })
       .switchMap(data => this.gameService.getCurrentStory(this.game.$key))
       .do(story => this.story = story)
       .switchMap(story => this.gameService.getStoryUserCards(this.game.$key, story.$key))
